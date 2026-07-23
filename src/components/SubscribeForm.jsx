@@ -1,6 +1,41 @@
+"use client";
+
 import "./SubscribeForm.css";
+import {useState} from 'react'
+import { useRouter } from "next/navigation";
+
+
+
+
+
+
+
 
 export default function SubscribeForm() {
+ const router = useRouter();
+  const[name,setName]=useState("");
+const[email,setEmail]=useState("");
+const[diabetes,setDiabetes]=useState("");
+const[error,setError]=useState(true)
+const[formerror,setFormerror]=useState(true)
+
+function handleForm(){
+ if (!name || !email || !diabetes) {
+    // alert("Please fill all the required fields.");
+    setFormerror("please fill all required fields")
+    return;
+  }
+  if(!email.endsWith("@gmail.com")){
+    setError("please enter valid email name")
+    // alert("please enter valid email name");
+    return;
+  }
+
+
+// router.push("/success");
+router.push( `/success?name=${name}&email=${email}&diabetes=${diabetes}`);
+
+}
   return (
     <section className="subscribe-section">
 
@@ -26,6 +61,7 @@ export default function SubscribeForm() {
         {/* First Row */}
 
         <div className="row">
+          
 
           <div className="field">
             <label>
@@ -35,7 +71,10 @@ export default function SubscribeForm() {
             <input
               type="text"
               placeholder="Name"
+              value={name}
+              onChange={(e)=>{setName(e.target.value)}}
             />
+            <span></span>
           </div>
 
           <div className="field">
@@ -46,7 +85,10 @@ export default function SubscribeForm() {
             <input
               type="email"
               placeholder="Email Address"
+              value={email}
+              onChange={(e)=>{setEmail(e.target.value)}}
             />
+            <span>*{error}</span>
           </div>
 
         </div>
@@ -59,9 +101,10 @@ export default function SubscribeForm() {
             Diabetes Type <span>*</span>
           </label>
 
-          <select>
+          <select    
+              onChange={(e)=>{setDiabetes(e.target.value)}}>
 
-            <option>Please Select</option>
+            <option value="">Please Select</option>
 
             <option>Type 1</option>
 
@@ -97,9 +140,10 @@ export default function SubscribeForm() {
 
         </div>
 
-        <button className="subscribe-btn">
+        <button className="subscribe-btn" onClick={handleForm}>
           Subscribe
         </button>
+        <span style={{color:"red",textAlign:"center"}}>*{formerror}</span>
 
       </div>
 

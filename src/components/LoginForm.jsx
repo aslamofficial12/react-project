@@ -89,9 +89,10 @@ export default function LoginForm() {
           </div>
 
 
-          <button type="submit">
+          <button type="submit" onClick={(handleSubmit)}>
             Login
           </button>
+          <hr></hr>
           <a href="#" style={{ textAlign: "center" }}>create a new account</a>
 
         </form>

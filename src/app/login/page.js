@@ -1,6 +1,6 @@
 import LoginForm from "@/components/LoginForm";
 import SubscribeForm from "@/components/SubscribeForm";
-
+import Testform from "@/components/Testform";
 
 export default function LoginPage(){
 
@@ -8,6 +8,7 @@ export default function LoginPage(){
     <>
       <LoginForm />
         <SubscribeForm />
+        <Testform />
     </>
   );
 
