@@ -1,8 +1,13 @@
-import Image from "next/image";
+import LeftPanel from "../components/LeftPanel";
+import MultistepForm from "../components/MultistepForm";
+
 
 export default function Home() {
   return (
-    <>
-    <h1>hello home page</h1></>
+    <div className="container">
+      
+      <MultistepForm />
+      <LeftPanel />
+    </div>
   );
 }

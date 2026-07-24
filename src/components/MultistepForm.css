@@ -1,0 +1,202 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+}
+
+.container{
+    display:flex;
+    width:100%;
+    height:100vh;
+}
+
+/* ================= Left Panel ================= */
+
+.left-panel{
+    width:50%;
+    background:linear-gradient(135deg,#dbb200,#ffd100);
+    color:white;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.content{
+    width:70%;
+    z-index:2;
+}
+
+.content h1{
+    font-size:60px;
+    margin-bottom:20px;
+    font-weight:bold;
+}
+
+.content p{
+    font-size:20px;
+    line-height:1.6;
+    color:#f1f5f9;
+}
+
+/* Floating Circles */
+
+.circle{
+    position:absolute;
+    border-radius:50%;
+    background:rgba(255,255,255,.25);
+}
+
+.one{
+    width:120px;
+    height:120px;
+    top:12%;
+    right:15%;
+}
+
+.two{
+    width:70px;
+    height:70px;
+    bottom:18%;
+    left:10%;
+}
+
+.three{
+    width:35px;
+    height:35px;
+    top:45%;
+    left:75%;
+}
+
+/* ================= Right Panel ================= */
+
+.right-panel{
+    width:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:white;
+}
+
+/* Card */
+
+.card{
+    width:520px;
+    background:#fff;
+    padding:40px;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+}
+
+.card h3{
+    color:#6b7280;
+    margin-bottom:8px;
+    font-size:18px;
+}
+
+.card h1{
+    margin-bottom:30px;
+    font-size:32px;
+    color:#111827;
+}
+
+.card h2{
+    margin-bottom:20px;
+}
+
+/* Inputs */
+
+.card input{
+    width:100%;
+    padding:15px;
+    margin-bottom:18px;
+    border:1px solid #d1d5db;
+    border-radius:10px;
+    outline:none;
+    font-size:16px;
+    transition:.3s;
+}
+
+.card input:focus{
+    border-color:#4f46e5;
+    box-shadow:0 0 5px rgba(79,70,229,.3);
+}
+
+/* Button */
+
+.card button{
+    width:100%;
+    padding:15px;
+    background:#ffd100;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+.card button:hover{
+    background:#ffd100;
+}
+
+/* JSON */
+
+pre{
+    background:#111827;
+    color:#22c55e;
+    padding:20px;
+    border-radius:10px;
+    margin-top:20px;
+    overflow:auto;
+    font-size:15px;
+}
+
+/* Responsive */
+
+@media(max-width:900px){
+
+.container{
+    flex-direction:column;
+}
+
+.left-panel,
+.right-panel{
+    width:100%;
+}
+
+.left-panel{
+    height:35vh;
+}
+
+.right-panel{
+    height:65vh;
+}
+
+.card{
+    width:90%;
+}
+
+.content h1{
+    font-size:40px;
+}
+
+}
+.back-button {
+    width:100%;
+    padding-top:20px;
+    background:#ffd100;
+    color:white;
+    border:none;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+
+}

@@ -17,19 +17,40 @@ export default function Navbar() {
                 </div>
             </div>
 
-            
-            <div className="menubardiv">
 
-                <div className="listmenu">
-                    <button>Products</button>
-                    <div className="dropdown">
-                        <a href="#">Laptop</a>
-                        <a href="#">Mobile</a>
-                        <a href="#">Tablet</a>
-                    </div>
+            <div className="menu-dropdown-menu">
+                <div className="first-dropdown-box">
+                    <li className="menu-item">
+                        <a href="#">PRODUCTS</a>
 
+                        <div className="dropdown">
+                            <a href="#">Product 1</a>
+                            <a href="#">Product 2</a>
+                            <a href="#">Product 3</a>
+                        </div>
+                    </li>
                 </div>
+
+                <div className="second-dropdown-box">
+                    <li className="menu-two"style={{decoration:"none"}}>
+                        <a href="#">SUBSCRIPTION</a>
+
+                        <div className="dropdown2">
+                            <a href="#">Product 4</a>
+                            <a href="#">Product 5</a>
+                            <a href="#">Product 6</a>
+                           
+
+                        </div>
+
+                    </li>
+                </div>
+
+
+
             </div>
+
+
         </>
 
 

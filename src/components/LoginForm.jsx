@@ -1,9 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import "./LoginForm.css";
 import SubscribeForm from "./SubscribeForm";
 import "./LoginForm.css";
+
+
 
 export default function LoginForm() {
 
@@ -33,6 +36,8 @@ export default function LoginForm() {
 
 
     alert("Login Successfully");
+    // router.push( `/success?name=${name}&email=${email}&diabetes=${diabetes}`);
+    router.push( `/LoginSuccess?name=${name}&password=${pass}`);
 
     console.log({
       name,
@@ -92,8 +97,8 @@ export default function LoginForm() {
           <button type="submit" onClick={(handleSubmit)}>
             Login
           </button>
-          <hr></hr>
-          <a href="#" style={{ textAlign: "center" }}>create a new account</a>
+          <hr style={{color:"grey"}}></hr>
+          <a href="http://localhost:3000/registration" style={{ textAlign: "center" }}>create a new account</a>
 
         </form>
 
