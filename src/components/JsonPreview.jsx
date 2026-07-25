@@ -7,6 +7,7 @@ export default function JsonPreview({ formData }) {
       {/* <pre>
         {JSON.stringify(formData, null, 2)}
       </pre> */}
+      <h2>{JSON.stringify(formData, null, 2)}</h2>
 
     </div>
   );

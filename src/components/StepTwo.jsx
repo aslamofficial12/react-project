@@ -14,7 +14,7 @@ export default function StepTwo({
       <input
         type="text"
         name="username"
-        placeholder="Username"
+        placeholder="Email"
         value={formData.username}
         onChange={handleChange}
       />
@@ -27,11 +27,20 @@ export default function StepTwo({
         onChange={handleChange}
       />
 
+      <input
+        type="password"
+        name="Confirm password"
+        placeholder="Confirm Password"
+        value={formData.password}
+        onChange={handleChange}
+      />
+
+
       <button onClick={login}>
         Login
       </button>
 
-      <button onClick={back}className="back-button" href="" style={{backgroundColor:"#ffd100" ,marginTop:"20px"}}>back</button>
+      <button onClick={back}className="back-button" href="" style={{backgroundColor:"#050505" ,marginTop:"20px"}}>back</button>
 
 
     </div>
