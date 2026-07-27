@@ -3,6 +3,8 @@ export default function StepTwo({
   handleChange,
   login,
   back,
+  errors
+  
 }) {
   return (
     <div className="card">
@@ -18,6 +20,13 @@ export default function StepTwo({
         value={formData.username}
         onChange={handleChange}
       />
+          {errors.username && (
+        <p style={{ color: "red" }}>
+          {errors.username}
+        </p>
+      )}
+
+      
 
       <input
         type="password"
@@ -26,6 +35,11 @@ export default function StepTwo({
         value={formData.password}
         onChange={handleChange}
       />
+      {errors.password && (
+        <p style={{ color: "red" }}>
+          {errors.password}
+        </p>
+      )}
 
       <input
         type="password"
@@ -34,6 +48,12 @@ export default function StepTwo({
         value={formData.password}
         onChange={handleChange}
       />
+
+        {errors.password && (
+        <p style={{ color: "red" }}>
+          {errors.password}
+        </p>
+      )}
 
 
       <button onClick={login}>

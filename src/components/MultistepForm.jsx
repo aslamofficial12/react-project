@@ -39,7 +39,7 @@ export default function MultistepForm() {
     if (formData.lastName.trim() === "") {
       newErrors.lastName = "Last Name is required";
     }
-
+  
     setErrors(newErrors);
 
     if (Object.keys(newErrors).length === 0) {
@@ -47,7 +47,29 @@ export default function MultistepForm() {
     }
   }
 
+function validateStepTwo(){
+  let secondErrors={};
+  if(formData.username.trim() === ""){
+    secondErrors.username="please fill email correctly"
+  }
+  if(formData.username.trim() === ""){
+  setErrors(secondErrors);
+  }
+  if(formData.password.trim()===""){
+    secondErrors.password="please fill password correctly";
+  }
+    
 
+
+  if (Object.keys(secondErrors).length === 0){
+    setStep(3)
+
+  }
+  
+
+
+
+}
   
 
 
@@ -75,7 +97,9 @@ export default function MultistepForm() {
             formData={formData}
             handleChange={handleChange}
             back={() => setStep(1)}
-            login={() => setStep(3)}
+            // login={() => setStep(3)}
+            login={validateStepTwo}
+            errors={errors}
           />
         )}
 
