@@ -2,39 +2,49 @@ export default function StepOne({
   formData,
   handleChange,
   next,
+  errors,
 }) {
   return (
-    <>
-      <div className="card">
+    <div className="card">
 
+      <h3>Step 1</h3>
 
+      <h1>Personal Info</h1>
 
-        <h3>Step 1</h3>
+      {/* First Name */}
+      <input
+        type="text"
+        name="firstName"
+        placeholder="First Name"
+        value={formData.firstName}
+        onChange={handleChange}
+      />
 
-        <h1>Personal Info</h1>
+      {errors.firstName && (
+        <p style={{ color: "red" }}>
+          {errors.firstName}
+        </p>
+      )}
 
-        <input
-          type="text"
-          name="firstName"
-          placeholder="First Name"
-          value={formData.firstName}
-          onChange={handleChange}
-        />
+      {/* Last Name */}
+      <input
+        type="text"
+        name="lastName"
+        placeholder="Last Name"
+        value={formData.lastName}
+        onChange={handleChange}
+      />
 
-        <input
-          type="text"
-          name="lastName"
-          placeholder="Last Name"
-          value={formData.lastName}
-          onChange={handleChange}
-        />
+      {errors.lastName && (
+        <p style={{ color: "red" }}>
+          {errors.lastName}
+        </p>
+      )}
 
-        <button onClick={next}>
-          Next →
-        </button>
+      <button onClick={next}>
+        Next →
+      </button>
 
-      </div>
-
-    </>
+    </div>
   );
 }
