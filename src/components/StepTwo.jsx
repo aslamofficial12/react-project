@@ -3,7 +3,9 @@ export default function StepTwo({
   handleChange,
   login,
   back,
-  errors
+  errors,
+  show,
+  // setShow
   
 }) {
   return (
@@ -40,18 +42,25 @@ export default function StepTwo({
           {errors.password}
         </p>
       )}
-
+<div>
       <input
-        type="password"
-        name="Confirm password"
+        type={show ?"text":"password"}
+        name="confirmPassword"
         placeholder="Confirm Password"
-        value={formData.password}
+        value={formData.confirmPassword}
         onChange={handleChange}
       />
+      <button
+type="button"
+onClick={() => setShow(!show)}
+>
+👁
+</button>
+      </div>
 
         {errors.password && (
         <p style={{ color: "red" }}>
-          {errors.password}
+          {errors.confirmPassword}
         </p>
       )}
 

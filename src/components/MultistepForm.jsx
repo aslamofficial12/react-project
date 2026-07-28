@@ -11,6 +11,7 @@ export default function MultistepForm() {
 
   // Stores validation errors
   const [errors, setErrors] = useState({});
+  const [show,setShow]=useState(false);
 
   // Stores form values
   const [formData, setFormData] = useState({
@@ -18,6 +19,7 @@ export default function MultistepForm() {
     lastName: "",
     username: "",
     password: "",
+    confirmPassword:"",
   });
 
   // Update input values
@@ -58,6 +60,11 @@ function validateStepTwo(){
   if(formData.password.trim()===""){
     secondErrors.password="please fill password correctly";
   }
+
+  if(formData.confirmPassword.trim()!==formData.password.trim){
+  secondErrors.password="please check both password same";
+
+  }
     
 
 
@@ -71,8 +78,6 @@ function validateStepTwo(){
 
 }
   
-
-
 
   return (
     <div className="right-panel">
@@ -100,6 +105,8 @@ function validateStepTwo(){
             // login={() => setStep(3)}
             login={validateStepTwo}
             errors={errors}
+            show={show}
+            setshow={setShow}
           />
         )}
 
