@@ -5,6 +5,7 @@ import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import JsonPreview from "./JsonPreview";
 import "./MultistepForm.css";
+import Router from 'next/router'
 
 export default function MultistepForm() {
   const [step, setStep] = useState(1);
