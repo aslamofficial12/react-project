@@ -52,22 +52,30 @@ export default function MultistepForm() {
 
 function validateStepTwo(){
   let secondErrors={};
+
   if(formData.username.trim() === ""){
     secondErrors.username="please fill email correctly"
   }
-  if(formData.username.trim() === ""){
-  setErrors(secondErrors);
-  }
+  // if(formData.username.trim() === ""){
+  // // setErrors(secondErrors);
+  // secondErrors.username="please fill email"
+  // }
   if(formData.password.trim()===""){
     secondErrors.password="please fill password correctly";
   }
 
-  if(formData.confirmPassword.trim()!==formData.password.trim){
-  secondErrors.password="please check both password same";
+
+
+    if(formData.confirmPassword.trim()===""){
+  secondErrors.confirmPassword="Confirm password required";
+    }
+
+  if(formData.confirmPassword.trim()!==formData.password.trim()){
+  secondErrors.confirmPassword="please check both password same";
 
   }
     
-
+setErrors(secondErrors);
 
   if (Object.keys(secondErrors).length === 0){
     setStep(3)

@@ -15,7 +15,7 @@ export default function StepTwo({
 }) {
 
   const [show, setShow] = useState(false);
-  const [showtwo,setShowTwo]=useState(false);
+  const [showtwo, setShowTwo] = useState(false);
 
 
   // function handleShow() {
@@ -23,14 +23,14 @@ export default function StepTwo({
 
   //   setShow(!show);
   // }
-function handleShow() {
-  console.log("clicked");
-  setShow(!show);
-}
-function handleShowPass() {
-  console.log("clicked");
-  setShowTwo(!showtwo);
-}
+  function handleShow() {
+    console.log("clicked");
+    setShow(!show);
+  }
+  function handleShowPass() {
+    console.log("clicked");
+    setShowTwo(!showtwo);
+  }
 
 
 
@@ -65,15 +65,15 @@ function handleShowPass() {
       )}
 
 
-<div className="box3">
-      <input
-        type={showtwo ? "text" : "password"}
-        name="password"
-        placeholder="Password"
-        value={formData.password}
-        onChange={handleChange}
-      />
-      <span className="eye2" onClick={handleShowPass}>{showtwo ? "🙈" : "👁️"}</span>
+      <div className="box3">
+        <input
+          type={showtwo ? "text" : "password"}
+          name="password"
+          placeholder="Password"
+          value={formData.password}
+          onChange={handleChange}
+        />
+        <span className="eye2" onClick={handleShowPass}>{showtwo ? "🙈" : "👁️"}</span>
 
       </div>
       {errors.password && (
