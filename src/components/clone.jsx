@@ -1,124 +1,95 @@
-"use client";
-
-import { useState } from "react";
-import StepOne from "./StepOne";
-import StepTwo from "./StepTwo";
-import JsonPreview from "./JsonPreview";
-import "./MultistepForm.css";
-
-export default function MultistepForm() {
-  const [step, setStep] = useState(1);
-
-  // Stores validation errors
-  const [errors, setErrors] = useState({});
-  const [show,setShow]=useState(false);
-
-  // Stores form values
-  const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
-    username: "",
-    password: "",
-    confirmPassword:"",
-  });
-
-  // Update input values
-  function handleChange(e) {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  }
-
-  // Validate Step One
-  function validateStepOne() {
-    let newErrors = {};
-
-    if (formData.firstName.trim() === "") {
-      newErrors.firstName = "First Name is required";
-    }
-
-    if (formData.lastName.trim() === "") {
-      newErrors.lastName = "Last Name is required";
-    }
+"use clients"
+import {useState} from "react"
+export default function StepTwo({
+  formData,
+  handleChange,
+  login,
+  back,
+  errors,
+  show,
+  // setShow
   
-    setErrors(newErrors);
+}) 
 
-    if (Object.keys(newErrors).length === 0) {
-      setStep(2);
-    }
+
+
+
+
+
+{
+  const[show,setShow]=useState(false);
+  function ShowPassword(){
+    setShow(!show);
   }
-
-function validateStepTwo(){
-  let secondErrors={};
-  if(formData.username.trim() === ""){
-    secondErrors.username="please fill email correctly"
-  }
-  if(formData.username.trim() === ""){
-  setErrors(secondErrors);
-  }
-  if(formData.password.trim()===""){
-    secondErrors.password="please fill password correctly";
-  }
-
-  if(formData.confirmPassword.trim()!==formData.password.trim){
-  secondErrors.password="please check both password same";
-
-  }
-    
-
-  if(!formData.password){
-    secondErrors.password="please fill correctly"
-  }
-
-
-  if (Object.keys(secondErrors).length === 0){
-    setStep(3)
-
-  }
-  
-
-
-
-}
-  
 
   return (
-    <div className="right-panel">
-      <div className="form-content">
+    <div className="card">
 
-        <div className="progress-bar">
-          <div className={`step-indicator ${step >= 1 ? "active" : ""}`}></div>
-          <div className={`step-indicator ${step >= 2 ? "active" : ""}`}></div>
-        </div>
+      <h3>Step 2</h3>
 
-        {step === 1 && (
-          <StepOne
-            formData={formData}
-            handleChange={handleChange}
-            next={validateStepOne}
-            errors={errors}
-          />
-        )}
+      <h1>Account Details</h1>
 
-        {step === 2 && (
-          <StepTwo
-            formData={formData}
-            handleChange={handleChange}
-            back={() => setStep(1)}
-            // login={() => setStep(3)}
-            login={validateStepTwo}
-            errors={errors}
-            show={show}
-            setshow={setShow}
-          />
-        )}
+      <input
+        type="text"
+        name="username"
+        placeholder="Email"
+        value={formData.username}
+        onChange={handleChange}
+      />
+          {errors.username && (
+        <p style={{ color: "red" }}>
+          {errors.username}
+        </p>
+      )}
 
-        {step === 3 && (
-          <JsonPreview formData={formData} />
-        )}
+      
 
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        value={formData.password}
+        onChange={handleChange}
+      />
+      {errors.password && (
+        <p style={{ color: "red" }}>
+          {errors.password}
+        </p>
+      )}
+<div>
+      <input
+        type={show ?"text":"password"}
+        name="confirmPassword"
+        placeholder="Confirm Password"
+        value={formData.confirmPassword}
+        onChange={handleChange}
+      />
+      {/* <button
+type="button"
+onClick={() => setShow(!show)}
+>
+👁
+</button> */}
+
+<span className="eye" onClick={{ShowPassword}}>
+  {show ?"🙈" : "👁️"}
+</span>
       </div>
+
+        {errors.password && (
+        <p style={{ color: "red" }}>
+          {errors.confirmPassword}
+        </p>
+      )}
+
+
+      <button onClick={login}>
+        Login
+      </button>
+
+      <button onClick={back}className="back-button" href="" style={{backgroundColor:"#050505" ,marginTop:"20px"}}>back</button>
+
+
     </div>
   );
 }

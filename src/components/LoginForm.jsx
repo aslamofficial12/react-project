@@ -1,26 +1,23 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 import "./LoginForm.css";
 import SubscribeForm from "./SubscribeForm";
-import "./LoginForm.css";
-
-
+import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
-
   const [name, setName] = useState("");
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
+  const [loading, setLoading] = useState(false);
 
+  const router = useRouter();
 
   function handleShow() {
     setShow(!show);
   }
 
-
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
     if (!name || !pass) {
@@ -28,35 +25,77 @@ export default function LoginForm() {
       return;
     }
 
+    // if (pass.length < 8) {
+    //   alert("Password must contain at least 8 characters");
+    //   return;
+    // }
 
-    if (pass.length < 8) {
-      alert("Password must contain at least 8 characters");
-      return;
+    const credentials = btoa(`${name.trim()}:${pass}`);
+
+    setLoading(true);
+
+    try {
+      const response = await fetch("/api/user", {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${credentials}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response.ok) {
+        // throw new Error("Login Failed");
+        console.log("error not showing");
+       
+         router.push("/success");
+         
+         return;
+      }
+
+      if (!response.ok) {
+        alert("Invalid Username or Password");
+        return;
+      }
+
+      // ✅ CHANGED: Added response.json() inside try block
+      const data = await response.json();
+      console.log(data);
+
+      // ✅ CHANGED: Success code should also be inside try block
+      alert("Login Successfully");
+
+      // ⚠️ Better not to send password in URL
+      router.push(`/LoginSuccess?name=${name}`);
+
+
+      console.log({
+        name,
+        password: pass,
+      });
+
+    } catch (error) {   // ✅ CHANGED: catch moved outside try block
+      console.log(error);
+    } finally {         // ✅ CHANGED: finally moved outside try block
+      setLoading(false);
     }
-
-
-    alert("Login Successfully");
-    // router.push( `/success?name=${name}&email=${email}&diabetes=${diabetes}`);
-    router.push( `/LoginSuccess?name=${name}&password=${pass}`);
-
-    console.log({
-      name,
-      password: pass
-    });
   }
-
 
   return (
     <>
       <div className="form-container">
-
         <form
           className="login-form"
           onSubmit={handleSubmit}
         >
-
-          <h1 style={{ textAlign: "center", fontWeight: "bold", fontSize: "50px" }}>Login </h1>
-
+          <h1
+            style={{
+              textAlign: "center",
+              fontWeight: "bold",
+              fontSize: "50px",
+            }}
+          >
+            Login
+          </h1>
 
           <label>Name</label>
 
@@ -68,20 +107,30 @@ export default function LoginForm() {
             onChange={(e) => setName(e.target.value)}
           />
 
-
           <label>Password</label>
 
-
           <div className="password-box">
-
             <input
               type={show ? "text" : "password"}
               placeholder="Enter your password"
               value={pass}
               style={{ border: "solid 1px grey", borderRadius: "10px" }}
               onChange={(e) => setPass(e.target.value)}
-            /><span><a href="#" style={{ fontWeight: "10px", fontSize: "10px", color: "#bd9a00", fontStyle: "-moz-initial" }}>forget your password?</a></span>
+            />
 
+            <span>
+              <a
+                href="#"
+                style={{
+                  fontWeight: "10px",
+                  fontSize: "10px",
+                  color: "#bd9a00",
+                  fontStyle: "-moz-initial",
+                }}
+              >
+                forget your password?
+              </a>
+            </span>
 
             <span
               className="eye"
@@ -89,28 +138,24 @@ export default function LoginForm() {
             >
               {show ? "🙈" : "👁️"}
             </span>
-
-
           </div>
 
-
-          <button type="submit" onClick={(handleSubmit)}>
-            Login
+          {/* ✅ CHANGED: Removed onClick because onSubmit already calls handleSubmit */}
+          <button type="submit" disabled={loading}>
+            {/* ✅ CHANGED: Removed duplicate "Login" text */}
+            {loading ? "Logging in..." : "Login"}
           </button>
-          <hr style={{color:"grey"}}></hr>
-          <a href="http://localhost:3000/registration" style={{ textAlign: "center" }}>create a new account</a>
 
+          <hr style={{ color: "grey" }} />
+
+          <a
+            href="http://localhost:3000/registration"
+            style={{ textAlign: "center" }}
+          >
+            create a new account
+          </a>
         </form>
-
-
-
-
-
       </div>
-
-
-
     </>
-
   );
 }

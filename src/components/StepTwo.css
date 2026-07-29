@@ -1,0 +1,28 @@
+.password-box2{
+  position:relative;
+}
+
+
+.password-box2 input{
+  width:100%;
+}
+
+
+.eye{
+  position:absolute;
+  right:10px;
+  top:10px;
+  cursor:pointer;
+}
+
+.box3{
+    position:relative;
+    
+}
+.eye2{
+    position:absolute;
+    right:10px;
+    top:20px;
+    cursor:pointer;
+
+}

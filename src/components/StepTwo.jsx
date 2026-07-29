@@ -1,13 +1,49 @@
+"use clients";
+import { useState } from "react";
+import "./StepTwo.css";
+
+
 export default function StepTwo({
   formData,
   handleChange,
   login,
   back,
   errors,
-  show,
+  // show,
   // setShow
-  
+
 }) {
+
+  const [show, setShow] = useState(false);
+  const [showtwo,setShowTwo]=useState(false);
+
+
+  // function handleShow() {
+  //    console.log(show);
+
+  //   setShow(!show);
+  // }
+function handleShow() {
+  console.log("clicked");
+  setShow(!show);
+}
+function handleShowPass() {
+  console.log("clicked");
+  setShowTwo(!showtwo);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <div className="card">
 
@@ -22,43 +58,47 @@ export default function StepTwo({
         value={formData.username}
         onChange={handleChange}
       />
-          {errors.username && (
+      {errors.username && (
         <p style={{ color: "red" }}>
           {errors.username}
         </p>
       )}
 
-      
 
+<div className="box3">
       <input
-        type="password"
+        type={showtwo ? "text" : "password"}
         name="password"
         placeholder="Password"
         value={formData.password}
         onChange={handleChange}
       />
+      <span className="eye2" onClick={handleShowPass}>{showtwo ? "🙈" : "👁️"}</span>
+
+      </div>
       {errors.password && (
         <p style={{ color: "red" }}>
           {errors.password}
         </p>
       )}
-<div>
-      <input
-        type={show ?"text":"password"}
-        name="confirmPassword"
-        placeholder="Confirm Password"
-        value={formData.confirmPassword}
-        onChange={handleChange}
-      />
-      <button
-type="button"
-onClick={() => setShow(!show)}
->
-👁
-</button>
+      <div className="password-box2">
+        <input
+          type={show ? "text" : "password"}
+          name="confirmPassword"
+          placeholder="Confirm Password"
+          value={formData.confirmPassword}
+          onChange={handleChange}
+        />
+
+
+        <span className="eye" onClick={handleShow}>
+
+          {/* {show ? "Hide" : "show"} */}
+          {show ? "🙈" : "👁️"}
+        </span>
       </div>
 
-        {errors.password && (
+      {errors.confirmPassword && (
         <p style={{ color: "red" }}>
           {errors.confirmPassword}
         </p>
@@ -69,7 +109,7 @@ onClick={() => setShow(!show)}
         Login
       </button>
 
-      <button onClick={back}className="back-button" href="" style={{backgroundColor:"#050505" ,marginTop:"20px"}}>back</button>
+      <button onClick={back} className="back-button" href="" style={{ backgroundColor: "#050505", marginTop: "20px" }}>back</button>
 
 
     </div>

@@ -107,7 +107,7 @@ function validateStepTwo(){
             login={validateStepTwo}
             errors={errors}
             show={show}
-            setshow={setShow}
+            // setshow={setShow}
           />
         )}
 
