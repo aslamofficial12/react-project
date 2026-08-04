@@ -38,8 +38,7 @@ export default function BasicAuth() {
       if(response.ok){
         // alert("login successfully");
           router.push("/login");
-          // return;
-        //  Router.push('http://localhost:3000/login')
+        
         
         
       }

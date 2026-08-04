@@ -1,8 +1,5 @@
 import LeftPanel from "../../components/LeftPanel";
 import MultistepForm from "../../components/MultistepForm";
-// import LeftPanel from "../components/LeftPanel";
-// import MultistepForm from "../components/MultistepForm";
-
 
 export default function Registration() {
   return (

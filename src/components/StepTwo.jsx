@@ -9,20 +9,16 @@ export default function StepTwo({
   login,
   back,
   errors,
-  // show,
-  // setShow
+
 
 }) {
 
   const [show, setShow] = useState(false);
   const [showtwo, setShowTwo] = useState(false);
+  
 
 
-  // function handleShow() {
-  //    console.log(show);
-
-  //   setShow(!show);
-  // }
+  
   function handleShow() {
     console.log("clicked");
     setShow(!show);
@@ -32,15 +28,7 @@ export default function StepTwo({
     setShowTwo(!showtwo);
   }
 
-
-
-
-
-
-
-
-
-
+  
 
 
 
@@ -53,9 +41,9 @@ export default function StepTwo({
 
       <input
         type="text"
-        name="username"
+        name="email"
         placeholder="Email"
-        value={formData.username}
+        value={formData.email}
         onChange={handleChange}
       />
       {errors.username && (
@@ -110,7 +98,6 @@ export default function StepTwo({
       </button>
 
       <button onClick={back} className="back-button" href="" style={{ backgroundColor: "#050505", marginTop: "20px" }}>back</button>
-
 
     </div>
   );

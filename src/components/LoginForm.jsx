@@ -12,6 +12,7 @@ export default function LoginForm() {
   const [loading, setLoading] = useState(false);
 
   const router = useRouter();
+  
 
   function handleShow() {
     setShow(!show);
@@ -25,10 +26,7 @@ export default function LoginForm() {
       return;
     }
 
-    // if (pass.length < 8) {
-    //   alert("Password must contain at least 8 characters");
-    //   return;
-    // }
+
 
     const credentials = btoa(`${name.trim()}:${pass}`);
 
@@ -45,9 +43,10 @@ export default function LoginForm() {
 
       if (response.ok) {
         // throw new Error("Login Failed");
-        console.log("error not showing");
+     
        
-         router.push("/success");
+        //  router.push("/");
+        router.push(`/?name=${name}&pass=${pass}`);
          
          return;
       }
@@ -57,14 +56,14 @@ export default function LoginForm() {
         return;
       }
 
-      // ✅ CHANGED: Added response.json() inside try block
+      
       const data = await response.json();
       console.log(data);
 
-      // ✅ CHANGED: Success code should also be inside try block
+     
       alert("Login Successfully");
 
-      // ⚠️ Better not to send password in URL
+
       router.push(`/LoginSuccess?name=${name}`);
 
 
@@ -73,9 +72,9 @@ export default function LoginForm() {
         password: pass,
       });
 
-    } catch (error) {   // ✅ CHANGED: catch moved outside try block
+    } catch (error) {   
       console.log(error);
-    } finally {         // ✅ CHANGED: finally moved outside try block
+    } finally {      
       setLoading(false);
     }
   }

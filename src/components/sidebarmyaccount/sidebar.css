@@ -1,0 +1,128 @@
+/* *{
+    margin:0px;
+    padding:0px;
+
+}
+
+.sidebar{
+    background-color:#f6f6f6;
+    border: 1px 3px solid black;
+}
+ul{
+    padding:5px 5px;
+}
+li{
+    margin-top:10px;
+}
+li.hover{
+    background-color:black;
+}
+.account-details-div{
+    margin-bottom:50px;
+
+}
+.account-dashboard-div{
+    margin-bottom:50px;
+    
+}
+.title{
+    color:rgb(251, 251, 251);
+    font-size:17px;
+    
+    background-color:black;
+}
+.active:hover{
+    background-color:rgb(7, 7, 7);
+    padding:4px;
+    color:white;
+}
+ */
+/* Sidebar Container */
+.sidebar {
+    width: 280px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+    border: 1px solid #e5e7eb;
+}
+
+/* Section */
+.account-dashboard-div,
+.account-details-div,
+.myproduct-review-div {
+    padding: 20px;
+}
+
+/* Divider */
+.sidebar hr {
+    border: none;
+    border-top: 1px solid #ececec;
+    margin: 0;
+}
+
+/* Section Heading */
+.title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 15px;
+}
+
+/* Remove List Style */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Menu Item */
+.sidebar li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all .3s ease;
+    font-size: 15px;
+    color: #444;
+}
+
+/* Hover */
+.sidebar li:hover {
+    background: #f4f7fb;
+    color: #0d6efd;
+    transform: translateX(5px);
+}
+
+/* Active */
+.sidebar li.active {
+    background: linear-gradient(90deg,#0b0b0b,#0c0c0c);
+    color: white;
+    font-weight: 600;
+}
+
+/* Scroll if needed */
+.sidebar {
+    max-height: 85vh;
+    overflow-y: auto;
+}
+
+/* Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #cfcfcf;
+    border-radius: 10px;
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+.sidebar{
+    width:100%;
+    margin-bottom:40px;
+}
+
+}

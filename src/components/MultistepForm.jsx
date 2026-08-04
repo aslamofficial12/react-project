@@ -1,10 +1,11 @@
 "use client";
-
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import StepOne from "./StepOne";
 import StepTwo from "./StepTwo";
 import JsonPreview from "./JsonPreview";
 import "./MultistepForm.css";
+
 import Router from 'next/router'
 
 export default function MultistepForm() {
@@ -13,12 +14,13 @@ export default function MultistepForm() {
   // Stores validation errors
   const [errors, setErrors] = useState({});
   const [show,setShow]=useState(false);
+  const router= useRouter()
 
   // Stores form values
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
-    username: "",
+    email: "",
     password: "",
     confirmPassword:"",
   });
@@ -52,33 +54,33 @@ export default function MultistepForm() {
 
 function validateStepTwo(){
   let secondErrors={};
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  if(formData.username.trim() === ""){
-    secondErrors.username="please fill email correctly"
+
+
+
+   if (formData.email.trim() === "") {
+    secondErrors.email = "Email is required";
+  } else if (!emailPattern.test(formData.email)) {
+    secondErrors.email = "Enter a valid email address";
   }
-  // if(formData.username.trim() === ""){
-  // // setErrors(secondErrors);
-  // secondErrors.username="please fill email"
-  // }
-  if(formData.password.trim()===""){
-    secondErrors.password="please fill password correctly";
+
+  if (formData.password.trim() === "") {
+    secondErrors.password = "Please enter password";
   }
 
-
-
-    if(formData.confirmPassword.trim()===""){
-  secondErrors.confirmPassword="Confirm password required";
-    }
-
-  if(formData.confirmPassword.trim()!==formData.password.trim()){
-  secondErrors.confirmPassword="please check both password same";
-
+  if (formData.confirmPassword.trim() === "") {
+    secondErrors.confirmPassword = "Confirm password required";
+  } else if (formData.password !== formData.confirmPassword) {
+    secondErrors.confirmPassword = "Passwords do not match";
   }
+
     
 setErrors(secondErrors);
 
   if (Object.keys(secondErrors).length === 0){
-    setStep(3)
+    // setStep(3)
+      router.push("/login"); // or "/dashboard"
 
   }
   

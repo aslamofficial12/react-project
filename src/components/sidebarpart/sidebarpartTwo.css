@@ -1,0 +1,89 @@
+.MainBox {
+    padding: 35px;
+}
+
+.section-one {
+    margin-top: 10px;
+}
+
+.dashboard-title {
+    font-size: 30px;
+    font-weight: normal;
+}
+
+.account-title {
+    font-size: 20px;
+}
+
+.Section-two-main {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.contact-list {
+    margin-left: -5px;
+}
+
+.contact-links {
+    display: flex;
+}
+
+.blue-link {
+    color: blue;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.change-password {
+    margin-left: 15px;
+}
+
+.section-three-main {
+    padding-top: 30px;
+}
+
+.section-three-head {
+    display: flex;
+    align-items: center;
+}
+
+.manage-address {
+    margin-left: 20px;
+    font-size: 14px;
+    color: blue;
+    font-weight: normal;
+    text-decoration: none;
+}
+
+.section-three-content {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.billing-title {
+    font-size: 25px;
+    /* font-weight: bold; */
+}
+
+
+
+.shipping-title {
+    font-size: 25px;
+}
+
+.section-three-right{
+  margin-right:250px;
+
+}
+
+.billing-address-below-text{
+
+  margin-top:30px;
+
+}
+
+.shipping-title-below-text{
+  margin-top:30px;
+}
