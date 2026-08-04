@@ -1,7 +1,8 @@
+import { TextAlignCenter } from "lucide-react";
 import "./sidebarpartTwo.css";
 import { useSearchParams } from "next/navigation";
 
-export default function SidebarPartTwo({name,pass}) {
+export default function SidebarPartTwo({ name, pass }) {
 
 
     return (
@@ -9,7 +10,7 @@ export default function SidebarPartTwo({name,pass}) {
             <div className="MainBox">
 
                 <div className="section-one">
-
+                    <h2 style={{ textAlign: "center", fontSize: "25px" }}>Welcome Back {name}</h2>
                     <h1 className="dashboard-title">My Dashboard</h1>
 
                     <h2 className="account-title">Account Information</h2>
@@ -19,8 +20,10 @@ export default function SidebarPartTwo({name,pass}) {
 
                 <div className="Section-two-main">
 
+
+
                     <div className="Section-two-left">
-                        <h2>Contact Information</h2>
+                        <h2 style={{marginRight:"50px"}}>Contact Information</h2>
 
                         <ul className="contact-list">
                             <li>Name: {name}</li>
@@ -95,9 +98,9 @@ export default function SidebarPartTwo({name,pass}) {
 
                             <div className="shipping-title-below-text">
 
-                            <h3>Account xxxxxxx</h3>
-                            <h3>Account absccsd</h3>
-                            <h3>Debited absccsd</h3>
+                                <h3>Account xxxxxxx</h3>
+                                <h3>Account absccsd</h3>
+                                <h3>Debited absccsd</h3>
 
                             </div>
 
