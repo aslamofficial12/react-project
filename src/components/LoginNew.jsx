@@ -20,7 +20,7 @@ export default function LoginNew() {
         },
       });
       if (response.ok) {
-        // setLoading(false);
+        
         router.push("/login");
       } else {
         alert("please fill valid");
@@ -39,7 +39,6 @@ export default function LoginNew() {
       <input type="text" value={name} onChange={(e) => { setName(e.target.value) }} />
       <input type="password" value={pass} onChange={(e) => { setPass(e.target.value) }} />
       <button onClick={handleLogin} disabled={loading}>{loading ? "loading..." : "Login"}</button>
-    
     
     </>
   );

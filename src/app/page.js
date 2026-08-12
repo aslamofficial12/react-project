@@ -1,67 +1,63 @@
 "use client";
-import { useRef,useEffect } from 'react';
-import LeftPanel from "../components/LeftPanel";
-import MultistepForm from "../components/MultistepForm";
-import BasicAuth from "./basic-auth/page";
-import Sidebar from "../components/sidebarmyaccount/sidebar";
-import Sidebarpart from "../components/sidebarpart/sidebarpartTwo";
-import { useRouter, useSearchParams } from "next/navigation";
 
+import { useEffect, useState } from "react";
+import "./style.css";
 
 export default function Home() {
-  const router=useRouter();
-  const timerRef = useRef(null);
+    const [products, setProducts] = useState([]);
+    const [loading, setLoading] = useState(false);
 
-  function startTimer() {
-    timerRef.current = setTimeout(() => {
-      alert("Session Expired!");
-      router.push("/login");
-    }, 100000);
-  }
+    useEffect(() => {
+        setLoading(true);
 
-  function resetTimer(){
-    clearTimeout(timerRef.current);
-    startTimer();
-  }
+        fetch("/api/products")
+            .then((res) => res.json())
+            .then((data) => {
+                setProducts(data);
+            })
+            .catch((error) => {
+                console.error("Failed to fetch products:", error);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    }, []);
 
-  useEffect(()=>{
-    startTimer();
-    // window.addEventListener(mousemove,resetTimer);
-    window.addEventListener("hover",resetTimer);
-    window.addEventListener("keyup",resetTimer);
-    window.addEventListener("click",resetTimer);
-    window.addEventListener("scroll",resetTimer);
+    return (
+        <>
+           
 
+            <h1 className="page-title">
+                Products from Contentful
+             </h1>
+            {/* <div style={{backgroundColor:"lightblue",height:"150px",width:"100%"}}> */} 
+             <h3 style={{textAlign:"center"}}>{loading ? "loading..." : ""}</h3>
+{/* </div> */}
+            <div className="products-container">
+                {products.map((product) => (
+                    <div className="product-card" key={product.id}>
+                        <h2 className="product-name">
+                            {product.name}
+                        </h2>
 
-    return ()=>{
-      clearTimeout(timerRef.current);
-      window.removeEventListener("scroll",resetTimer);
-      window.removeEventListener("hover",resetTimer);
-    
-      window.removeEventListener("keyup",resetTimer);
-      window.removeEventListener("click",resetTimer);
-    };
-  },[])
+                        <label className="description-label">
+                            Description:
+                        </label>
 
-  const searchParams = useSearchParams();
+                        <p className="product-description">
+                            {product.description}
+                        </p>
 
-  const name = searchParams.get("name");
-  const pass = searchParams.get("pass");
-  return (
-    <div className="container">
+                        <p className="product-price">
+                            Price: ₹{product.price}
+                        </p>
 
-
-      <div className="left-container" style={{ border: "1px solid black", borderRadius: "5px" }}>
-        <h2 style={{ textAlign: "center", marginTop: "30px", marginBottom: "20px", fontSize: "28px" }}>My Dashborad</h2>
-
-        <Sidebar />
-      </div>
-
-      <div style={{ backgroundColor: "#ffffff", width: "90%" }} className="right-container">
-        <Sidebarpart name={name} pass={pass} />
-      </div>
-
-
-    </div>
-  );
+                        <button className="buy-button">
+                            Buy Now
+                        </button>
+                    </div>
+                ))}
+            </div>
+        </>
+    );
 }
