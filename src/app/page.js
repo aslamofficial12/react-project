@@ -24,40 +24,92 @@ export default function Home() {
     }, []);
 
     return (
-        <>
-           
+        <main className="products-section">
 
-            <h1 className="page-title">
-                Products from Contentful
-             </h1>
-            {/* <div style={{backgroundColor:"lightblue",height:"150px",width:"100%"}}> */} 
-             <h3 style={{textAlign:"center"}}>{loading ? "loading..." : ""}</h3>
-{/* </div> */}
-            <div className="products-container">
-                {products.map((product) => (
-                    <div className="product-card" key={product.id}>
-                        <h2 className="product-name">
-                            {product.name}
-                        </h2>
+            {/* Header */}
+            <div className="products-header">
+                <span className="section-tag">OUR COLLECTION</span>
 
-                        <label className="description-label">
-                            Description:
-                        </label>
+                <h1 className="page-title">
+                    Products from Contentful
+                </h1>
 
-                        <p className="product-description">
-                            {product.description}
-                        </p>
-
-                        <p className="product-price">
-                            Price: ₹{product.price}
-                        </p>
-
-                        <button className="buy-button">
-                            Buy Now
-                        </button>
-                    </div>
-                ))}
+                <p className="section-subtitle">
+                    Discover our latest products and exclusive collections
+                </p>
             </div>
-        </>
+
+            {/* Loading */}
+            {loading && (
+                <div className="loading">
+                    <div className="loader"></div>
+                    <p>Loading products...</p>
+                </div>
+            )}
+
+            {/* Products */}
+            {!loading && (
+                <div className="products-container">
+
+                    {products.map((product) => (
+                        <div className="product-card" key={product.id}>
+
+                            {/* Image */}
+                            <div className="product-image-container">
+                                <span className="product-badge">
+                                    NEW
+                                </span>
+
+                                <img
+                                    src={`https:${product.image}`}
+                                    alt={product.name}
+                                    className="product-image"
+                                />
+                            </div>
+
+                            {/* Product Content */}
+                            <div className="product-content">
+
+                                <h2 className="product-name">
+                                    {product.name}
+                                </h2>
+
+                                <span className="description-label">
+                                    PRODUCT DETAILS
+                                </span>
+
+                                <p className="product-description">
+                                    {product.description}
+                                </p>
+
+                                {/* Price */}
+                                <div className="price-section">
+                                    <span className="price-label">
+                                        Price
+                                    </span>
+
+                                    <span className="product-price">
+                                        ₹{product.price}
+                                    </span>
+                                </div>
+
+                                {/* Internal name - remove if not needed */}
+                                <p className="internal-name">
+                                    {product.internalname}
+                                </p>
+
+                                <button className="buy-button">
+                                    <span>Buy Now</span>
+                                    <span className="arrow">→</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    ))}
+
+                </div>
+            )}
+
+        </main>
     );
 }

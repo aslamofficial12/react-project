@@ -15,6 +15,10 @@ export async function GET() {
         name: fields.name,
         description: fields.description,
         price: fields.price,
+        // image: fields.featuredImage?.fields?.file?.url,
+          //  image: fields.featuredProductImage,
+           image: fields.featuredProductImage?.fields?.file?.url,
+           internalname:fields.internalName,
       };
     });
 
