@@ -1,13 +1,15 @@
-import LoginForm from "@/components/LoginFormorignal";
-import SubscribeForm from "@/components/SubscribeForm";
+// import LoginForm from "@/components/LoginFormorignal";
+// import SubscribeForm from "@/components/SubscribeForm";
+import ProductShows from "../../components/ProductShow";
 
 
 export default function LoginPage(){
 
   return (
     <>
-      <LoginForm />
-        <SubscribeForm />
+    <ProductShows />
+      {/* <LoginForm />
+        <SubscribeForm /> */}
     </>
   );
 
