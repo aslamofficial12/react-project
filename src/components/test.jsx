@@ -1,23 +1,17 @@
-import {useState} from "react"
-export default function Test(){
-    const[name,setName]=useState("");
-     const[password,setPassword]=useState("");
-    function validation(){
-        setName(e.target.value)
-        setPassword(e.target.value)
-    }
-    return(
-<>
-<h2>
-    user details
-    <label>Name : </label>
-    <input type="text" value={name}/>
+"use client";
 
-     <label>password : </label>
-    <input type="passwords" value={password}/>
+import { useState } from "react";
 
-    <button onClick={validation}>submit</button>
-</h2>
-</>
-    );
+export default function App() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div>
+      <button onClick={() => setOpen(!open)}>
+        What is React?
+      </button>
+
+      {open && <p>React is a JavaScript library.</p>}
+    </div>
+  );
 }

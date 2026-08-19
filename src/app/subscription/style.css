@@ -1,0 +1,263 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ==============================
+   MAIN
+================================ */
+
+.mainCard {
+    width: 100%;
+}
+
+
+/* ==============================
+   SECTION 1
+================================ */
+
+.sectionOne {
+    display: flex;
+    width: 100%;
+    min-height: 550px;
+    background-color: #f7f7f9;
+
+}
+
+.sectionOne-content {
+    width: 50%;
+    background-color: #f7f7f9;
+    margin-top: 80px;
+    padding: 50px;
+}
+
+.sectionOne-content h1 {
+    font-size: 45px;
+}
+
+.sectionOne-content p {
+    margin-top: 5px;
+    font-size: 20px;
+}
+
+.sectionOne-content a {
+    display: block;
+    color: orange;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
+/* IMAGE */
+
+.sectionOne-image {
+    width: 50%;
+    background-color: #f7f7f9;
+}
+
+.sectionOne-image img {
+    width: 100%;
+    height: 550px;
+    object-fit: cover;
+    border-radius: 260px;
+}
+
+
+/* ==============================
+   BUTTONS
+================================ */
+
+.buttonHead {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.ButtonOne,
+.ButtonTwo {
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
+.ButtonOne {
+    background-color: black;
+    color: white;
+}
+
+.ButtonTwo {
+    background-color: white;
+    color: black;
+}
+
+
+/* ==============================
+   SECTION 2
+================================ */
+
+.sectionTwo {
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+
+/* TITLE */
+
+.sectionTwo-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+
+/* YELLOW LINE */
+
+.yellow-line {
+    width: 160px;
+    height: 6px;
+    border: none;
+    background-color: #ffd100;
+    border-radius: 10px;
+
+    margin: 25px auto 25px;
+}
+
+
+/* ==============================
+   CARDS
+================================ */
+
+.subscription-cards {
+    display: flex;
+    gap: 50px;
+
+    width: 90%;
+    margin: 0 auto;
+}
+
+.subscription-card {
+    width: 50%;
+}
+
+
+/* CARD IMAGE */
+
+.subscription-card>img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+
+/* CARD CONTENT */
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content h2 {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    font-size: 25px;
+}
+
+.card-content hr {
+    margin-bottom: 20px;
+}
+
+.card-content ul {
+    padding-left: 15px;
+}
+
+.card-content li {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+
+
+/* HIGHLIGHT */
+
+.highlight {
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* BUTTON */
+
+.subscribe-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    background-color: #ffd100;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
+/* section 3 */
+
+
+.section-three {
+    background-color: #ffd100;
+    height: auto;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.section-three h2 {
+    text-align: center;
+    padding-top: 150px;
+    color: rgb(5, 5, 5);
+    font-size: 35px;
+    font-weight: bold;
+}
+
+.section-three-container-one {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding:40px 40px;
+
+}
+
+/* section-four */
+.section-four-head{
+    display:flex;
+    margin-left:100px;
+}
+.section-four-left{
+    margin-top:40px;
+}
+
+.yellow-line-two {
+    width: 60px;
+    height: 6px;
+    border: none;
+    background-color: #ffd100;
+    border-radius: 10px;
+    margin-top:20px;
+    margin-bottom:20px;
+
+   
+}
+
+.section-six-head{
+    display: flex;
+    justify-content:space-between;
+     align-items: flex-start;
+    gap: 30px;
+}
+
+.section-three-detail{
+    margin-left:50px;
+}
