@@ -117,7 +117,7 @@ export default function Subscription() {
             <section className="sectionTwo">
 
                 <h1 className="sectionTwo-title">{subscription.sectionTwoTitle}
-                  
+
                 </h1>
 
                 <hr className="yellow-line" />
@@ -127,19 +127,40 @@ export default function Subscription() {
                     {/* CARD 1 */}
                     <div className="subscription-card">
 
-                      
+
 
                         <img src={subscription.sectionTwoImage4week} />
 
                         <div className="card-content">
 
                             <h2>
-                              {subscription.sectionTwoImage4weekTitle}
+                                {subscription.sectionTwoImage4weekTitle}
                             </h2>
 
                             <hr />
 
+
+
+
+
                             <ul>
+                                {subscription.listFieldOne?.map((feature, index) => (
+                                    <li
+                                        key={index}
+                                        className={index === 0 ? "highlight" : ""}
+                                    >
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+
+
+
+
+
+
+                            {/* <ul>
 
                                 <li className="highlight">
                                     Perfect for uninterrupted glucose management.
@@ -157,10 +178,10 @@ export default function Subscription() {
                                     You're in charge. Terms apply.
                                 </li>
 
-                            </ul>
+                            </ul> */}
 
                             <button className="subscribe-btn">
-                                Subscribe
+                                {subscription.subscribeButton}
                             </button>
 
                         </div>
@@ -179,12 +200,23 @@ export default function Subscription() {
                         <div className="card-content">
 
                             <h2>
-                             {subscription.sectionTwoImage8weekTitle}
+                                {subscription.sectionTwoImage8weekTitle}
                             </h2>
 
                             <hr />
 
-                            <ul>
+                             <ul>
+                                {subscription.listFieldTwo?.map((feature, index) => (
+                                    <li
+                                        key={index}
+                                        className={index === 0 ? "highlight" : ""}
+                                    >
+                                        {feature}
+                                    </li>
+                                ))}
+                            </ul>
+
+                            {/* <ul>
 
                                 <li className="highlight">
                                     Flexible for your needs, upgrade anytime.
@@ -202,10 +234,10 @@ export default function Subscription() {
                                     You're in charge. Terms apply.
                                 </li>
 
-                            </ul>
+                            </ul> */}
 
                             <button className="subscribe-btn">
-                                Subscribe
+                                {subscription.subscribeButton}
                             </button>
 
                         </div>
@@ -223,9 +255,10 @@ export default function Subscription() {
                 <div className="section-three-container-one">
 
                     <div className="section-three-con-image">
+                        {/* <h2>image not contentful</h2> */}
 
                         <img
-                            src="/Icon_ADC_FSL_Phone_Sound_Vibration_YBL_RGB_4.webp"
+                            src={subscription.loadingImage}
                             alt="phone-vibration"
                         />
 
@@ -263,7 +296,7 @@ export default function Subscription() {
                         fontFamily: "poppins",
                     }}
                 >
-                {subscription.sectionFourTitle}
+                    {subscription.sectionFourTitle}
                 </h2>
 
                 <hr className="yellow-line" />
@@ -284,6 +317,7 @@ export default function Subscription() {
                     <div className="section-four-head">
 
                         <div className="section-four-right">
+                            <h2>this image still not change</h2>
 
                             <img
                                 style={{
@@ -291,7 +325,7 @@ export default function Subscription() {
                                     padding: "30px",
                                 }}
                                 className="image-right"
-                                src="/SubscriptionF_BImageMiddle_opt.webp"
+                                src={subscription.loyaltyImageFour}
                                 alt="Subscription benefits"
                             />
 
@@ -347,7 +381,7 @@ export default function Subscription() {
                                     marginTop: "60px",
                                 }}
                             >
-                                Flexible options to suit your needs 
+                                Flexible options to suit your needs
                             </h1>
 
                             <hr className="yellow-line-two" />
