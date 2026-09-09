@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import "./productSection.css";
 
@@ -8,7 +10,6 @@ const products = [
       "With the FreeStyle LibreLink app, glucose data is sent straight to your phone, every single minute, with no scanning required.",
     subDescription:
       "Full of reports, information and insights, FreeStyle LibreLink is the ultimate way to monitor your glucose.",
-    image: "/images/librelink-app.png",
     apps: true,
     fullWidth: true,
   },
@@ -16,13 +17,11 @@ const products = [
     title: "LibreView",
     description:
       "LibreView is a secure, cloud-based diabetes management system that gives you and your healthcare professionals clear, easy-to-understand reports from the FreeStyle Libre 2 system.",
-    image: "/images/libreview.png",
   },
   {
     title: "LibreLinkUp App",
     description:
       "Available for iPhone and Android. With LibreLinkUp, get glucose readings sent to your phone from family and friends who use the FreeStyle LibreLink app. Ideal for parents and caregivers.",
-    image: "/images/librelinkup.png",
     apps: true,
   },
 ];
@@ -43,16 +42,21 @@ function AppButtons() {
   );
 }
 
-function ProductCard({ product }) {
+function ProductCard({ product, image }) {
   return (
     <div
       className={`product-card ${
         product.fullWidth ? "full-width-card" : ""
       }`}
     >
-      <div className="product-image">
-        <img src={product.image} alt={product.title} />
-      </div>
+      {image && (
+        <div className="product-image">
+          <img
+            src={image}
+            alt={product.title}
+          />
+        </div>
+      )}
 
       <div className="product-content">
         <h2>{product.title}</h2>
@@ -73,15 +77,44 @@ function ProductCard({ product }) {
   );
 }
 
-export default function ProductSection() {
+export default function ProductSection({ productImage }) {
+
+  let imageUrl = null;
+
+  if (productImage) {
+    if (typeof productImage === "string") {
+      imageUrl = productImage.startsWith("//")
+        ? `https:${productImage}`
+        : productImage;
+    } else if (productImage?.fields?.file?.url) {
+      imageUrl = productImage.fields.file.url.startsWith("//")
+        ? `https:${productImage.fields.file.url}`
+        : productImage.fields.file.url;
+    }
+  }
+
   return (
     <section className="products-section">
-      <ProductCard product={products[0]} />
 
+      {/* First Product */}
+      <ProductCard
+        product={products[0]}
+        image={imageUrl}
+      />
+
+      {/* Second & Third Products */}
       <div className="bottom-grid">
-        <ProductCard product={products[1]} />
-        <ProductCard product={products[2]} />
+
+        <ProductCard
+          product={products[1]}
+        />
+
+        <ProductCard
+          product={products[2]}
+        />
+
       </div>
+
     </section>
   );
 }

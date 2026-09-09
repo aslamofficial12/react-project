@@ -1,5 +1,5 @@
 "use client";
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SubscribeForm from "../../components/SubscribeForm";
 import ProductSection from "../../components/productSection/productSection";
 import "../../components/productSection/productSection.css";
@@ -10,10 +10,7 @@ export default function product() {
 
 
 
-
-
-
-   const [landing, setLanding] = useState(null);
+    const [landing, setLanding] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -67,27 +64,6 @@ export default function product() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-    // const [count, setCount] = useState(0);
-
-    // function addition() {
-     
-    //     setCount(count + 1);
-    // }
-    // function subraction() {
-      
-    //     setCount(count - 1);
-    // }
-
     return (
         <>
             <div className="mainContainer">
@@ -123,18 +99,11 @@ export default function product() {
                         </div>
 
                         <div className="twoHeadLeft">
-                           
-                            <img  src={`https:${landing.image4}`}
-                    alt={landing.image4}
-                    className="product-image"
-                    style={{hieght:"400px",width:"800px"}} />
 
-
-
-
-
-
-
+                            <img src={`https:${landing.image4}`}
+                                alt={landing.image4}
+                                className="product-image"
+                                style={{ hieght: "400px", width: "800px" }} />
 
 
                         </div>
@@ -175,10 +144,10 @@ export default function product() {
                             {/* <img src="2Every4Weeks_S_S.webp" /> */}
 
 
-     <img  src={`https:${landing.image2}`}
-                    alt={landing.image2}
-                    className="product-image"
-                    style={{hieght:"400px",width:"800px"}} />
+                            <img src={`https:${landing.image2}`}
+                                alt={landing.image2}
+                                className="product-image"
+                                style={{ hieght: "400px", width: "800px" }} />
 
 
 
@@ -218,12 +187,12 @@ export default function product() {
                         </div>
 
                         <div className="twoHeadLeft">
-                       
+
 
                             <img src={`https:${landing.image3}`}
-                            alt={landing.image4}
-                            // className="product-image"
-                            style={{height:"400px",width:"800px"}} />
+                                alt={landing.image4}
+                                // className="product-image"
+                                style={{ height: "400px", width: "800px" }} />
 
 
                         </div>
@@ -292,9 +261,186 @@ export default function product() {
                 </section>
 
 
-                <section>
-                    <ProductSection />
+
+                <section className="products-section">
+
+                    <div className="product-card full-width-card">
+
+                        {/* Contentful Image */}
+                        <div className="product-image">
+                            {landing?.Image2 && (
+                                <img
+                                    src={
+                                        landing.Image2.startsWith("//")
+                                            ? `https:${landing.Image2}`
+                                            : landing.Image2
+                                    }
+                                    alt="FreeStyle LibreLink App"
+                                />
+                            )}
+                        </div>
+
+                        <div className="product-content">
+
+                            <h2>
+                                FreeStyle LibreLink App
+                            </h2>
+
+                            <p>
+                                With the FreeStyle LibreLink app, glucose data is
+                                sent straight to your phone, every single minute,
+                                with no scanning required.
+                            </p>
+
+                            <p>
+                                Full of reports, information and insights,
+                                FreeStyle LibreLink is the ultimate way to
+                                monitor your glucose.
+                            </p>
+
+                            <div className="app-buttons">
+
+                                {/* <img
+                                    src="/images/app-store.png"
+                                    alt="Download on App Store"
+                                /> */}
+
+                                <img src={`https:${landing.image7}`}
+                                    alt={landing.image7}
+                                    className="product-image"
+                                    style={{ height: "400px", width: "500px" }} />
+
+
+
+                                <img src={`https:${landing.image6}`}
+                                    alt={landing.image6}
+                                    className="product-image"
+                                    style={{ height: "400px", width: "500px", marginLeft: "300px" }} />
+
+
+
+
+
+
+                            </div>
+
+                            <button className="learn-btn">
+                                LEARN MORE
+                            </button>
+
+                        </div>
+
+                    </div>
+
                 </section>
+
+
+                {/* =========================================
+          PRODUCT SECTION 2 & 3
+      ========================================= */}
+
+                <section className="products-section">
+
+                    <div className="bottom-grid">
+
+                        {/* =====================================
+              PRODUCT 2 - LibreView
+          ===================================== */}
+
+                        <div className="product-card">
+
+                            <div className="product-content">
+
+                                <h2>
+                                    LibreView
+                                </h2>
+
+                                <p>
+                                    LibreView is a secure, cloud-based diabetes
+                                    management system that gives you and your
+                                    healthcare professionals clear,
+                                    easy-to-understand reports from the
+                                    FreeStyle Libre 2 system.
+                                </p>
+
+
+                                <img src={`https:${landing.image4}`}
+                                    alt={landing.image5}
+                                    className="product-image"
+                                    style={{ height: "400px", width: "500px" }} />
+
+
+
+                                <button className="learn-btn">
+                                    LEARN MORE
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        {/* =====================================
+              PRODUCT 3 - LibreLinkUp App
+          ===================================== */}
+
+                        <div className="product-card">
+
+                            <div className="product-content">
+
+                                <h2>
+                                    LibreLinkUp App
+                                </h2>
+
+                                <p>
+                                    Available for iPhone and Android. With
+                                    LibreLinkUp, get glucose readings sent to
+                                    your phone from family and friends who use
+                                    the FreeStyle LibreLink app. Ideal for
+                                    parents and caregivers.
+                                </p>
+
+                                <div className="app-buttons">
+
+                                    {/* <img
+                  src="/images/app-store.png"
+                  alt="Download on App Store"
+                /> */}
+
+
+                                    <img src={`https:${landing.image7}`}
+                                        alt={landing.image7}
+                                        className="product-image"
+                                        style={{ height: "400px", width: "500px" }} />
+
+
+
+                                </div>
+
+                                <button className="learn-btn">
+                                    LEARN MORE
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                 <section>

@@ -6,7 +6,7 @@ export async function GET() {
 
   try {
     const response = await client.getEntries({
-      content_type: "productPage",
+      content_type: "ndssSubsidy",
       limit: 1,
     });
 
@@ -16,12 +16,15 @@ export async function GET() {
       console.log("this code executed item not found");
 
       return NextResponse.json(
-        { error: "Landing page not found" },
+        { error: "Data page not found" },
         { status: 404 }
       );
     }
+
     const fields = item.fields;
-    const landingPage = {
+
+    const dataPage = {
+     
       maintitle:fields.maintitle,
       image4 :fields.image4?.fields?.file.url,
       image3 :fields.image3?.fields?.file.url,
@@ -32,7 +35,9 @@ export async function GET() {
       image6 :fields.image6?.fields?.file.url,
     };
 
-    return NextResponse.json(landingPage);
+   
+
+    return NextResponse.json(dataPage);
   } catch (error) {
     console.error("Contentful error:", error);
 
