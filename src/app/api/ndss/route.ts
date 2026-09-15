@@ -46,7 +46,8 @@ export async function GET() {
       // ==========================================
       pageTitle: fields.pageTitle ?? null,
 
-      heroImage: getImageUrl(fields.heroImage),
+      // heroImage: getImageUrl(fields.heroImage),
+       heroImage: fields.heroimage ?? null,
 
       // ==========================================
       // WEBINAR SECTION
