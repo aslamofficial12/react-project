@@ -134,7 +134,7 @@ export default function ndssSubsidy() {
                             <p>{dataTwo.libreUpgradeDescription}</p>
                         </div>
                         <div className="threeHead-right">
-                            <img src="SMALL_print_ready_5in_300dpi-ADC_PHOTO_FSL3_Cafe_Date_Global_0364_1 (1).webp"></img>
+                            {/* <img src="SMALL_print_ready_5in_300dpi-ADC_PHOTO_FSL3_Cafe_Date_Global_0364_1 (1).webp"></img> */}
 
                                {/* <img
                                 src={`https:${dataTwo?.heroImage?.fields?.file?.url}`}
