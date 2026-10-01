@@ -61,6 +61,15 @@
   margin-top:-30px;
   margin-bottom:30px;
 }
+.yellow-divider-center-hr {
+  width: 4rem;
+  height: 0.25rem;
+  background-color: #facc15;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top:0px;
+  margin-bottom:30px;
+}
 
 .yellow-divider-center-mb{
   width: 4rem;

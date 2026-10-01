@@ -1,152 +1,161 @@
 "use client";
 
 import "./SubscribeForm.css";
-import {useState} from 'react'
+import { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 
-
-
-
-
-
-
-
 export default function SubscribeForm() {
- const router = useRouter();
-  const[name,setName]=useState("");
-const[email,setEmail]=useState("");
-const[diabetes,setDiabetes]=useState("");
-const[error,setError]=useState(true)
-const[formerror,setFormerror]=useState(true)
+  const router = useRouter();
+  
+  // API States
+  const [datas, setDatas] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [apiError, setApiError] = useState(null); // Renamed to avoid conflict
 
-function handleForm(){
- if (!name || !email || !diabetes) {
-    // alert("Please fill all the required fields.");
-    setFormerror("please fill all required fields")
-    return;
+  // Form States
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [diabetes, setDiabetes] = useState("");
+  const [emailError, setEmailError] = useState(""); // Renamed for clarity
+  const [formError, setFormError] = useState(""); // Renamed for clarity
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("/api/subscribe")
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch home page");
+        }
+        return res.json();
+      })
+      .then((data) => {
+        console.log("API data:", data);
+        setDatas(data);
+      })
+      .catch((error) => {
+        console.error("Failed to fetch home page:", error);
+        setApiError(error.message);
+      })
+      .finally(() => {
+        setLoading(false);
+      });
+  }, []);
+
+  function handleForm() {
+    setFormError("");
+    setEmailError("");
+
+    if (!name || !email || !diabetes) {
+      setFormError("please fill all required fields");
+      return;
+    }
+    
+    if (!email.endsWith("@gmail.com")) {
+      setEmailError("please enter valid email name");
+      return;
+    }
+
+    router.push(`/success?name=${name}&email=${email}&diabetes=${diabetes}`);
   }
-  if(!email.endsWith("@gmail.com")){
-    setError("please enter valid email name")
-    // alert("please enter valid email name");
-    return;
+
+  // Early returns API call complete aagum varai
+  if (loading) {
+    return (
+      <main className="products-section">
+        <div className="loading">
+          <div className="loader"></div>
+          <p>Loading home page...</p>
+        </div>
+      </main>
+    );
   }
 
+  if (apiError) {
+    return (
+      <main className="products-section">
+        <p>Error: {apiError}</p>
+      </main>
+    );
+  }
 
-// router.push("/success");
-router.push( `/success?name=${name}&email=${email}&diabetes=${diabetes}`);
+  if (!datas) {
+    return null;
+  }
 
-}
   return (
     <section className="subscribe-section">
-
       <div className="warning-text">
-
         <p>
-          Always follow the directions for use.
-          <a href="#"> Read the warnings </a>
-          before purchase. Finger pricks are required if your glucose
-          readings and alarms do not match symptoms or expectations.
+          {/* JSON-il irundhu datas.warningText ai edukirom */}
+          {datas.warningText} 
+          <a href="#"> {datas.warningLinkText} </a>
+          {datas.warningTextEnd}
         </p>
-
       </div>
 
       <div className="subscribe-container">
-
-        <h2>Stay in Touch</h2>
-
-        <p className="subtitle">
-          Subscribe now to hear the latest FreeStyle Libre news first.
-        </p>
-
-        {/* First Row */}
+        {/* Title and Subtitle binding */}
+        <h2>{datas.formTitle}</h2>
+        <p className="subtitle">{datas.formSubtitle}</p>
 
         <div className="row">
-          
-
           <div className="field">
             <label>
-              Name <span>*</span>
+              {datas.nameLabel} <span>*</span>
             </label>
-
             <input
               type="text"
-              placeholder="Name"
+              placeholder={datas.namePlaceholder}
               value={name}
-              onChange={(e)=>{setName(e.target.value)}}
+              onChange={(e) => { setName(e.target.value) }}
             />
-            <span></span>
           </div>
 
           <div className="field">
             <label>
-              Email Address <span>*</span>
+              {datas.emailLabel} <span>*</span>
             </label>
-
             <input
               type="email"
-              placeholder="Email Address"
+              placeholder={datas.emailPlaceholder}
               value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              onChange={(e) => { setEmail(e.target.value) }}
             />
-            <span>*{error}</span>
+            {emailError && <span style={{ color: "red" }}>*{emailError}</span>}
           </div>
-
         </div>
-
-        {/* Dropdown */}
 
         <div className="field">
-
           <label>
-            Diabetes Type <span>*</span>
+            {datas.diabetesSelectLabel} <span>*</span>
           </label>
-
-          <select    
-              onChange={(e)=>{setDiabetes(e.target.value)}}>
-
-            <option value="">Please Select</option>
-
-            <option>Type 1</option>
-
-            <option>Type 2</option>
-
-            <option>Gestational Diabetes</option>
-
-            <option>Other Diabetes</option>
-
-            <option>Caregiver</option>
-
-            <option>Healthcare Professional</option>
-
+          <select onChange={(e) => { setDiabetes(e.target.value) }}>
+            <option value="">{datas.diabetesOptionDefault}</option>
+            {/* Dynamic array map pandrom. API-il array empty-aaga irundhaal ithu crash aagathu */}
+            {datas.diabetesOptions && datas.diabetesOptions.map((option, index) => (
+              <option key={index} value={option}>
+                {option}
+              </option>
+            ))}
           </select>
-
         </div>
 
-        {/* Checkbox */}
-
         <div className="checkbox-row">
-
           <input type="checkbox" />
-
           <p>
-            I wish to opt in to FreeStyle Libre marketing
-            communications, including product support and
-            education, special offers and product updates and
-            alerts. I have read and agree to the
-            <a href="#"> Terms of Use </a>
-            and
-            <a href="#"> Privacy Policy</a>.
+            {datas.checkboxTextStart}
+            <a href="#"> {datas.termsLinkText} </a>
+            {datas.checkboxTextMiddle}
+            <a href="#"> {datas.privacyLinkText} </a>
           </p>
-
         </div>
 
         <button className="subscribe-btn" onClick={handleForm}>
-          Subscribe
+          {datas.submitButtonText}
         </button>
-        <span style={{color:"red",textAlign:"center"}}>*{formerror}</span>
-
+        
+        {formError && <span style={{ color: "red", textAlign: "center", display: "block", marginTop: "10px" }}>*{formError}</span>}
       </div>
-
     </section>
   );
 }

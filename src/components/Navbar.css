@@ -1,115 +1,189 @@
-*{
-    margin:0px;
-    padding:0px;
+/* Navbar.css */
+
+/* --- General Header Reset --- */
+.navbar-header {
+  font-family: Arial, sans-serif;
+  width: 100%;
 }
 
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color:#252A33;
-  height: 100px;
-  width: 100%;
-  padding: 0 40px;
+* {
   box-sizing: border-box;
 }
 
-.logo {
-  width: 130px;
-  height: 130px;
-  object-fit: contain;
+/* --- Top Tier (Dark Section) --- */
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #242933; /* Dark background */
+  padding: 10px 40px;
+  color: white;
 }
 
-.menu {
+.libre-logo {
+  height: 35px;
+}
+
+.top-right {
   display: flex;
   align-items: center;
-  gap:50px;
+  gap: 30px;
 }
 
-.menu a {
+.top-links {
+  display: flex;
+  gap: 20px;
+}
+
+.top-links a {
   color: white;
   text-decoration: none;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
- 
+  font-size: 13px;
 }
 
-.menu a:hover {
-  color: #ffd100;
+.top-links a:hover {
+  text-decoration: underline;
 }
 
-.menubardiv{
-    background-color:#ffd100;
-    height:50px;
-    width:100%
+.abbott-logo-container {
+  border-left: 1px solid #4a5568;
+  padding-left: 30px;
+  display: flex;
+  align-items: center;
 }
 
-.listmenu{
-    position:relative;
-    display:none;
+.abbott-logo {
+  height: 25px;
 }
 
-.menu-dropdown-menu{
-  position:relative;
-  background-color:rgb(236, 236, 236);
-  padding:10px 5px;
-  display:flex;
-  gap:30px;
-  justify-content: flex-end;
-  
-
-  
+/* --- Bottom Tier (Light Section) --- */
+.bottom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 15px 40px;
+  border-bottom: 1px solid #eaeaea;
 }
-.dropdown{
-  /* position:absolute;
-  display:none;
+
+/* Primary Menu */
+.primary-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 25px;
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-item > a {
+  color: #2d3748;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-item > a:hover {
+  color: #000;
+}
+
+/* CSS Downward Chevron */
+.chevron {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-right: 1.5px solid #2d3748;
+  border-bottom: 1.5px solid #2d3748;
+  transform: rotate(45deg);
+  margin-bottom: 3px;
+}
+
+/* Dropdown Content */
+.dropdown {
+  display: none;
+  position: absolute;
   top: 100%;
-    left: 0;
-    /* min-width: 200px; */
-    /* max-width:200px;
-    background: #fff;
-    display: none;
-    box-shadow: 0 8px 20px rgba(0,0,0,.15);
-    padding: 20px 30px;
-    z-index: 9999;  */
-
-      position:absolute;
-  display:none;
-   background: #fff;
-    max-width:400px;
-    padding:10px 20px;
-     z-index: 9999;
-         border:solid 1px black;
-;
-    
-
-
-}
-.menu-dropdown-menu:hover .dropdown{
-  display:flex;
-  flex-direction:column;
-  
-}
-.dropdown a{
-  padding:10px 10px;
+  left: 0;
+  background-color: #ffffff;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  z-index: 100;
 }
 
-.dropdown2{
-  position:absolute;
-  display:none;
-   background: #fff;
-    max-width:400px;
-    padding:30px 30px;
-     z-index: 9999;
-     border:solid 1px black;
-    
-
-  
-}
-.second-dropdown-box :hover .dropdown2{
-  display:flex;
-  flex-direction:column;
+.dropdown a {
+  color: #333;
+  padding: 10px 20px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
 }
 
+.dropdown a:hover {
+  background-color: #f7f7f7;
+}
 
+.menu-item:hover .dropdown {
+  display: block;
+}
 
+/* --- Right Side Actions --- */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.trial-btn {
+  background-color: #ffd000;
+  color: #000;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.trial-btn:hover {
+  background-color: #e6bc00;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #2d3748;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+/* Cart Badge */
+.cart-wrapper {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -3px;
+  right: -5px;
+  background-color: #d74339;
+  color: white;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  font-size: 10px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

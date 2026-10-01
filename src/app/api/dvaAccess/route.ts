@@ -2,19 +2,15 @@ import { NextResponse } from "next/server";
 import client from "../../../../lib/contentful";
 
 export async function GET() {
-//   console.log("start from here");
-
   try {
     const response = await client.getEntries({
       content_type: "dvaAccess",
       limit: 1,
     });
 
-    const item: any = response.items[0];
+    const item = response.items[0];
 
     if (!item) {
-      console.log("this code executed item not found");
-
       return NextResponse.json(
         { error: "Landing page not found" },
         { status: 404 }
@@ -24,20 +20,83 @@ export async function GET() {
     const fields = item.fields;
 
     const landingPage = {
-    title:fields.title,
+      // General Page Info
+      title: fields.title,
+      intro: fields.intro,
+      infoTitle: fields.infoTitle,
+      importantNote: fields.importantNote,
 
-      // heroBannerImage: fields.heroBannerImage?.fields?.file?.url
-      //   ?,`https:${fields.heroBannerImage.fields.file.url}`
-      //   : null,
-    //   heroBannerImage:fields.heroBannerImage?.fields?.file.url,
+      // heroImage: fields.heroImage.file.url,
 
 
-   
+
+
+
+
+
+      // Announcements & Messages
+      announcementTitle: fields.announcementTitle,
+      announcementContent: fields.announcementContent,
+      existingUserMessage: fields.existingUserMessage,
+      newMemberMessage: fields.newMemberMessage,
+      regularOrderMessage: fields.regularOrderMessage,
+      eligibleTitle: fields.eligibleTitle,
+
+      // Gold Card Details
+      goldCardTabLabel: fields.goldCardTabLabel,
+      goldCardGovernmentText: fields.goldCardGovernmentText,
+      goldCardTypeTitle: fields.goldCardTypeTitle,
+      goldCardTypeSubtitle: fields.goldCardTypeSubtitle,
+      goldCardName: fields.goldCardName,
+      goldCardFileNo: fields.goldCardFileNo,
+      goldCardExpiry: fields.goldCardExpiry,
+      goldCardTitle: fields.goldCardTitle,
+      goldCardSubtitle: fields.goldCardSubtitle,
+      goldCardDescription: fields.goldCardDescription,
+
+      // White Card Details
+      whiteCardGovernmentText: fields.whiteCardGovernmentText,
+      whiteCardTypeTitle: fields.whiteCardTypeTitle,
+      whiteCardTypeSubtitle: fields.whiteCardTypeSubtitle,
+      whiteCardName: fields.whiteCardName,
+      whiteCardFileNo: fields.whiteCardFileNo,
+      whiteCardExpiry: fields.whiteCardExpiry,
+      whiteCardTitle: fields.whiteCardTitle,
+      whiteCardSubtitle: fields.whiteCardSubtitle,
+      whiteCardDescription: fields.whiteCardDescription,
+
+      // Access & Steps
+      accessTitle: fields.accessTitle,
+
+      step1Title: fields.step1Title,
+      step1Description: fields.step1Description,
+      step1ButtonLabel: fields.step1ButtonLabel,
+
+      step2Title: fields.step2Title,
+      step2Description: fields.step2Description,
+      step2ButtonLabel: fields.step2ButtonLabel,
+
+      step3Title: fields.step3Title,
+      step3Description: fields.step3Description,
+      step3ButtonLabel: fields.step3ButtonLabel,
+
+      // Send Info
+      sendTitle: fields.sendTitle,
+      sendDescription: fields.sendDescription,
+
+      // Order & Product Headers
+      orderDetailsHeader: fields.orderDetailsHeader,
+      healthProviderLabel: fields.healthProviderLabel,
+      dvaItemNoHeader: fields.dvaItemNoHeader,
+      supplierCatalogueNoHeader: fields.supplierCatalogueNoHeader,
+      descriptionHeader: fields.descriptionHeader,
+      quantityHeader: fields.quantityHeader,
+      sensorProductName: fields.sensorProductName,
+      readerProductName: fields.readerProductName,
     };
 
-    console.log("landingPage:", landingPage);
-
     return NextResponse.json(landingPage);
+
   } catch (error) {
     console.error("Contentful error:", error);
 
