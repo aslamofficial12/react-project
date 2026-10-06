@@ -1,0 +1,572 @@
+/* General Resets and Variables */
+.pageContainer {
+  font-family: Arial, sans-serif;
+  color: #333;
+  line-height: 1.5;
+}
+
+.yellowDivider {
+  height: 3px;
+  width: 40px;
+  background-color: #ffda00;
+  margin: 15px 0;
+}
+
+.yellowDividerCenter {
+  height: 3px;
+  width: 40px;
+  background-color: #ffda00;
+  margin: 15px auto 30px;
+}
+
+.whiteDivider {
+  height: 3px;
+  width: 40px;
+  background-color: #fff;
+  margin: 15px auto 30px;
+}
+
+/* 1. Hero Section */
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  background: url('/placeholder-hero-bg.jpg') center/cover no-repeat;
+  background-color: #eab445; 
+  display: flex;
+  align-items: center;
+  overflow: hidden; 
+}
+
+.textCircle {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 600px; 
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  left: -50px; 
+  padding: 0 100px 0 120px; 
+  box-sizing: border-box;
+}
+
+.textCircle h1 {
+  font-size: 38px;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 5px;
+  line-height: 1.2;
+}
+
+.textCircle .yellowDivider {
+  height: 2px;
+  width: 40px;
+  background-color: #ffcc00;
+  margin: 15px 0 20px 0;
+}
+
+.textCircle p {
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.6;
+}
+
+.textCircle sup {
+  font-size: 10px;
+}
+
+/* 2. Worldwide Section */
+.worldwideSection {
+  display: flex;
+  align-items: center;
+  padding: 60px 10%;
+  background: #f9f9f9;
+}
+
+.butterflyIcon {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.yellowShape {
+  width: 200px;
+  height: 200px;
+  background-color: #ffda00;
+  clip-path: polygon(0 0, 100% 20%, 80% 100%, 20% 80%); 
+}
+
+.worldwideText {
+  flex: 1;
+  padding-left: 40px;
+}
+
+.worldwideText h2 {
+  font-size: 32px;
+}
+
+/* 3. What is CGM Section */
+.cgmSection {
+  background-color: #ffda00;
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.cgmSection h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.cgmSection p {
+  max-width: 800px;
+  margin: 0 auto 40px;
+}
+
+.cgmImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.imageCircle {
+  width: 250px;
+  height: 250px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.imageCircle img {
+  max-width: 80%;
+}
+
+.arrow {
+  font-size: 24px;
+}
+
+/* 4. Impact Section */
+.impactSection {
+  display: flex;
+  padding: 80px 10%;
+  align-items: center;
+  gap: 50px;
+}
+
+.impactText {
+  flex: 1;
+}
+
+.impactText h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.impactImage {
+  flex: 1;
+}
+
+.impactImage img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* 5. Path to Progress */
+.progressSection {
+  background: linear-gradient(180deg, #ffda00 0%, #ffe44d 100%);
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.progressSection h2 {
+  font-size: 32px;
+}
+
+.progressSub {
+  font-size: 18px;
+  margin-bottom: 50px;
+}
+
+.stepsContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stepCard {
+  flex: 1;
+  text-align: left;
+}
+
+.stepIcon {
+  width: 120px;
+  height: 120px;
+  background: #fff;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stepCard h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* 6. Discover Section */
+.discoverSection {
+  padding: 80px 10%;
+  text-align: center;
+}
+
+.discoverContainer {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  background: #f4f6f8;
+  border-radius: 12px;
+  padding: 40px;
+  text-align: left;
+}
+
+.discoverImageCircle {
+  flex: 1;
+  max-width: 400px;
+}
+
+.discoverImageCircle img {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.discoverContent {
+  flex: 1.5;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.featureList li {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.featureList li span {
+  background: #1e2638;
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 14px;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.exploreBtn {
+  background: #1e2638;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* 7. Features Table */
+.featuresTableSection {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.featuresTable {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.featuresTable th {
+  padding: 20px;
+  text-align: center;
+}
+
+.featuresTable th h3 {
+  margin: 10px 0 5px;
+}
+
+.featuresTable th a {
+  color: #f17215;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.featuresTable td {
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.featuresTable tr:nth-child(odd) td {
+  background: #fafafa;
+}
+
+.featuresTable td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+
+.showMore {
+  margin-top: 20px;
+}
+
+.showMore a {
+  color: #0076ce;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* 8. Connected Care */
+.connectedSection {
+  padding: 60px 10%;
+  text-align: center;
+}
+
+.connectedGrid {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.card {
+  flex: 1;
+  text-align: left;
+}
+
+.card img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.card a {
+  color: #0076ce;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* 9. Helpful Resources Section */
+.resourcesSection {
+  padding: 60px 10%;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.resourcesGrid {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.resourceCard {
+  flex: 1;
+  text-align: left;
+}
+
+.resourceCard img {
+  width: 100%;
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin-bottom: 20px;
+}
+
+.resourceCard h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #1a1a1a;
+}
+
+.resourceCard p {
+  color: #555555;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.resourceCard a {
+  color: #0076ce;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* 10. Testimonials Slider Section */
+.testimonialsSection {
+  padding: 60px 10%;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.testimonialSlider {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 900px;
+  margin: 40px auto 20px;
+  position: relative;
+}
+
+.sliderBtn {
+  background: #1a1a1a;
+  color: #ffffff;
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 2;
+}
+
+.sliderBtn.prev { left: 0; }
+.sliderBtn.next { right: 0; }
+
+.testimonialContent {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 0 60px;
+  width: 100%;
+}
+
+.testimonialImage {
+  flex: 1;
+  max-width: 320px;
+}
+
+.testimonialImage img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.testimonialTextWrap {
+  flex: 1.5;
+  text-align: left;
+}
+
+.butterflyQuoteIcon {
+  width: 50px;
+  height: 50px;
+  background-color: #ffda00;
+  clip-path: polygon(10% 0, 100% 20%, 80% 100%, 0 80%); 
+  margin-bottom: 20px;
+}
+
+.quoteText {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #333333;
+  margin-bottom: 30px;
+}
+
+.quoteAuthor {
+  font-size: 18px;
+  font-weight: bold;
+  color: #1a1a1a;
+  position: relative;
+  padding-top: 15px;
+}
+
+.quoteAuthor::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #ffda00;
+}
+
+.sliderDots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.sliderDots .dot {
+  width: 50px;
+  height: 3px;
+  background-color: #cccccc;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sliderDots .dot.active {
+  background-color: #1a1a1a;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .impactSection, .discoverContainer, .connectedGrid, .resourcesGrid {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .cgmImages, .stepsContainer {
+    flex-direction: column;
+  }
+  
+  .heroSection {
+    height: auto;
+    padding: 40px 20px;
+    background-position: right;
+  }
+  
+  .textCircle {
+    position: relative;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 12px; 
+    padding: 40px;
+  }
+
+  .testimonialContent {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+  
+  .sliderBtn {
+    display: none; 
+  }
+}
