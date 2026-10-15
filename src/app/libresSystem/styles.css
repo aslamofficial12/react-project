@@ -1,170 +1,266 @@
-/* General Resets and Variables */
-.pageContainer {
-  font-family: Arial, sans-serif;
-  color: #333;
-  line-height: 1.5;
-}
 
-.yellowDivider {
-  height: 3px;
-  width: 40px;
-  background-color: #ffda00;
-  margin: 15px 0;
-}
+/* =========================================================
+   GLOBAL
+========================================================= */
 
-.yellowDividerCenter {
-  height: 3px;
-  width: 40px;
-  background-color: #ffda00;
-  margin: 15px auto 30px;
-}
-
-.whiteDivider {
-  height: 3px;
-  width: 40px;
-  background-color: #fff;
-  margin: 15px auto 30px;
-}
-
-/* 1. Hero Section */
-.heroSection {
-  position: relative;
-  width: 100%;
-  height: 600px;
-  background: url('/placeholder-hero-bg.jpg') center/cover no-repeat;
-  background-color: #eab445; 
-  display: flex;
-  align-items: center;
-  overflow: hidden; 
-}
-
-.textCircle {
-  background: #ffffff;
-  border-radius: 50%;
-  width: 600px; 
-  height: 600px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: absolute;
-  left: -50px; 
-  padding: 0 100px 0 120px; 
+* {
   box-sizing: border-box;
 }
 
+.pageContainer {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  line-height: 1.6;
+  overflow: hidden;
+  background: #fff;
+}
+
+.pageContainer img {
+  display: block;
+  max-width: 100%;
+}
+
+.pageContainer a {
+  transition: all 0.25s ease;
+}
+
+.yellowDivider {
+  width: 42px;
+  height: 3px;
+  background: #ffda00;
+  margin: 16px 0 22px;
+}
+
+.yellowDividerCenter {
+  width: 42px;
+  height: 3px;
+  background: #ffda00;
+  margin: 16px auto 35px;
+}
+
+.whiteDivider {
+  width: 42px;
+  height: 3px;
+  background: #fff;
+  margin: 16px auto 30px;
+}
+
+
+/* =========================================================
+   1. HERO SECTION
+========================================================= */
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  background: #eab445 url("/placeholder-hero-bg.jpg") center / cover
+    no-repeat;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.textCircle {
+  position: relative;
+  z-index: 2;
+  width: 600px;
+  height: 600px;
+  margin-left: -70px;
+  padding: 70px 80px 70px 150px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .textCircle h1 {
-  font-size: 38px;
+  margin: 0;
+  color: #181818;
+  font-size: 42px;
+  line-height: 1.15;
   font-weight: 700;
-  color: #1a1a1a;
-  margin-bottom: 5px;
-  line-height: 1.2;
+  letter-spacing: -0.5px;
 }
 
 .textCircle .yellowDivider {
-  height: 2px;
-  width: 40px;
-  background-color: #ffcc00;
-  margin: 15px 0 20px 0;
+  width: 45px;
+  height: 3px;
+  margin: 18px 0;
 }
 
 .textCircle p {
-  font-size: 15px;
-  color: #333333;
-  line-height: 1.6;
+  margin: 0;
+  max-width: 390px;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.7;
 }
 
 .textCircle sup {
   font-size: 10px;
 }
 
-/* 2. Worldwide Section */
+
+/* =========================================================
+   2. WORLDWIDE SECTION
+========================================================= */
+
 .worldwideSection {
+  width: 100%;
   display: flex;
   align-items: center;
-  padding: 60px 10%;
-  background: #f9f9f9;
+  gap: 60px;
+  padding: 90px 10%;
+  background: #f8f8f8;
 }
 
 .butterflyIcon {
-  flex: 1;
+  flex: 0 0 38%;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .yellowShape {
-  width: 200px;
-  height: 200px;
-  background-color: #ffda00;
-  clip-path: polygon(0 0, 100% 20%, 80% 100%, 20% 80%); 
+  width: 230px;
+  height: 230px;
+  background: #ffda00;
+  clip-path: polygon(
+    0 0,
+    50% 12%,
+    100% 0,
+    88% 50%,
+    100% 100%,
+    50% 88%,
+    0 100%,
+    12% 50%
+  );
 }
 
 .worldwideText {
   flex: 1;
-  padding-left: 40px;
+  padding: 0;
+  max-width: 620px;
 }
 
 .worldwideText h2 {
-  font-size: 32px;
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 34px;
+  line-height: 1.2;
 }
 
-/* 3. What is CGM Section */
+.worldwideText p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.worldwideImage {
+  flex: 0 0 35%;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 14px;
+  object-fit: cover;
+}
+
+
+/* =========================================================
+   3. WHAT IS CGM
+========================================================= */
+
 .cgmSection {
-  background-color: #ffda00;
-  padding: 60px 10%;
+  width: 100%;
+  padding: 90px 10%;
   text-align: center;
+  background: #ffda00;
 }
 
 .cgmSection h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  margin: 0 0 15px;
+  color: #1a1a1a;
+  font-size: 34px;
+  line-height: 1.2;
 }
 
 .cgmSection p {
-  max-width: 800px;
-  margin: 0 auto 40px;
+  max-width: 850px;
+  margin: 0 auto 50px;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 .cgmImages {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px;
+  gap: 45px;
 }
 
 .imageCircle {
-  width: 250px;
-  height: 250px;
+  width: 280px;
+  height: 280px;
+  flex-shrink: 0;
   background: #fff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .imageCircle img {
-  max-width: 80%;
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
 }
 
 .arrow {
-  font-size: 24px;
+  font-size: 42px;
+  font-weight: 300;
+  color: #1a1a1a;
 }
 
-/* 4. Impact Section */
+
+/* =========================================================
+   4. IMPACT SECTION
+========================================================= */
+
 .impactSection {
+  width: 100%;
   display: flex;
-  padding: 80px 10%;
   align-items: center;
-  gap: 50px;
+  gap: 80px;
+  padding: 100px 10%;
+  background: #fff;
 }
 
 .impactText {
   flex: 1;
+  max-width: 600px;
 }
 
 .impactText h2 {
-  font-size: 28px;
-  margin-bottom: 20px;
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 34px;
+  line-height: 1.2;
+}
+
+.impactText p {
+  margin: 0;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.8;
 }
 
 .impactImage {
@@ -173,152 +269,261 @@
 
 .impactImage img {
   width: 100%;
-  border-radius: 8px;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 16px;
 }
 
-/* 5. Path to Progress */
+
+/* =========================================================
+   5. PATH TO PROGRESS
+========================================================= */
+
 .progressSection {
-  background: linear-gradient(180deg, #ffda00 0%, #ffe44d 100%);
-  padding: 80px 10%;
+  width: 100%;
+  padding: 90px 10%;
   text-align: center;
+  background: linear-gradient(
+    180deg,
+    #ffda00 0%,
+    #ffe85f 100%
+  );
 }
 
 .progressSection h2 {
-  font-size: 32px;
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
+  line-height: 1.2;
 }
 
 .progressSub {
-  font-size: 18px;
-  margin-bottom: 50px;
+  max-width: 800px;
+  margin: 0 auto 55px;
+  color: #333;
+  font-size: 17px;
+  line-height: 1.7;
 }
 
 .stepsContainer {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 35px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .stepCard {
-  flex: 1;
-  text-align: left;
-}
-
-.stepIcon {
-  width: 120px;
-  height: 120px;
-  background: #fff;
-  border-radius: 50%;
-  margin-bottom: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.stepCard h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-/* 6. Discover Section */
-.discoverSection {
-  padding: 80px 10%;
   text-align: center;
 }
 
-.discoverContainer {
+.stepIcon {
+  width: 135px;
+  height: 135px;
+  margin: 0 auto 25px;
+  padding: 18px;
+  background: #fff;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  gap: 40px;
+  justify-content: center;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+.stepIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.stepCard h3 {
+  margin: 0 0 12px;
+  color: #1a1a1a;
+  font-size: 20px;
+  line-height: 1.3;
+}
+
+.stepCard p {
+  margin: 0;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+
+/* =========================================================
+   6. DISCOVER SECTION
+========================================================= */
+
+.discoverSection {
+  width: 100%;
+  padding: 100px 10%;
+  text-align: center;
+  background: #fff;
+}
+
+.discoverSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
+  line-height: 1.2;
+}
+
+.discoverContainer {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 55px;
+  display: flex;
+  align-items: center;
+  gap: 70px;
   background: #f4f6f8;
-  border-radius: 12px;
-  padding: 40px;
+  border-radius: 20px;
   text-align: left;
 }
 
 .discoverImageCircle {
-  flex: 1;
-  max-width: 400px;
+  flex: 0 0 42%;
+  max-width: 450px;
 }
 
 .discoverImageCircle img {
   width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
   border-radius: 50%;
 }
 
 .discoverContent {
-  flex: 1.5;
+  flex: 1;
+}
+
+.discoverContent > p {
+  margin: 0 0 25px;
+  color: #555;
+  font-size: 16px;
+  line-height: 1.75;
 }
 
 .featureList {
   list-style: none;
   padding: 0;
-  margin: 20px 0;
+  margin: 25px 0;
 }
 
 .featureList li {
-  margin-bottom: 15px;
   display: flex;
   align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
 }
 
 .featureList li span {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
   background: #1e2638;
   color: #fff;
-  width: 24px;
-  height: 24px;
   border-radius: 50%;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
-  font-size: 14px;
-  margin-right: 15px;
-  flex-shrink: 0;
+  font-size: 13px;
+  font-weight: 700;
 }
 
 .exploreBtn {
+  margin-top: 10px;
+  padding: 13px 28px;
   background: #1e2638;
   color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 6px;
-  font-size: 16px;
+  border: 0;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: bold;
+  transition: all 0.25s ease;
 }
 
-/* 7. Features Table */
+.exploreBtn:hover {
+  background: #333d55;
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   7. FEATURES TABLE
+========================================================= */
+
 .featuresTableSection {
-  padding: 60px 10%;
+  width: 100%;
+  padding: 90px 10%;
   text-align: center;
+  background: #f8f8f8;
+}
+
+.featuresTableSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
 }
 
 .featuresTable {
   width: 100%;
-  max-width: 800px;
+  max-width: 850px;
   margin: 0 auto;
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.06);
 }
 
 .featuresTable th {
-  padding: 20px;
+  padding: 30px 25px;
   text-align: center;
+  border-bottom: 1px solid #eee;
 }
 
 .featuresTable th h3 {
-  margin: 10px 0 5px;
+  margin: 12px 0 7px;
+  color: #1a1a1a;
+  font-size: 21px;
 }
 
 .featuresTable th a {
-  color: #f17215;
+  color: #0076ce;
   text-decoration: none;
   font-size: 14px;
+  font-weight: 700;
+}
+
+.featuresTable th a:hover {
+  text-decoration: underline;
+}
+
+.tableHeaderImg {
+  width: 170px;
+  height: 130px;
+  margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .featuresTable td {
-  padding: 15px 20px;
+  padding: 18px 25px;
+  border-bottom: 1px solid #eee;
+  font-size: 15px;
   text-align: center;
-  border-bottom: 1px solid #eaeaea;
+}
+
+.featuresTable tr:last-child td {
+  border-bottom: 0;
 }
 
 .featuresTable tr:nth-child(odd) td {
@@ -326,247 +531,1292 @@
 }
 
 .featuresTable td:first-child {
+  width: 50%;
   text-align: left;
-  font-weight: bold;
+  color: #222;
+  font-weight: 700;
 }
 
-.showMore {
-  margin-top: 20px;
-}
 
-.showMore a {
-  color: #0076ce;
-  text-decoration: none;
-  font-weight: bold;
-}
+/* =========================================================
+   8. CONNECTED CARE
+========================================================= */
 
-/* 8. Connected Care */
 .connectedSection {
-  padding: 60px 10%;
+  width: 100%;
+  padding: 90px 10%;
   text-align: center;
+  background: #fff;
+}
+
+.connectedSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
 }
 
 .connectedGrid {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  max-width: 1150px;
+  margin: 45px auto 0;
 }
 
 .card {
-  flex: 1;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 14px;
   text-align: left;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.07);
+  padding-bottom: 28px;
 }
 
 .card img {
   width: 100%;
-  border-radius: 8px;
-  margin-bottom: 20px;
+  height: 280px;
+  margin-bottom: 25px;
+  object-fit: cover;
+}
+
+.card h3,
+.card p,
+.card a {
+  margin-left: 30px;
+  margin-right: 30px;
 }
 
 .card h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  font-size: 21px;
+  line-height: 1.35;
 }
 
 .card p {
+  margin-bottom: 18px;
   color: #555;
-  margin-bottom: 15px;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
 .card a {
   color: #0076ce;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-/* 9. Helpful Resources Section */
+.card a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   9. HELPFUL RESOURCES
+========================================================= */
+
 .resourcesSection {
-  padding: 60px 10%;
+  width: 100%;
+  padding: 90px 10%;
   text-align: center;
-  background-color: #ffffff;
+  background: #f8f8f8;
+}
+
+.resourcesSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
 }
 
 .resourcesGrid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  margin-top: 40px;
+  max-width: 1200px;
+  margin: 45px auto 0;
 }
 
 .resourceCard {
-  flex: 1;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
   text-align: left;
+  padding-bottom: 25px;
+  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.06);
 }
 
 .resourceCard img {
   width: 100%;
   height: 220px;
-  border-radius: 12px;
   object-fit: cover;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
+}
+
+.resourceCard h3,
+.resourceCard p,
+.resourceCard a {
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 .resourceCard h3 {
-  font-size: 20px;
   margin-bottom: 10px;
   color: #1a1a1a;
+  font-size: 20px;
+  line-height: 1.35;
 }
 
 .resourceCard p {
-  color: #555555;
-  margin-bottom: 15px;
-  line-height: 1.5;
+  margin-bottom: 16px;
+  color: #555;
+  font-size: 15px;
+  line-height: 1.65;
 }
 
 .resourceCard a {
   color: #0076ce;
   text-decoration: none;
-  font-weight: bold;
+  font-size: 14px;
+  font-weight: 700;
 }
 
-/* 10. Testimonials Slider Section */
+.resourceCard a:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   10. TESTIMONIALS
+========================================================= */
+
 .testimonialsSection {
-  padding: 60px 10%;
+  width: 100%;
+  padding: 95px 10%;
   text-align: center;
-  background-color: #f9f9f9;
+  background: #f5f5f5;
+}
+
+.testimonialsSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
 }
 
 .testimonialSlider {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 900px;
-  margin: 40px auto 20px;
   position: relative;
-}
-
-.sliderBtn {
-  background: #1a1a1a;
-  color: #ffffff;
-  border: none;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 16px;
+  width: 100%;
+  max-width: 1050px;
+  min-height: 350px;
+  margin: 45px auto 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  z-index: 2;
 }
 
-.sliderBtn.prev { left: 0; }
-.sliderBtn.next { right: 0; }
-
 .testimonialContent {
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 50px;
-  padding: 0 60px;
-  width: 100%;
+  gap: 65px;
+  padding: 20px 70px;
 }
 
 .testimonialImage {
-  flex: 1;
-  max-width: 320px;
+  flex: 0 0 300px;
+  max-width: 300px;
 }
 
 .testimonialImage img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
+  width: 300px;
+  height: 300px;
   border-radius: 50%;
   object-fit: cover;
+  border: 8px solid #fff;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
 .testimonialTextWrap {
-  flex: 1.5;
+  flex: 1;
   text-align: left;
 }
 
 .butterflyQuoteIcon {
-  width: 50px;
-  height: 50px;
-  background-color: #ffda00;
-  clip-path: polygon(10% 0, 100% 20%, 80% 100%, 0 80%); 
-  margin-bottom: 20px;
+  width: 55px;
+  height: 55px;
+  margin-bottom: 22px;
+  background: #ffda00;
+  clip-path: polygon(
+    0 0,
+    48% 15%,
+    100% 0,
+    84% 50%,
+    100% 100%,
+    48% 85%,
+    0 100%,
+    16% 50%
+  );
 }
 
 .quoteText {
+  margin: 0 0 28px;
+  color: #333;
   font-size: 20px;
-  line-height: 1.6;
-  color: #333333;
-  margin-bottom: 30px;
+  line-height: 1.7;
+  font-weight: 400;
 }
 
 .quoteAuthor {
-  font-size: 18px;
-  font-weight: bold;
-  color: #1a1a1a;
   position: relative;
+  margin: 0;
   padding-top: 15px;
+  color: #1a1a1a;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .quoteAuthor::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
-  width: 30px;
-  height: 2px;
-  background-color: #ffda00;
+  width: 32px;
+  height: 3px;
+  background: #ffda00;
+}
+
+.sliderBtn {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  width: 45px;
+  height: 45px;
+  border: 0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  background: #1e2638;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 18px;
+  transition: all 0.25s ease;
+}
+
+.sliderBtn:hover {
+  background: #333d55;
+  transform: translateY(-50%) scale(1.05);
+}
+
+.sliderBtn.prev {
+  left: 0;
+}
+
+.sliderBtn.next {
+  right: 0;
 }
 
 .sliderDots {
   display: flex;
   justify-content: center;
-  gap: 12px;
-  margin-top: 30px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 25px;
 }
 
 .sliderDots .dot {
-  width: 50px;
-  height: 3px;
-  background-color: #cccccc;
+  width: 35px;
+  height: 4px;
+  border-radius: 5px;
+  background: #ccc;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: all 0.25s ease;
+}
+
+.sliderDots .dot:hover {
+  background: #999;
 }
 
 .sliderDots .dot.active {
-  background-color: #1a1a1a;
+  width: 45px;
+  background: #1e2638;
 }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .impactSection, .discoverContainer, .connectedGrid, .resourcesGrid {
-    flex-direction: column;
-    width: 100%;
-  }
-  
-  .cgmImages, .stepsContainer {
-    flex-direction: column;
-  }
-  
+
+/* =========================================================
+   SUBSCRIBE SECTION
+========================================================= */
+
+.last {
+  width: 100%;
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
   .heroSection {
-    height: auto;
-    padding: 40px 20px;
-    background-position: right;
+    min-height: 520px;
   }
-  
+
   .textCircle {
-    position: relative;
-    left: 0;
-    width: 100%;
-    height: auto;
-    border-radius: 12px; 
+    width: 520px;
+    height: 520px;
+    margin-left: -90px;
+    padding-left: 135px;
+  }
+
+  .textCircle h1 {
+    font-size: 36px;
+  }
+
+  .worldwideSection,
+  .impactSection {
+    gap: 40px;
+    padding: 70px 7%;
+  }
+
+  .stepsContainer {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 45px;
+  }
+
+  .discoverSection,
+  .featuresTableSection,
+  .connectedSection,
+  .resourcesSection,
+  .testimonialsSection {
+    padding-left: 7%;
+    padding-right: 7%;
+  }
+
+  .discoverContainer {
+    gap: 45px;
     padding: 40px;
+  }
+
+  .resourcesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .resourceCard:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+
+  .testimonialContent {
+    gap: 40px;
+    padding: 20px 55px;
+  }
+
+  .testimonialImage,
+  .testimonialImage img {
+    width: 260px;
+    height: 260px;
+    flex-basis: 260px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .yellowDivider {
+    margin: 14px 0 18px;
+  }
+
+  .yellowDividerCenter {
+    margin-bottom: 28px;
+  }
+
+
+  /* HERO */
+
+  .heroSection {
+    min-height: auto;
+    padding: 0;
+    background-position: center;
+  }
+
+  .textCircle {
+    width: calc(100% - 30px);
+    height: auto;
+    min-height: 400px;
+    margin: 30px auto;
+    padding: 50px 35px;
+    border-radius: 25px;
+    position: relative;
+  }
+
+  .textCircle h1 {
+    font-size: 32px;
+  }
+
+  .textCircle p {
+    max-width: 100%;
+    font-size: 15px;
+  }
+
+
+  /* WORLDWIDE */
+
+  .worldwideSection {
+    flex-direction: column;
+    padding: 65px 25px;
+    gap: 35px;
+    text-align: center;
+  }
+
+  .butterflyIcon {
+    width: 100%;
+  }
+
+  .yellowShape {
+    width: 150px;
+    height: 150px;
+  }
+
+  .worldwideText {
+    width: 100%;
+    padding: 0;
+  }
+
+  .worldwideText h2 {
+    font-size: 30px;
+  }
+
+  .worldwideText .yellowDivider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .worldwideText p {
+    font-size: 15px;
+  }
+
+  .worldwideImage {
+    width: 100%;
+    max-width: 100%;
+  }
+
+
+  /* CGM */
+
+  .cgmSection {
+    padding: 65px 25px;
+  }
+
+  .cgmSection h2 {
+    font-size: 30px;
+  }
+
+  .cgmSection p {
+    font-size: 15px;
+    margin-bottom: 35px;
+  }
+
+  .cgmImages {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .imageCircle {
+    width: 230px;
+    height: 230px;
+  }
+
+  .arrow {
+    transform: rotate(90deg);
+    font-size: 35px;
+  }
+
+
+  /* IMPACT */
+
+  .impactSection {
+    flex-direction: column;
+    padding: 65px 25px;
+    gap: 35px;
+  }
+
+  .impactText {
+    width: 100%;
+    max-width: none;
+    text-align: center;
+  }
+
+  .impactText h2 {
+    font-size: 30px;
+  }
+
+  .impactText .yellowDivider {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .impactText p {
+    font-size: 15px;
+  }
+
+  .impactImage {
+    width: 100%;
+  }
+
+
+  /* PROGRESS */
+
+  .progressSection {
+    padding: 65px 25px;
+  }
+
+  .progressSection h2 {
+    font-size: 30px;
+  }
+
+  .progressSub {
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+
+  .stepsContainer {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .stepCard {
+    text-align: center;
+  }
+
+
+  /* DISCOVER */
+
+  .discoverSection {
+    padding: 65px 25px;
+  }
+
+  .discoverSection h2 {
+    font-size: 30px;
+  }
+
+  .discoverContainer {
+    flex-direction: column;
+    padding: 30px 22px;
+    gap: 35px;
+    border-radius: 16px;
+  }
+
+  .discoverImageCircle {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .discoverContent {
+    width: 100%;
+  }
+
+  .featureList li {
+    font-size: 14px;
+  }
+
+  .exploreBtn {
+    width: 100%;
+  }
+
+
+  /* TABLE */
+
+  .featuresTableSection {
+    padding: 65px 20px;
+    overflow-x: auto;
+  }
+
+  .featuresTableSection h2 {
+    font-size: 30px;
+  }
+
+  .featuresTable {
+    min-width: 600px;
+  }
+
+
+  /* CONNECTED CARE */
+
+  .connectedSection {
+    padding: 65px 25px;
+  }
+
+  .connectedSection h2 {
+    font-size: 30px;
+  }
+
+  .connectedGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .card img {
+    height: 240px;
+  }
+
+
+  /* RESOURCES */
+
+  .resourcesSection {
+    padding: 65px 25px;
+  }
+
+  .resourcesSection h2 {
+    font-size: 30px;
+  }
+
+  .resourcesGrid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .resourceCard:last-child {
+    grid-column: auto;
+    max-width: none;
+  }
+
+  .resourceCard img {
+    height: 220px;
+  }
+
+
+  /* TESTIMONIAL */
+
+  .testimonialsSection {
+    padding: 65px 20px;
+  }
+
+  .testimonialsSection h2 {
+    font-size: 30px;
+  }
+
+  .testimonialSlider {
+    min-height: auto;
+    margin-top: 30px;
   }
 
   .testimonialContent {
     flex-direction: column;
-    padding: 0 20px;
+    gap: 30px;
+    padding: 20px 15px;
   }
-  
+
+  .testimonialImage {
+    width: 220px;
+    max-width: 220px;
+    flex-basis: auto;
+  }
+
+  .testimonialImage img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .testimonialTextWrap {
+    width: 100%;
+    text-align: center;
+  }
+
+  .butterflyQuoteIcon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .quoteText {
+    font-size: 17px;
+    line-height: 1.65;
+  }
+
+  .quoteAuthor {
+    display: inline-block;
+    text-align: left;
+  }
+
   .sliderBtn {
-    display: none; 
+    display: none;
+  }
+
+  .sliderDots {
+    margin-top: 20px;
+  }
+
+  .sliderDots .dot {
+    width: 25px;
+  }
+
+  .sliderDots .dot.active {
+    width: 35px;
   }
 }
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .textCircle {
+    min-height: 360px;
+    padding: 40px 25px;
+  }
+
+  .textCircle h1 {
+    font-size: 28px;
+  }
+
+  .textCircle p {
+    font-size: 14px;
+  }
+
+  .yellowShape {
+    width: 125px;
+    height: 125px;
+  }
+
+  .cgmSection h2,
+  .impactText h2,
+  .progressSection h2,
+  .discoverSection h2,
+  .featuresTableSection h2,
+  .connectedSection h2,
+  .resourcesSection h2,
+  .testimonialsSection h2 {
+    font-size: 27px;
+  }
+
+  .imageCircle {
+    width: 200px;
+    height: 200px;
+  }
+
+  .stepIcon {
+    width: 115px;
+    height: 115px;
+  }
+
+  .discoverContainer {
+    padding: 25px 18px;
+  }
+
+  .testimonialImage,
+  .testimonialImage img {
+    width: 190px;
+    height: 190px;
+  }
+
+  .quoteText {
+    font-size: 16px;
+  }
+
+  .resourceCard img,
+  .card img {
+    height: 200px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   2. WORLDWIDE SECTION - UPDATED
+========================================================= */
+
+.worldwideSection {
+  width: 100%;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: 0.8fr 1fr 1.3fr;
+  align-items: center;
+  gap: 55px;
+  padding: 80px 8%;
+  background: #f8f8f8;
+}
+
+/* Yellow butterfly / shape */
+
+.butterflyIcon {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.yellowShape {
+  width: 190px;
+  height: 190px;
+  background: #ffda00;
+
+  clip-path: polygon(
+    0 0,
+    50% 18%,
+    100% 0,
+    82% 50%,
+    100% 100%,
+    50% 82%,
+    0 100%,
+    18% 50%
+  );
+}
+
+
+/* Text */
+
+.worldwideText {
+  width: 100%;
+  max-width: 430px;
+  padding: 0;
+}
+
+.worldwideText h2 {
+  margin: 0;
+  color: #111;
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.5px;
+}
+
+.worldwideText .yellowDivider {
+  width: 52px;
+  height: 3px;
+  margin: 22px 0 28px;
+}
+
+.worldwideText p {
+  margin: 0;
+  max-width: 430px;
+  color: #555;
+  font-size: 17px;
+  line-height: 1.75;
+}
+
+
+/* Image */
+
+.worldwideImage {
+  width: 100%;
+  max-width: 560px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 16px;
+  justify-self: end;
+}
+
+
+/* =========================================================
+   WORLDWIDE - TABLET
+========================================================= */
+
+@media (max-width: 1024px) {
+
+  .worldwideSection {
+    grid-template-columns: 0.7fr 1fr 1.2fr;
+    gap: 35px;
+    padding: 70px 6%;
+  }
+
+  .yellowShape {
+    width: 155px;
+    height: 155px;
+  }
+
+  .worldwideText h2 {
+    font-size: 34px;
+  }
+
+  .worldwideText p {
+    font-size: 15px;
+  }
+
+  .worldwideImage {
+    height: 250px;
+  }
+}
+
+
+/* =========================================================
+   WORLDWIDE - MOBILE
+========================================================= */
+
+@media (max-width: 768px) {
+
+  .worldwideSection {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+    padding: 65px 25px;
+    text-align: center;
+  }
+
+  .butterflyIcon {
+    width: 100%;
+  }
+
+  .yellowShape {
+    width: 140px;
+    height: 140px;
+  }
+
+  .worldwideText {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  .worldwideText h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .worldwideText .yellowDivider {
+    margin: 20px auto 25px;
+  }
+
+  .worldwideText p {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 15px;
+    line-height: 1.7;
+  }
+
+  .worldwideImage {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 14px;
+  }
+}
+
+
+/* =========================================================
+   WORLDWIDE - SMALL MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+  .worldwideSection {
+    padding: 55px 20px;
+    gap: 28px;
+  }
+
+  .yellowShape {
+    width: 115px;
+    height: 115px;
+  }
+
+  .worldwideText h2 {
+    font-size: 28px;
+  }
+
+  .worldwideText p {
+    font-size: 14px;
+  }
+
+  .worldwideImage {
+    max-height: 220px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+1. HERO SECTION
+========================================================= */
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  background-color: #ebaf3d; /* Yellow background color */
+  display: flex;
+  align-items: center;
+  overflow: visible; /* Allows circle to overflow top/bottom gracefully */
+}
+
+/* Background/Hero Image Area */
+.heroImageWrap {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* White Circle Overlay */
+.textCircle {
+  position: relative;
+  z-index: 2;
+  width: 600px;
+  height: 600px;
+  margin-left: -180px; /* Pulls circle partially off-screen on left */
+  padding: 60px 80px 60px 220px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.textCircle h1 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 38px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  max-width: 310px;
+}
+
+.textCircle .yellowDivider {
+  width: 36px;
+  height: 3px;
+  background: #ffda00;
+  margin: 18px 0;
+  border-radius: 2px;
+}
+
+.textCircle p {
+  margin: 0;
+  max-width: 290px;
+  color: #444444;
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.textCircle sup {
+  font-size: 9px;
+  line-height: 0;
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   FEATURES TABLE SECTION
+========================================================= */
+
+.featuresTableSection {
+  width: 100%;
+  padding: 80px 5%;
+  text-align: center;
+  background-color: #f8f8f8;
+}
+
+.featuresTableSection h2 {
+  margin: 0;
+  color: #1a1a1a;
+  font-size: 36px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+/* Yellow divider under section title */
+.yellowDividerCenter {
+  width: 42px;
+  height: 3px;
+  background: #ffda00;
+  margin: 16px auto 35px;
+  border-radius: 2px;
+}
+
+/* Card Container */
+.featuresTable {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Table Header Formatting */
+.featuresTable thead th {
+  padding: 35px 30px 25px;
+  border-bottom: 1px solid #f0f0f0;
+  vertical-align: bottom;
+}
+
+/* Left empty header column gets 55% width */
+.featuresTable thead th:first-child {
+  width: 55%;
+}
+
+/* Right header column containing product image & title */
+.featuresTable thead th:last-child {
+  width: 45%;
+  text-align: center;
+}
+
+/* Product Image in Header */
+.tableHeaderImg {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 8px;
+}
+
+.featuresTable th h3 {
+  margin: 0 0 8px;
+  color: #111111;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.featuresTable th a {
+  display: inline-block;
+  color: #0076ce;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.featuresTable th a:hover {
+  text-decoration: underline;
+  color: #005696;
+}
+
+/* Table Body Cells */
+.featuresTable td {
+  padding: 22px 30px;
+  border-bottom: 1px solid #f2f2f2;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Feature Names Column (Left) */
+.featuresTable td:first-child {
+  text-align: left;
+  color: #1a1a1a;
+  font-weight: 700;
+}
+
+/* Feature Values Column (Right) */
+.featuresTable td:last-child {
+  text-align: center;
+  color: #555555;
+  font-weight: 400;
+}
+
+/* Alternate Row Backgrounds */
+.featuresTable tbody tr:nth-child(even) td {
+  background-color: #fafafa;
+}
+
+.featuresTable tbody tr:nth-child(odd) td {
+  background-color: #ffffff;
+}
+
+/* Remove bottom border on last row */
+.featuresTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 600px) {
+  .featuresTableSection {
+    padding: 60px 15px;
+  }
+
+  .featuresTable {
+    max-width: 100%;
+  }
+
+  .featuresTable td {
+    padding: 16px 18px;
+    font-size: 14px;
+  }
+
+  .featuresTable thead th {
+    padding: 25px 15px 20px;
+  }
+
+  .tableHeaderImg {
+    width: 90px;
+    height: 90px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

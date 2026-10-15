@@ -1,33 +1,28 @@
-/* Navbar.css */
-
-/* --- General Header Reset --- */
+/* ==========================================================================
+   1. NAVBAR HEADER & TIERS
+   ========================================================================== */
 .navbar-header {
-  font-family: Arial, sans-serif;
+  position: relative;
   width: 100%;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  z-index: 1000;
 }
 
-* {
-  box-sizing: border-box;
-}
-
-/* --- Top Tier (Dark Section) --- */
 .top-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #242933; /* Dark background */
   padding: 10px 40px;
-  color: white;
-}
-
-.libre-logo {
-  height: 35px;
+  background: #ffffff;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .top-right {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 24px;
 }
 
 .top-links {
@@ -36,154 +31,1511 @@
 }
 
 .top-links a {
-  color: white;
   text-decoration: none;
+  color: #333;
   font-size: 13px;
 }
 
-.top-links a:hover {
-  text-decoration: underline;
-}
-
-.abbott-logo-container {
-  border-left: 1px solid #4a5568;
-  padding-left: 30px;
-  display: flex;
-  align-items: center;
-}
-
-.abbott-logo {
-  height: 25px;
-}
-
-/* --- Bottom Tier (Light Section) --- */
 .bottom-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #ffffff;
-  padding: 15px 40px;
-  border-bottom: 1px solid #eaeaea;
+  padding: 0 40px;
+  background: #ffffff;
+  position: relative;
+  height: 60px;
 }
 
-/* Primary Menu */
 .primary-menu {
   display: flex;
   list-style: none;
   margin: 0;
   padding: 0;
-  gap: 25px;
+  align-items: center;
+  height: 100%;
 }
 
 .menu-item {
   position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .menu-item > a {
-  color: #2d3748;
+  padding: 16px 12px;
   text-decoration: none;
-  font-size: 12px;
-  font-weight: 700;
+  color: #222;
+  font-weight: 600;
+  font-size: 13px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 4px;
 }
 
-.menu-item > a:hover {
-  color: #000;
-}
-
-/* CSS Downward Chevron */
 .chevron {
+  border: solid #222;
+  border-width: 0 2px 2px 0;
   display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-right: 1.5px solid #2d3748;
-  border-bottom: 1.5px solid #2d3748;
+  padding: 3px;
   transform: rotate(45deg);
-  margin-bottom: 3px;
+  transition: transform 0.2s ease;
 }
 
-/* Dropdown Content */
-.dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #ffffff;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  padding: 10px 0;
-  z-index: 100;
+.menu-item:hover .chevron {
+  transform: rotate(-135deg);
 }
 
-.dropdown a {
-  color: #333;
-  padding: 10px 20px;
-  text-decoration: none;
-  display: block;
-  font-size: 13px;
-}
-
-.dropdown a:hover {
-  background-color: #f7f7f7;
-}
-
-.menu-item:hover .dropdown {
-  display: block;
-}
-
-/* --- Right Side Actions --- */
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 16px;
 }
 
 .trial-btn {
-  background-color: #ffd000;
-  color: #000;
+  background: #ffcc00;
   border: none;
-  padding: 8px 20px;
+  padding: 8px 16px;
   border-radius: 20px;
-  font-weight: bold;
-  font-size: 13px;
+  font-weight: 700;
   cursor: pointer;
-  margin-right: 10px;
-}
-
-.trial-btn:hover {
-  background-color: #e6bc00;
 }
 
 .icon-btn {
   background: none;
   border: none;
   cursor: pointer;
-  color: #2d3748;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 5px;
-}
-
-/* Cart Badge */
-.cart-wrapper {
   position: relative;
 }
 
 .cart-badge {
   position: absolute;
-  top: -3px;
-  right: -5px;
-  background-color: #d74339;
+  top: -6px;
+  right: -8px;
+  background: #ff3b30;
   color: white;
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
   font-size: 10px;
-  font-weight: bold;
+  padding: 2px 5px;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   2. PRODUCTS MEGAMENU
+   ========================================================================== */
+.mega-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  max-width: 1100px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #eaeaea;
+  padding: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+}
+
+.menu-item.has-dropdown:hover .mega-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mega-columns-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 24px;
+}
+
+.mega-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 16px 0;
+}
+
+.mega-items-row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.mega-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  width: 110px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.mega-item:hover {
+  transform: translateY(-3px);
+}
+
+.mega-img-wrap {
+  height: 75px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 8px;
+}
+
+.mega-img-wrap img {
+  max-height: 70px;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+.mega-item span {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.mega-banner {
+  background: #f8f9fa;
+  border: 1px solid #edf0f2;
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner-left, .banner-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-brand-logo, .banner-sensor-img, .banner-box-img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.banner-middle {
+  text-align: center;
+}
+
+.banner-highlight, .banner-title {
+  font-size: 14px;
+  color: #003366;
+  font-weight: 700;
+  margin: 0;
+}
+
+.banner-subtitle {
+  font-size: 12px;
+  color: #444;
+  margin: 0;
+}
+
+.available-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #003366;
+}
+
+.ndss-btn {
+  background: #212529;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   3. SUBSCRIPTION MEGAMENU
+   ========================================================================== */
+.subscription-dropdown {
+  left: -120px;
+  width: 900px;
+  max-width: none;
+}
+
+.sub-columns-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+
+.sub-save-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1.4;
+}
+
+.sub-gift-section {
+  display: flex;
+  flex-direction: column;
+  flex: 0.9;
+}
+
+.sub-cards-row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.sub-vertical-divider {
+  width: 1px;
+  background-color: #d1d5db;
+  align-self: stretch;
+  margin: 0 40px;
+}
+
+.underline-title {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.center-title {
+  text-align: center;
+}
+
+.center-items {
+  justify-content: center;
+}
+
+.sub-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.sub-card-item:hover {
+  transform: translateY(-3px);
+}
+
+.sub-img-container {
+  position: relative;
+  width: 180px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-img-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.badge-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 55px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.gift-badge {
+  font-size: 7px;
+}
+
+.badge-circle strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sub-card-label {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+.sub-promo-banner {
+  background: #f8f9fa;
+  border: 1px solid #edf0f2;
+  border-radius: 8px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sub-banner-left h3 {
+  color: #002b66;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #002b66;
+  font-weight: 500;
+}
+
+.double-sensors-img {
+  height: 70px;
+  object-fit: contain;
+}
+
+.sub-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.highlight-text {
+  color: #002b66;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.underline-accent {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background-color: #ffcc00;
+  border-radius: 2px;
+}
+
+.subscribe-now-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. SUBSIDY AND ACCESS DROPDOWN
+   ========================================================================== */
+.subsidy-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 240px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  border: 1px solid #eaeaea;
+  padding: 12px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item.has-dropdown:hover .subsidy-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-header-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  padding: 8px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 4px;
+}
+
+.dropdown-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-links-list li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-links-list li a:hover {
+  background-color: #f8f9fa;
+  color: #002b66;
+}
+
+/* ==========================================================================
+   5. DISCOVER MEGAMENU (3 COLUMNS)
+   ========================================================================== */
+.discover-mega-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -200px !important;
+  width: 800px !important; /* Fixed width to allow 3 side-by-side columns */
+  max-width: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 8px 8px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 24px 30px !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+  display: block !important;
+}
+
+/* Reveal Hover State */
+.menu-item.has-dropdown:hover .discover-mega-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Columns Container - Forces Row Direction */
+.discover-columns-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Individual Column Styling */
+.discover-column {
+  flex: 1 !important;
+  padding: 0 20px !important;
+  border-right: 1px solid #f0f0f0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.discover-column:first-child {
+  padding-left: 0 !important;
+}
+
+.discover-column:last-child {
+  padding-right: 0 !important;
+  border-right: none !important;
+}
+
+.discover-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.discover-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.discover-links li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.discover-links li a {
+  font-size: 12px !important;
+  color: #555555 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+  display: block !important;
+  transition: color 0.15s ease !important;
+}
+
+.discover-links li a:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+
+
+
+/* product support */
+
+
+/* ==========================================================================
+   6. PRODUCT SUPPORT MEGAMENU (2 COLUMNS)
+   ========================================================================== */
+.product-support-mega-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -220px !important; /* Positioned directly under PRODUCT SUPPORT header */
+  width: 650px !important;
+  max-width: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 8px 8px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 24px 30px !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+  display: block !important;
+}
+
+/* Reveal Hover State */
+.menu-item.has-dropdown:hover .product-support-mega-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+/* Columns Container - Side-by-side Layout */
+.product-support-columns-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+/* Individual Column Styling */
+.product-support-column {
+  flex: 1 !important;
+  padding: 0 24px !important;
+  border-right: 1px solid #f0f0f0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.product-support-column:first-child {
+  padding-left: 0 !important;
+}
+
+.product-support-column:last-child {
+  padding-right: 0 !important;
+  border-right: none !important;
+}
+
+.product-support-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.product-support-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.product-support-links li {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.product-support-links li a {
+  font-size: 12px !important;
+  color: #555555 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+  display: block !important;
+  transition: color 0.15s ease !important;
+}
+
+.product-support-links li a:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+
+
+
+
+/* ==========================================================================
+   7. LIBRE 3 PLUS DROPDOWN
+   ========================================================================== */
+.libre3-dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -100px !important; /* Positioned directly under LIBRE 3 PLUS header */
+  width: 260px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 6px 6px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 12px 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+/* Reveal Hover State */
+.menu-item.has-dropdown:hover .libre3-dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.libre3-dropdown-menu .dropdown-links-list li a {
+  display: block !important;
+  padding: 10px 18px !important;
+  color: #555555 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.libre3-dropdown-menu .dropdown-links-list li a:hover {
+  background-color: #f8f9fa !important;
+  color: #002b66 !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   1. TOP TIER (Dark Header Bar)
+   ========================================================================== */
+.navbar-header {
+  position: relative;
+  width: 100%;
+  background: #ffffff;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  z-index: 1000;
+}
+
+.top-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #212832; /* Dark Navy Background */
+  padding: 0 0 0 40px; /* Left padding for Libre logo, zero right padding for Abbott box */
+  height: 52px;
+}
+
+.top-left {
+  display: flex;
+  align-items: center;
+}
+
+.libre-logo {
+  height: 32px;
+  object-fit: contain;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 32px;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.top-links a {
+  text-decoration: none;
+  color: #ffffff; /* White text links */
+  font-size: 13px;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.top-links a:hover {
+  opacity: 0.8;
+}
+
+/* Abbott Logo Container - Right Box Highlight */
+.abbott-logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 24px;
+  background-color: #1a202a; /* Slightly lighter Navy box */
+  border-left: 1px solid #2d3644;
+}
+
+.abbott-logo {
+  height: 22px;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   2. BOTTOM TIER (White Bar & Main Menu)
+   ========================================================================== */
+.bottom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  background: #ffffff;
+  position: relative;
+  height: 60px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.primary-menu {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+  height: 100%;
+}
+
+.menu-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item > a {
+  padding: 16px 14px;
+  text-decoration: none;
+  color: #222222;
+  font-weight: 700;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  letter-spacing: 0.2px;
+}
+
+.chevron {
+  border: solid #222;
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  padding: 3px;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.menu-item:hover .chevron {
+  transform: rotate(-135deg);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Yellow Trial Button */
+.trial-btn {
+  background-color: #ffcc00;
+  color: #000000;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 13px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.trial-btn:hover {
+  background-color: #e6b800;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #222222;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+  background-color: #d9381e;
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 50%;
+}
+
+/* ==========================================================================
+   3. PRODUCTS MEGAMENU
+   ========================================================================== */
+.mega-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100vw;
+  max-width: 1100px;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 0 0 8px 8px;
+  border: 1px solid #eaeaea;
+  padding: 30px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+}
+
+.menu-item.has-dropdown:hover .mega-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.mega-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mega-columns-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  gap: 60px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 24px;
+}
+
+.mega-section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 16px 0;
+}
+
+.mega-items-row {
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+
+.mega-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  width: 110px;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+
+.mega-item:hover {
+  transform: translateY(-3px);
+}
+
+.mega-img-wrap {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+}
+
+.mega-img-wrap img {
+  max-height: 70px;
+  max-width: 100px;
+  object-fit: contain;
+}
+
+.mega-item span {
+  font-size: 12px;
+  color: #333;
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.mega-banner {
+  background: #f8f9fa;
+  border: 1px solid #edf0f2;
+  border-radius: 8px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.banner-left, .banner-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.banner-brand-logo, .banner-sensor-img, .banner-box-img {
+  height: 40px;
+  object-fit: contain;
+}
+
+.banner-middle {
+  text-align: center;
+}
+
+.banner-highlight, .banner-title {
+  font-size: 14px;
+  color: #003366;
+  font-weight: 700;
+  margin: 0;
+}
+
+.banner-subtitle {
+  font-size: 12px;
+  color: #444;
+  margin: 0;
+}
+
+.available-text {
+  font-size: 12px;
+  font-weight: 700;
+  color: #003366;
+}
+
+.ndss-btn {
+  background: #212529;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   4. SUBSCRIPTION MEGAMENU
+   ========================================================================== */
+.subscription-dropdown {
+  left: -120px;
+  width: 900px;
+  max-width: none;
+}
+
+.sub-columns-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #eaeaea;
+  width: 100%;
+}
+
+.sub-save-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1.4;
+}
+
+.sub-gift-section {
+  display: flex;
+  flex-direction: column;
+  flex: 0.9;
+}
+
+.sub-cards-row {
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
+}
+
+.sub-vertical-divider {
+  width: 1px;
+  background-color: #d1d5db;
+  align-self: stretch;
+  margin: 0 40px;
+}
+
+.underline-title {
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.center-title {
+  text-align: center;
+}
+
+.center-items {
+  justify-content: center;
+}
+
+.sub-card-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.sub-card-item:hover {
+  transform: translateY(-3px);
+}
+
+.sub-img-container {
+  position: relative;
+  width: 180px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-img-container img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.badge-circle {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 55px;
+  height: 55px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  line-height: 1.1;
+  text-align: center;
+  text-transform: uppercase;
+  z-index: 2;
+}
+
+.gift-badge {
+  font-size: 7px;
+}
+
+.badge-circle strong {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.sub-card-label {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #333;
+  font-weight: 500;
+  text-align: center;
+}
+
+.sub-promo-banner {
+  background: #f8f9fa;
+  border: 1px solid #edf0f2;
+  border-radius: 8px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.sub-banner-left h3 {
+  color: #002b66;
+  font-size: 18px;
+  font-weight: 800;
+  margin: 0 0 6px 0;
+  line-height: 1.3;
+}
+
+.terms-text {
+  font-size: 12px;
+  color: #002b66;
+  font-weight: 500;
+}
+
+.double-sensors-img {
+  height: 70px;
+  object-fit: contain;
+}
+
+.sub-banner-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.highlight-text {
+  color: #002b66;
+  font-size: 16px;
+  font-weight: 800;
+  text-align: center;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.underline-accent {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-accent::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 3px;
+  background-color: #ffcc00;
+  border-radius: 2px;
+}
+
+.subscribe-now-btn {
+  background-color: #000000;
+  color: #ffffff;
+  border: none;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+/* ==========================================================================
+   5. SUBSIDY AND ACCESS DROPDOWN
+   ========================================================================== */
+.subsidy-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 240px;
+  background: #ffffff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  border: 1px solid #eaeaea;
+  padding: 12px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item.has-dropdown:hover .subsidy-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-header-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111;
+  padding: 8px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 4px;
+}
+
+.dropdown-links-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-links-list li a {
+  display: block;
+  padding: 10px 20px;
+  color: #333;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-links-list li a:hover {
+  background-color: #f8f9fa;
+  color: #002b66;
+}
+
+/* ==========================================================================
+   6. DISCOVER MEGAMENU (3 COLUMNS)
+   ========================================================================== */
+.discover-mega-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -200px !important;
+  width: 800px !important;
+  max-width: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 8px 8px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 24px 30px !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+  display: block !important;
+}
+
+.menu-item.has-dropdown:hover .discover-mega-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.discover-columns-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.discover-column {
+  flex: 1 !important;
+  padding: 0 20px !important;
+  border-right: 1px solid #f0f0f0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.discover-column:first-child {
+  padding-left: 0 !important;
+}
+
+.discover-column:last-child {
+  padding-right: 0 !important;
+  border-right: none !important;
+}
+
+.discover-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.discover-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+}
+
+.discover-links li a {
+  font-size: 12px !important;
+  color: #555555 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+  display: block !important;
+  transition: color 0.15s ease !important;
+}
+
+.discover-links li a:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   7. PRODUCT SUPPORT MEGAMENU (2 COLUMNS)
+   ========================================================================== */
+.product-support-mega-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -220px !important;
+  width: 650px !important;
+  max-width: none !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 8px 8px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 24px 30px !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: all 0.25s ease-in-out;
+  z-index: 100;
+  display: block !important;
+}
+
+.menu-item.has-dropdown:hover .product-support-mega-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.product-support-columns-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+}
+
+.product-support-column {
+  flex: 1 !important;
+  padding: 0 24px !important;
+  border-right: 1px solid #f0f0f0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.product-support-column:first-child {
+  padding-left: 0 !important;
+}
+
+.product-support-column:last-child {
+  padding-right: 0 !important;
+  border-right: none !important;
+}
+
+.product-support-title {
+  font-size: 13px !important;
+  font-weight: 700 !important;
+  color: #111111 !important;
+  margin: 0 0 16px 0 !important;
+}
+
+.product-support-links {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.product-support-links li a {
+  font-size: 12px !important;
+  color: #555555 !important;
+  text-decoration: none !important;
+  line-height: 1.4 !important;
+  display: block !important;
+  transition: color 0.15s ease !important;
+}
+
+.product-support-links li a:hover {
+  color: #000000 !important;
+  text-decoration: underline !important;
+}
+
+/* ==========================================================================
+   8. LIBRE 3 PLUS DROPDOWN
+   ========================================================================== */
+.libre3-dropdown-menu {
+  position: absolute !important;
+  top: 100% !important;
+  left: -100px !important;
+  width: 260px !important;
+  background: #ffffff !important;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12) !important;
+  border-radius: 0 0 6px 6px !important;
+  border: 1px solid #eaeaea !important;
+  padding: 12px 0 !important;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px);
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.menu-item.has-dropdown:hover .libre3-dropdown-menu {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important;
+}
+
+.libre3-dropdown-menu .dropdown-links-list li a {
+  display: block !important;
+  padding: 10px 18px !important;
+  color: #555555 !important;
+  font-size: 12px !important;
+  font-weight: 500 !important;
+  line-height: 1.4 !important;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease, color 0.15s ease !important;
+}
+
+.libre3-dropdown-menu .dropdown-links-list li a:hover {
+  background-color: #f8f9fa !important;
+  color: #002b66 !important;
 }

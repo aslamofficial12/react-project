@@ -1,0 +1,283 @@
+/* Globals & Resets */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.page-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 50px;
+}
+
+/* Header */
+.main-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 40px;
+  border-bottom: 1px solid #eaeaea;
+  font-size: 13px;
+  font-weight: 600;
+  gap: 40px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.trial-btn {
+  background-color: #ffc107;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #000 !important;
+}
+
+.header-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  font-size: 18px;
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -10px;
+  background: #cc0000;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 10px;
+  padding: 2px 5px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  padding: 20px 40px;
+  font-size: 13px;
+  color: #666;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  padding: 0 40px;
+  margin-top: 20px;
+  min-height: 400px;
+}
+
+.hero-content {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  line-height: 1.2;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 500px;
+  height: 500px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+/* Intro Section - FIX: Removed 950px max-width to align with overall container */
+.intro-section {
+  padding: 40px 40px 20px 40px;
+  width: 100%;
+}
+
+.intro-section h2 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 15px;
+}
+
+.intro-section p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  margin-top: 20px;
+}
+
+/* Reusable Divider */
+.yellow-divider {
+  width: 35px;
+  height: 3px;
+  background-color: #ffc107;
+  margin-bottom: 15px;
+}
+
+/* Tips Section - FIX: Exact 50/50 width distribution and top-alignment */
+.tips-section {
+  padding: 20px 40px 0 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 70px;
+  width: 100%;
+}
+
+.tip-row {
+  display: flex;
+  align-items: flex-start; /* FIX: Top aligns content with image top */
+  gap: 60px;
+  width: 100%;
+}
+
+.tip-row.row-reverse {
+  flex-direction: row-reverse;
+}
+
+/* FIX: Forces exact 50% width for image column */
+.tip-image-wrapper {
+  flex: 1;
+  width: 50%;
+  display: flex;
+}
+
+.tip-img {
+  width: 100%;
+  height: 320px; /* Fixed uniform height across all tips */
+  object-fit: cover; /* FIX: Edge-to-edge fill without gray margins */
+  border-radius: 2px;
+  display: block;
+}
+
+/* FIX: Forces exact 50% width and left alignment for text column */
+.tip-content {
+  flex: 1;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.tip-content h3 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.tip-content p {
+  font-size: 23px;
+  line-height: 1.6;
+  color: #444;
+  margin-bottom: 24px;
+}
+
+.dark-btn {
+  display: inline-block;
+  background-color: #1f2937;
+  color: #ffffff;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 22px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dark-btn:hover {
+  background-color: #111827;
+}
+
+.footer-note {
+  text-align: right;
+  padding: 40px;
+  font-size: 10px;
+  color: #888;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .page-container {
+    padding-bottom: 30px;
+  }
+
+  .hero-section,
+  .tip-row,
+  .tip-row.row-reverse {
+    flex-direction: column !important;
+    gap: 30px;
+  }
+
+  .tip-image-wrapper,
+  .tip-content {
+    width: 100%;
+  }
+
+  .main-header {
+    flex-direction: column;
+  }
+
+  .hero-image {
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .tip-img {
+    height: 220px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

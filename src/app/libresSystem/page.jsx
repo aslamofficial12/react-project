@@ -6,41 +6,101 @@ import SubscribeForm from "../../components/SubscribeForm";
 
 export default function FreeStyleLibrePage() {
   // =========================
-  // API DATA
+  // API DATA - LANDING
   // =========================
   const [landing, setLanding] = useState(null);
+
+  // =========================
+  // API DATA - SECOND CONTENT TYPE
+  // =========================
+  const [pageContent, setPageContent] = useState(null);
+
+  // =========================
+  // API DATA - THIRD CONTENT TYPE
+  // TESTIMONIALS
+  // =========================
+  const [testimonials, setTestimonials] = useState([]);
+
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // Slider state MUST be before any return
+  // =========================
+  // SLIDER STATE
+  // =========================
   const [currentSlide, setCurrentSlide] = useState(0);
 
   // =========================
-  // FETCH API DATA
+  // FETCH ALL 3 API DATA
   // =========================
   useEffect(() => {
     setLoading(true);
 
-    fetch("/api/libresystem")
-      .then((res) => {
+    Promise.all([
+      // FIRST CONTENT TYPE
+      fetch("/api/libresystem").then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to fetch home page");
+          throw new Error("Failed to fetch landing data");
         }
 
         return res.json();
-      })
-      .then((data) => {
-        console.log("API data:", data);
-        setLanding(data);
+      }),
+
+      // SECOND CONTENT TYPE
+      fetch("/api/libresystem2").then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch page content");
+        }
+
+        return res.json();
+      }),
+
+      // THIRD CONTENT TYPE - TESTIMONIALS
+      fetch("/api/testimonial").then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch testimonials");
+        }
+
+        return res.json();
+      }),
+    ])
+      .then(([landingData, contentData, testimonialData]) => {
+        console.log("Landing API data:", landingData);
+        console.log("Second Content Type data:", contentData);
+        console.log("Testimonial API data:", testimonialData);
+
+        setLanding(landingData);
+        setPageContent(contentData);
+
+        // =========================
+        // FILTER ACTIVE TESTIMONIALS
+        // active comes as STRING "true"
+        // =========================
+        const activeTestimonials = testimonialData
+          .filter((item) => item.active === "true")
+          .sort(
+            (a, b) =>
+              Number(a.sortOrder || 0) -
+              Number(b.sortOrder || 0)
+          );
+
+        setTestimonials(activeTestimonials);
+        setCurrentSlide(0);
       })
       .catch((error) => {
-        console.error("Failed to fetch home page:", error);
+        console.error("API Error:", error);
         setError(error.message);
       })
       .finally(() => {
         setLoading(false);
       });
   }, []);
+
+  // =========================
+  // RESET SLIDE
+  // =========================
+  useEffect(() => {
+    setCurrentSlide(0);
+  }, [testimonials]);
 
   // =========================
   // LOADING
@@ -70,47 +130,24 @@ export default function FreeStyleLibrePage() {
   // =========================
   // WAIT FOR API DATA
   // =========================
-  if (!landing) {
+  if (!landing || !pageContent) {
     return null;
   }
-
-  // =========================
-  // TESTIMONIALS
-  // =========================
-  const testimonials = [
-    {
-      id: 1,
-      name: "Rachel, NSW",
-      text:
-        "I can't describe how amazing wearing a CGM makes my life. Thank you for assisting me to live my best life",
-      image: "/Rachel_MFM_Block_1.webp",
-    },
-    {
-      id: 2,
-      name: "Shawn, NSW",
-      text:
-        "I have made the decision to prioritise my health and I see my monthly subscription as an investment in my future... I encourage anyone thinking about a subscription to seriously consider it - you are worth it",
-      image: "/Shawn_MFM_Block_1.webp",
-    },
-    {
-      id: 3,
-      name: "Ron, Vic",
-      text:
-        "Using the FreeStyle LibreLink app has freed me up to do more active pursuits, and it's so convenient that the reading is available all of the time",
-      image: "/Ron_MFM_Block_1.webp",
-    },
-  ];
 
   // =========================
   // SLIDER
   // =========================
   const nextSlide = () => {
+    if (testimonials.length === 0) return;
+
     setCurrentSlide((prev) =>
       prev === testimonials.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevSlide = () => {
+    if (testimonials.length === 0) return;
+
     setCurrentSlide((prev) =>
       prev === 0 ? testimonials.length - 1 : prev - 1
     );
@@ -122,7 +159,7 @@ export default function FreeStyleLibrePage() {
       {/* ==================================================
           1. HERO SECTION
       ================================================== */}
-      <section className="heroSection">
+      {/* <section className="heroSection">
 
         <div className="textCircle">
 
@@ -146,7 +183,42 @@ export default function FreeStyleLibrePage() {
           />
         )}
 
-      </section>
+      </section> */}
+
+
+
+<section className="heroSection">
+  {landing?.heroImage && (
+    <div className="heroImageWrap">
+      <img
+        src={landing.heroImage}
+        alt={landing?.pageTitle}
+        className="heroImage"
+      />
+    </div>
+  )}
+
+  <div className="textCircle">
+    <h1>{landing?.pageTitle}</h1>
+    <div className="yellowDivider"></div>
+    <p>{landing?.heroDescription}</p>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       {/* ==================================================
@@ -445,6 +517,7 @@ export default function FreeStyleLibrePage() {
 
       {/* ==================================================
           7. FEATURES TABLE
+          SECOND CONTENT TYPE
       ================================================== */}
       <section className="featuresTableSection">
 
@@ -475,8 +548,8 @@ export default function FreeStyleLibrePage() {
                   {landing?.featuresProductName}
                 </h3>
 
-                <a href="#">
-                  {landing?.featuresLearnMoreText}
+                <a href={pageContent?.featuresLearnMoreUrl}>
+                  Learn More
                 </a>
 
               </th>
@@ -489,31 +562,31 @@ export default function FreeStyleLibrePage() {
 
             <tr>
               <td>
-                How long can I wear it?
+                {pageContent?.feature1Name}
               </td>
 
               <td>
-                Up to 15 days
-              </td>
-            </tr>
-
-            <tr>
-              <td>
-                How small is it?
-              </td>
-
-              <td>
-                35mm x 5mm
+                {pageContent?.feature1Value}
               </td>
             </tr>
 
             <tr>
               <td>
-                What age is eligible for use?
+                {pageContent?.feature2Name}
               </td>
 
               <td>
-                Age 2 and over
+                {pageContent?.feature2Value}
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                {pageContent?.feature3Name}
+              </td>
+
+              <td>
+                {pageContent?.feature3Value}
               </td>
             </tr>
 
@@ -526,58 +599,67 @@ export default function FreeStyleLibrePage() {
 
       {/* ==================================================
           8. CONNECTED CARE
+          SECOND CONTENT TYPE
       ================================================== */}
       <section className="connectedSection">
 
         <h2>
-          Connected care with your loved ones and healthcare team
+          {pageContent?.connectedCareTitle}
         </h2>
 
         <div className="yellowDividerCenter"></div>
 
         <div className="connectedGrid">
 
+          {/* CONNECTED CARD 1 */}
           <div className="card">
 
             <img
-              src="/LibreView_image.webp"
-              alt="Family"
+              src={pageContent?.connectedCard1Image}
+              alt={pageContent?.connectedCard1ImageAlt}
             />
 
             <h3>
-              Help loved ones support you on your journey with LibreLinkUp.
+              {pageContent?.connectedCard1Title}
             </h3>
 
             <p>
-              Share your glucose data securely with family, friends, and
-              caregivers to give them peace of mind.
+              {pageContent?.connectedCard1Description}
             </p>
 
-            <a href="#">
-              Learn More
+            <a href={pageContent?.connectedCard1LinkUrl}>
+              {pageContent?.connectedCard1LinkText}
             </a>
 
           </div>
 
 
+          {/* CONNECTED CARD 2 */}
           <div className="card">
-
             <img
-              src="/LibreView_image.webp"
-              alt="Healthcare team"
+              src={pageContent?.connectedCard1Image}
+              alt={pageContent?.connectedCard1ImageAlt}
             />
 
-            <h3>
-              Share insights with your healthcare team with LibreView.
+            {/* <img
+              src="/LibreView_image.webp"
+              alt="Healthcare team"
+            /> */}
+
+            <h3>hellow
+              {pageContent?.connectedCard2Title}
+              {/* Share insights with your healthcare team with LibreView. */}
             </h3>
 
             <p>
-              Securely share your glucose data with your healthcare team to
-              enable richer conversations.
+              {pageContent?.connectedCard2Description}
+              {/* Securely share your glucose data with your healthcare team to
+              enable richer conversations. */}
             </p>
 
             <a href="#">
-              Learn More
+              {pageContent?.connectedCard2LinkText}
+              {/* Learn More welcome */}
             </a>
 
           </div>
@@ -589,82 +671,82 @@ export default function FreeStyleLibrePage() {
 
       {/* ==================================================
           9. HELPFUL RESOURCES
+          SECOND CONTENT TYPE
       ================================================== */}
       <section className="resourcesSection">
 
         <h2>
-          Helpful Resources
+          {pageContent?.resourcesTitle}
         </h2>
 
         <div className="yellowDividerCenter"></div>
 
         <div className="resourcesGrid">
 
+          {/* RESOURCE 1 */}
           <div className="resourceCard">
 
             <img
-              src="/LibreView_image.webp"
-              alt="Video Guides"
+              src={pageContent?.resource1Image}
+              alt={pageContent?.resource1ImageAlt}
             />
 
             <h3>
-              Video Guides
+              {pageContent?.resource1Title}
             </h3>
 
             <p>
-              Check out our library of helpful videos that will help you have
-              the best experience with the Libre 2 system.
+              {pageContent?.resource1Description}
             </p>
 
-            <a href="#">
-              Learn More
+            <a href={pageContent?.resource1LinkUrl}>
+              {pageContent?.resource1LinkText}
             </a>
 
           </div>
 
 
+          {/* RESOURCE 2 */}
           <div className="resourceCard">
 
             <img
-              src="/LibreView_image.webp"
-              alt="Customer Care"
+              src={pageContent?.resource2Image}
+              alt={pageContent?.resource2ImageAlt}
             />
 
             <h3>
-              Customer Care
+              {pageContent?.resource2Title}
             </h3>
 
             <p>
-              Talk to our friendly customer service team if you need any help.
-              Opening hours: 8AM - 7PM AEDT Monday - Friday (Closed on public
-              holidays).
+              {pageContent?.resource2Description}
             </p>
 
-            <a href="#">
-              Contact Us
+            <a href={pageContent?.resource2LinkUrl}>
+              {pageContent?.resource2LinkText}
             </a>
 
           </div>
 
 
+          {/* RESOURCE 3 */}
           <div className="resourceCard">
 
             <img
-              src="/LibreView_image.webp"
-              alt="Getting started"
+              src={pageContent?.resource3Image}
+              alt={pageContent?.resource3ImageAlt}
             />
 
             <h3>
-              Getting started
+              {pageContent?.resource3Title}
             </h3>
 
             <p>
-              See how easy it is to apply and use Libre 2 system for the first
-              time and gain valuable insights into your glucose trends.
+              {pageContent?.resource3Description}
             </p>
 
-            <a href="#">
-              Learn the basics
+            <a href={pageContent?.resource3LinkUrl}>
+              {pageContent?.resource3LinkText}
             </a>
 
           </div>
@@ -676,11 +758,12 @@ export default function FreeStyleLibrePage() {
 
       {/* ==================================================
           10. TESTIMONIALS
+          THIRD CONTENT TYPE
       ================================================== */}
       <section className="testimonialsSection">
 
         <h2>
-          Real experiences, shared by real people
+          {pageContent?.testimonialsTitle} 
         </h2>
 
         <div className="yellowDividerCenter"></div>
@@ -695,33 +778,41 @@ export default function FreeStyleLibrePage() {
           </button>
 
 
-          <div className="testimonialContent">
+          {testimonials.length > 0 && (
+            <div className="testimonialContent">
 
-            <div className="testimonialImage">
+              <div className="testimonialImage">
 
-              <img
-                src={testimonials[currentSlide].image}
-                alt={testimonials[currentSlide].name}
-              />
+                <img
+                  src={testimonials[currentSlide]?.image || ""}
+                  alt={testimonials[currentSlide]?.imageAltText || ""}
+                />
+
+              </div>
+
+              <div className="testimonialTextWrap">
+
+                <div className="butterflyQuoteIcon"></div>
+
+                <p className="quoteText">
+                  "{testimonials[currentSlide]?.testimonialText}"
+                </p>
+
+                <p className="quoteAuthor">
+                  {testimonials[currentSlide]?.Name}
+                </p>
+
+              </div>
 
             </div>
+          )}
 
 
-            <div className="testimonialTextWrap">
-
-              <div className="butterflyQuoteIcon"></div>
-
-              <p className="quoteText">
-                "{testimonials[currentSlide].text}"
-              </p>
-
-              <p className="quoteAuthor">
-                {testimonials[currentSlide].name}
-              </p>
-
+          {testimonials.length === 0 && (
+            <div className="testimonialContent">
+              <p>No testimonials available.</p>
             </div>
-
-          </div>
+          )}
 
 
           <button
@@ -734,19 +825,21 @@ export default function FreeStyleLibrePage() {
         </div>
 
 
-        <div className="sliderDots">
+        {/* SLIDER DOTS */}
+        {testimonials.length > 0 && (
+          <div className="sliderDots">
 
-          {testimonials.map((_, index) => (
-            <span
-              key={index}
-              className={`dot ${
-                index === currentSlide ? "active" : ""
-              }`}
-              onClick={() => setCurrentSlide(index)}
-            ></span>
-          ))}
+            {testimonials.map((testimonial, index) => (
+              <span
+                key={testimonial.id}
+                className={`dot ${index === currentSlide ? "active" : ""
+                  }`}
+                onClick={() => setCurrentSlide(index)}
+              ></span>
+            ))}
 
-        </div>
+          </div>
+        )}
 
       </section>
 
