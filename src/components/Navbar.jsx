@@ -39,7 +39,7 @@ export default function Navbar() {
                   <div className="mega-column">
                     <h4 className="mega-section-title">CGM Sensors and Apps</h4>
                     <div className="mega-items-row">
-                      <a href="#" className="mega-item">
+                      <a href="/freestyle-libre-2-plus-sensor" className="mega-item">
                         <div className="mega-img-wrap">
                           <img src="/2Every8Weeks_S_S.webp" alt="FreeStyle Libre 2 Plus sensor" />
                         </div>

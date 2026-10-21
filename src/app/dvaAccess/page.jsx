@@ -15,6 +15,7 @@ export default function DVALandingPage() {
   const [dva1, setDva1] = useState();
   const [dva2, setDva2] = useState();
   const [faq, SetFaq] = useState();
+  const [datas, setDatas] = useState(null);
 
   useEffect(() => {
     setLoading(true);
@@ -39,6 +40,7 @@ export default function DVALandingPage() {
         setDva1(dva1);
         setDva2(dva2);
         SetFaq(faq);
+        setDatas(datas);
       })
       .catch((error) => {
         console.error("Failed to fetch API data:", error);
@@ -69,7 +71,7 @@ export default function DVALandingPage() {
   }
 
   // CORRECTED CONDITIONAL CHECK
-  if (!dva1 || !dva2 || !faq) {
+  if (!dva1 || !dva2 || !faq || !datas) {
     return null;
   }
 

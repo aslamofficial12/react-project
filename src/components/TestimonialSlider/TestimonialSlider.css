@@ -1,0 +1,154 @@
+/* Testimonials Section Styling */
+.testimonials-section {
+  padding: 70px 0;
+  background-color: #f8f9fa;
+}
+
+.testimonials-section h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.testimonials-section .yellow-underline {
+  width: 48px;
+  height: 3px;
+  background-color: #ffd800;
+  margin: 0 auto 50px;
+}
+
+.testimonial-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  max-width: 950px;
+  margin: 0 auto;
+}
+
+/* Navigation Buttons */
+.nav-arrow {
+  background: #1f2833;
+  color: #ffffff;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease;
+}
+
+.nav-arrow:hover {
+  background-color: #000000;
+}
+
+.nav-arrow .next-text {
+  font-size: 0.75rem;
+  margin-left: 2px;
+  letter-spacing: 0.5px;
+}
+
+/* Testimonial Content Layout */
+.testimonial-content {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  text-align: left;
+  flex: 1;
+}
+
+.author-photo img {
+  width: 260px;
+  height: 260px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.author-quote {
+  flex: 1;
+}
+
+.author-quote .butterfly-logo {
+  font-size: 1.8rem;
+  color: #ffd800;
+  margin-bottom: 12px;
+}
+
+.author-quote blockquote {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.yellow-underline-small {
+  width: 35px;
+  height: 3px;
+  background-color: #ffd800;
+  margin: 12px 0;
+}
+
+.author-quote h5 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #111111;
+}
+
+/* Slider Indicators Line Bar */
+.slider-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 50px;
+}
+
+.slider-indicators .line {
+  width: 90px;
+  height: 3px;
+  background-color: #d1d5db;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.slider-indicators .line.active {
+  background-color: #111111;
+}
+
+/* Responsive Rules */
+@media (max-width: 850px) {
+  .testimonial-wrapper {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .testimonial-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+
+  .author-quote {
+    text-align: center;
+  }
+
+  .yellow-underline-small {
+    margin: 12px auto;
+  }
+
+  .nav-arrow.left {
+    order: 2;
+  }
+  .nav-arrow.right {
+    order: 3;
+  }
+}

@@ -1,0 +1,92 @@
+/* Recommendations Section Styling */
+.recommendations-section {
+  padding: 70px 0;
+  background-color: #ffffff;
+}
+
+.recommendations-section h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.recommendations-section .yellow-underline {
+  width: 48px;
+  height: 3px;
+  background-color: #ffd800;
+  margin: 0 auto 50px;
+}
+
+.recommendations-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: left;
+}
+
+.recommendations-grid .card {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Uniform Image Box Wrapper */
+.card-img-wrapper {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 18px;
+  background-color: #f7f9fa;
+}
+
+.card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.recommendations-grid h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 10px;
+}
+
+.recommendations-grid h3 sup {
+  color: #0070c0;
+  font-weight: 600;
+}
+
+.recommendations-grid p {
+  font-size: 0.92rem;
+  color: #444444;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.recommendations-grid p sup {
+  color: #0070c0;
+  font-weight: 600;
+}
+
+.link-blue {
+  color: #0070c0;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.link-blue:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Rules */
+@media (max-width: 850px) {
+  .recommendations-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
