@@ -189,57 +189,30 @@ export default function GlucoseComparisonPage() {
               </p>
 
 
+              <ul>
+                {bloodGlucoseBullets.map((bullet, index) => (
+                  <li key={index}>
+                    {typeof bullet === "string"
+                      ? bullet
+                      : bullet.text || bullet.description || ""}
+                  </li>
+                ))}
 
+                <li>
+                  {pageData.option1}
+                  {/* A lancet is inserted to reach the blood in the capillary. */}
+                </li>
 
-              {/* 
-              
-              
-              
-              
-              
-              
-              
-              
-              */}
+                <li>
+                  {pageData.option2}
+                  {/* A finger prick only provides one measurement at one point in time. */}
+                </li>
 
-
-
-
- <ul>
-    {bloodGlucoseBullets.map((bullet, index) => (
-      <li key={index}>
-        {typeof bullet === "string"
-          ? bullet
-          : bullet.text || bullet.description || ""}
-      </li>
-    ))}
-
-    <li>
-      {pageData.option1}
-      {/* A lancet is inserted to reach the blood in the capillary. */}
-    </li>
-
-    <li>
-      {pageData.option2}
-      {/* A finger prick only provides one measurement at one point in time. */}
-    </li>
-
-    <li>
-      {pageData.option3}
-      {/* Requires a whole kit: lancets (finger pricker), blood glucose strips, and blood glucose reader. */}
-    </li>
-  </ul>
-
-
-
-
-
-
-
-
-
-
-
+                <li>
+                  {pageData.option3}
+                  {/* Requires a whole kit: lancets (finger pricker), blood glucose strips, and blood glucose reader. */}
+                </li>
+              </ul>
 
 
             </div>
@@ -272,30 +245,30 @@ export default function GlucoseComparisonPage() {
 
 
 
-<ul>
-    {sensorSystemBullets.map((bullet, index) => (
-      <li key={index}>
-        {typeof bullet === "string"
-          ? bullet
-          : bullet.text || bullet.description || ""}
-      </li>
-    ))}
+              <ul>
+                {sensorSystemBullets.map((bullet, index) => (
+                  <li key={index}>
+                    {typeof bullet === "string"
+                      ? bullet
+                      : bullet.text || bullet.description || ""}
+                  </li>
+                ))}
 
-    <li>
-      {pageData.option4}
+                <li>
+                  {pageData.option4}
 
-    </li>
+                </li>
 
-    <li>
-      {pageData.option5}
-      
-    </li>
+                <li>
+                  {pageData.option5}
 
-    <li>
-      {pageData.option6}
-      
-    </li>
-  </ul>
+                </li>
+
+                <li>
+                  {pageData.option6}
+
+                </li>
+              </ul>
 
 
             </div>

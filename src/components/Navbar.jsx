@@ -202,8 +202,8 @@ export default function Navbar() {
                   <ul className="discover-links">
                     <li><a href="#">Getting Started With Libre</a></li>
                     <li><a href="#">What Is FreeStyle Libre 2 Plus</a></li>
-                    <li><a href="#">Top 10 Tips For New FreeStyle Libre 2 Plus Users</a></li>
-                    <li><a href="#">The Difference Between Blood Glucose & Sensor Glucose</a></li>
+                    <li><a href="/topten-tips-libre">Top 10 Tips For New FreeStyle Libre 2 Plus Users</a></li>
+                    <li><a href="/difference-between-glucose-interstitial-glucose">The Difference Between Blood Glucose & Sensor Glucose</a></li>
                     <li><a href="#">Product Info And Manuals</a></li>
                     <li><a href="#">Video Guides</a></li>
                     <li><a href="#">AnzCGM - Quality Matters</a></li>
@@ -275,10 +275,7 @@ export default function Navbar() {
 
 
 
-          {/* 
-          <li className="menu-item">
-            <a href="#libre3">LIBRE 3 PLUS <span className="chevron"></span></a>
-          </li> */}
+        
 
 
 
