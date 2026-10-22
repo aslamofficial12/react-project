@@ -1,0 +1,127 @@
+/* Effortless Management Section Styling */
+.effortless-section {
+  padding: 70px 0;
+  background-color: #ffffff;
+}
+
+.effortless-section h2 {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.effortless-section .yellow-underline {
+  width: 48px;
+  height: 3px;
+  background-color: #ffd800;
+  margin: 0 auto 30px;
+}
+
+.effortless-toggle-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.toggle-pill {
+  background-color: #1a2129;
+  color: #ffffff;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* 5 Cards Horizontal Grid Layout */
+.effortless-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.effortless-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  height: 380px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  background-color: #f7f9fa;
+  display: flex;
+  flex-direction: column;
+}
+
+.effortless-img-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.effortless-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark gradient overlay for text readability at the bottom */
+.card-gradient-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 55%;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
+  pointer-events: none;
+}
+
+/* Top-right circle arrow icon */
+.card-arrow-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 30px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.85);
+  color: #111111;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Card Bottom Overlay Title */
+.effortless-card-title {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  right: 20px;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.35;
+  text-align: left;
+  margin: 0;
+  z-index: 2;
+}
+
+/* Responsive Rules for smaller screens */
+@media (max-width: 1024px) {
+  .effortless-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .effortless-grid {
+    grid-template-columns: 1fr;
+  }
+}

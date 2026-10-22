@@ -41,21 +41,21 @@ export default function Navbar() {
                     <div className="mega-items-row">
                       <a href="/freestyle-libre-2-plus-sensor" className="mega-item">
                         <div className="mega-img-wrap">
-                          <img src="/2Every8Weeks_S_S.webp" alt="FreeStyle Libre 2 Plus sensor" />
+                          <img src="/freestyle_librelink2_sensor_2x.webp" alt="FreeStyle Libre 2 Plus sensor" />
                         </div>
                         <span>FreeStyle Libre 2 Plus sensor</span>
                       </a>
 
                       <a href="#" className="mega-item">
                         <div className="mega-img-wrap">
-                          <img src="/2Every8Weeks_S_S.webp" alt="Libre app" />
+                          <img src="/Detailed-6_2mmol-No-Sensor-40pc_MMenu_212x436.webp" alt="Libre app" />
                         </div>
                         <span>Libre app</span>
                       </a>
 
                       <a href="#" className="mega-item">
                         <div className="mega-img-wrap">
-                          <img src="/2Every8Weeks_S_S.webp" alt="FreeStyle Libre 2 Reader" />
+                          <img src="/freestyle_libre2_reader.webp" alt="FreeStyle Libre 2 Reader" />
                         </div>
                         <span>FreeStyle Libre 2 Reader</span>
                       </a>
@@ -67,14 +67,14 @@ export default function Navbar() {
                     <div className="mega-items-row">
                       <a href="#" className="mega-item">
                         <div className="mega-img-wrap">
-                          <img src="/2Every8Weeks_S_S.webp" alt="LibreLinkUp App" />
+                          <img src="/Detailed-6_2mmol-No-Sensor-40pc_MMenu_212x436.webp" alt="LibreLinkUp App" />
                         </div>
                         <span>LibreLinkUp App</span>
                       </a>
 
                       <a href="#" className="mega-item">
                         <div className="mega-img-wrap">
-                          <img src="/2Every8Weeks_S_S.webp" alt="LibreView" />
+                          <img src="/libreview.webp" alt="LibreView" />
                         </div>
                         <span>LibreView</span>
                       </a>
@@ -84,8 +84,8 @@ export default function Navbar() {
 
                 <div className="mega-banner">
                   <div className="banner-left">
-                    <img src="/2Every8Weeks_S_S.webp" alt="FreeStyle Libre 3 Plus" className="banner-brand-logo" />
-                    <img src="/2Every8Weeks_S_S.webp" alt="Sensor" className="banner-sensor-img" />
+                    <img src="/freestyle_librelink2_sensor_2x.webp" alt="FreeStyle Libre 3 Plus" className="banner-brand-logo" />
+                    <img src="/freestyle_librelink2_sensor_2x.webp" alt="Sensor" className="banner-sensor-img" />
                   </div>
 
                   <div className="banner-middle">
@@ -95,7 +95,7 @@ export default function Navbar() {
                   </div>
 
                   <div className="banner-right">
-                    <img src="/2Every8Weeks_S_S.webp" alt="Libre 3 Box" className="banner-box-img" />
+                    <img src="/freestyle_librelink2_sensor_2x.webp" alt="Libre 3 Box" className="banner-box-img" />
                     <div className="banner-action-group">
                       <span className="available-text">Available Now</span>
                       <button className="ndss-btn">Via NDSS subsidy</button>
@@ -118,7 +118,7 @@ export default function Navbar() {
                   <div className="sub-save-section">
                     <h4 className="mega-section-title underline-title">Subscribe & Save</h4>
                     <div className="sub-cards-row">
-                      <a href="#" className="sub-card-item">
+                      <a href="/subscription" className="sub-card-item">
                         <div className="sub-img-container">
                           <span className="badge-circle">EVERY<br /><strong>4</strong><br />WEEKS</span>
                           <img src="/2Every8Weeks_S_S.webp" alt="2 sensors every 4 weeks" />
@@ -126,7 +126,7 @@ export default function Navbar() {
                         <span className="sub-card-label">2 sensors every 4 weeks</span>
                       </a>
 
-                      <a href="#" className="sub-card-item">
+                      <a href="/subscription" className="sub-card-item">
                         <div className="sub-img-container">
                           <span className="badge-circle">EVERY<br /><strong>8</strong><br />WEEKS</span>
                           <img src="/2Every8Weeks_S_S.webp" alt="2 sensors every 8 weeks" />
@@ -168,7 +168,7 @@ export default function Navbar() {
                       2x Sensors every <br />
                       <span className="underline-accent">4 or 8 weeks</span>
                     </p>
-                    <button className="subscribe-now-btn">Subscribe Now</button>
+                    <a className="subscribe-now-btn" href="/subscription">Subscribe Now</a>
                   </div>
                 </div>
 
@@ -233,11 +233,6 @@ export default function Navbar() {
             </div>
           </li>
 
-          {/* 5. OTHER NAV ITEMS */}
-          {/* <li className="menu-item">
-            <a href="#support">PRODUCT SUPPORT <span className="chevron"></span></a>
-          </li> */}
-
           {/* PRODUCT SUPPORT MENU WITH 2-COLUMN DROPDOWN */}
           <li className="menu-item has-dropdown">
             <a href="#support">PRODUCT SUPPORT <span className="chevron"></span></a>
@@ -273,13 +268,6 @@ export default function Navbar() {
             </div>
           </li>
 
-
-
-        
-
-
-
-
           {/* LIBRE 3 PLUS MENU WITH SINGLE COLUMN DROPDOWN */}
           <li className="menu-item has-dropdown">
             <a href="#libre3">LIBRE 3 PLUS <span className="chevron"></span></a>
@@ -293,19 +281,6 @@ export default function Navbar() {
               </ul>
             </div>
           </li>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         </ul>
 
