@@ -53,7 +53,7 @@ export default function Navbar() {
                         <span>Libre app</span>
                       </a>
 
-                      <a href="#" className="mega-item">
+                      <a href="/freestylereader" className="mega-item">
                         <div className="mega-img-wrap">
                           <img src="/freestyle_libre2_reader.webp" alt="FreeStyle Libre 2 Reader" />
                         </div>
@@ -72,7 +72,7 @@ export default function Navbar() {
                         <span>LibreLinkUp App</span>
                       </a>
 
-                      <a href="#" className="mega-item">
+                      <a href="/libreview" className="mega-item">
                         <div className="mega-img-wrap">
                           <img src="/libreview.webp" alt="LibreView" />
                         </div>

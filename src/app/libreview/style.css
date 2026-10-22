@@ -1,0 +1,284 @@
+/* Page Layout Container */
+.libreview-page {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+.lv-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* Yellow Accent Line */
+.accent-line-yellow {
+  width: 36px;
+  height: 3px;
+  background-color: #ffda00;
+  margin: 12px auto 28px auto;
+  border-radius: 2px;
+}
+
+.accent-line-yellow.left {
+  margin-left: 0;
+}
+
+/* 1. Split Hero Section */
+.lv-hero-section {
+  position: relative;
+  width: 100%;
+  min-height: 480px;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f4f4f4;
+}
+
+.lv-circle-card {
+  width: 480px;
+  height: 480px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  margin-left: -60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 110px;
+  padding-right: 50px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+.lv-hero-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #111111;
+  margin: 0;
+}
+
+.lv-hero-title sup {
+  font-size: 1rem;
+  color: #0070f3;
+}
+
+.lv-hero-text {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #444444;
+  margin: 0;
+}
+
+/* 2. Team Healthcare Progress Section */
+.lv-progress-section {
+  padding: 70px 0;
+}
+
+.lv-two-col-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.lv-feature-img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.lv-section-heading {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #222222;
+  line-height: 1.25;
+  margin: 0;
+}
+
+.lv-body-p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.lv-bullet-list {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.lv-bullet-list li {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #444444;
+  margin-bottom: 10px;
+}
+
+/* 3. Ready to Get Started Section */
+.lv-started-section {
+  padding: 50px 0 70px 0;
+}
+
+.lv-center-title {
+  font-size: 1.9rem;
+  font-weight: 500;
+  color: #222222;
+  margin: 0;
+}
+
+.lv-started-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+  text-align: left;
+}
+
+.lv-monitor-img {
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+
+.lv-card-title {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 16px 0;
+}
+
+.lv-started-desc {
+  font-size: 0.95rem;
+  color: #555555;
+  margin-bottom: 12px;
+}
+
+.lv-started-steps {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #555555;
+  margin-bottom: 24px;
+}
+
+.lv-btn-dark {
+  display: inline-block;
+  background-color: #1d232c;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  transition: background-color 0.2s ease;
+}
+
+.lv-btn-dark:hover {
+  background-color: #333a46;
+}
+
+/* 4. Connecting with your Healthcare Team Section */
+.lv-connecting-section {
+  padding: 40px 0 80px 0;
+}
+
+.lv-subtitle-text {
+  font-size: 0.95rem;
+  color: #555555;
+  margin-bottom: 8px;
+}
+
+.lv-subtitle-text a {
+  color: #0070f3;
+  text-decoration: underline;
+}
+
+.lv-subtitle-bold {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #222222;
+  margin-bottom: 40px;
+}
+
+.lv-options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.lv-option-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lv-option-img-frame {
+  height: 220px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.lv-option-img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
+}
+
+.lv-option-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #1d232c;
+  margin-bottom: 16px;
+}
+
+.lv-option-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #222222;
+  margin: 0 0 12px 0;
+  width: 100%;
+}
+
+.lv-option-desc {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #555555;
+  margin: 0;
+}
+
+/* Responsive Breakdown */
+@media (max-width: 868px) {
+  .lv-two-col-grid, 
+  .lv-started-card, 
+  .lv-options-grid {
+    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .lv-circle-card {
+    width: 360px;
+    height: 360px;
+    padding-left: 80px;
+  }
+}
+
+.lastsection{
+  padding:150px;
+}
