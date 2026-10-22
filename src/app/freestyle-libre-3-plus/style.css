@@ -1,0 +1,658 @@
+/* ==========================================
+   Libre 3 Plus Full Page Styles
+   ========================================== */
+
+.libre3plus-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111111;
+  background-color: #ffffff;
+  overflow-x: hidden;
+}
+
+.l3p-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.margin-top-xs { margin-top: 8px; }
+.margin-top-sm { margin-top: 16px; }
+.margin-top-lg { margin-top: 40px; }
+.margin-bottom-md { margin-bottom: 24px; }
+.font-weight-bold { font-weight: 700; }
+
+.section-title {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.section-desc {
+  font-size: 15px;
+  color: #444444;
+  margin-bottom: 30px;
+}
+
+.yellow-line {
+  width: 50px;
+  height: 3px;
+  background-color: #ffcc00;
+  margin: 0 auto 24px auto;
+}
+
+.yellow-line-short {
+  width: 35px;
+  height: 2px;
+  background-color: #ffcc00;
+  margin-bottom: 14px;
+}
+
+.btn-dark.pill-btn {
+  background-color: #1a222c;
+  color: #ffffff;
+  padding: 11px 28px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* 1. Hero Section */
+.l3p-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-color: #e5e5e5;
+  overflow: hidden;
+}
+
+.l3p-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.l3p-hero-img {
+  object-fit: cover;
+  object-position: center right;
+}
+
+.l3p-hero-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -80px;
+  width: 520px;
+  height: 520px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.l3p-hero-content {
+  width: 300px;
+  padding-right: 40px;
+}
+
+.l3p-hero-content h1 {
+  font-size: 36px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  line-height: 1.15;
+}
+
+.hero-subtext {
+  font-size: 16px;
+  color: #444444;
+  line-height: 1.4;
+}
+
+/* 2. Yellow Subsidy Banner */
+.l3p-yellow-subsidy-banner {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #ffdc00;
+  padding: 50px 20px;
+  margin-bottom: 60px;
+}
+
+.l3p-yellow-subsidy-banner h2 {
+  font-size: 26px;
+  font-weight: 800;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+.white-divider-center {
+  width: 60px;
+  height: 2px;
+  background-color: #ffffff;
+  margin: 0 auto 16px auto;
+}
+
+.subsidy-desc {
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.small-disclaimer-text {
+  font-size: 12px;
+  color: #333333;
+  line-height: 1.5;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.small-disclaimer-text a {
+  color: #d97700;
+  text-decoration: underline;
+}
+
+/* 3. Meet Section */
+.l3p-meet-section {
+  margin-bottom: 60px;
+}
+
+.meet-card-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto 40px auto;
+}
+
+.meet-circle-img {
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #000;
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.circle-sensor-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meet-yellow-box {
+  background-color: #ffdc00;
+  padding: 30px 30px 30px 60px;
+  border-radius: 12px;
+  margin-left: -40px;
+  z-index: 1;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.icon-features-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e2e2e2;
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.icon-feature-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.icon-feature-card p {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+/* 4. Why Love Section */
+.l3p-love-section {
+  margin-bottom: 70px;
+}
+
+.love-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.love-image {
+  display: flex;
+  justify-content: center;
+}
+
+.bullet-list-styled {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.bullet-list-styled li {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.small-link-text {
+  font-size: 12px;
+  color: #666666;
+}
+
+/* 5. App Power Section */
+.l3p-app-power-section {
+  margin-bottom: 70px;
+}
+
+.app-power-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.app-power-phone {
+  display: flex;
+  justify-content: center;
+}
+
+.app-power-details h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.store-badges-flex {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.store-badge-img {
+  height: 36px;
+}
+
+.qr-box {
+  margin-bottom: 12px;
+}
+
+.link-text {
+  font-size: 13px;
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+/* 6. AID Section */
+.l3p-aid-section {
+  margin-bottom: 70px;
+}
+
+.aid-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  background-color: #fcfcfc;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.aid-card-text h3 {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+
+.aid-card-text p {
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 18px;
+}
+
+.aid-fine-print {
+  font-size: 11px !important;
+  color: #777777 !important;
+}
+
+.aid-card-image {
+  display: flex;
+  justify-content: center;
+}
+
+/* 7. Which Sensor Section */
+.l3p-which-sensor-section {
+  margin-bottom: 70px;
+}
+
+.sensor-tabs-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+}
+
+.sensor-tab-btn {
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.sensor-tab-btn.active {
+  background-color: #1a222c;
+  color: #ffffff;
+  border-color: #1a222c;
+  border-bottom: 3px solid #ffcc00;
+}
+
+.sensor-tab-content {
+  background-color: #fafafa;
+  padding: 40px;
+  border-radius: 12px;
+}
+
+.sensor-content-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 30px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sensor-details h3 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.sensor-image {
+  display: flex;
+  justify-content: center;
+}
+
+.rounded-circle-img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.sensor-footer-text {
+  font-size: 12px;
+  color: #666666;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
+}
+
+/* 8. Getting Started Section & Tabs */
+.l3p-getting-started-section {
+  margin-bottom: 80px;
+}
+
+.getting-started-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.gs-tab-btn {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 6px;
+  padding: 14px 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gs-tab-btn.active {
+  background-color: #1a222c;
+  color: #ffffff;
+  border-color: #1a222c;
+  border-bottom: 3px solid #ffcc00;
+}
+
+.gs-intro-text {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.gs-subnote-text {
+  font-size: 12px;
+  color: #555555;
+  max-width: 800px;
+  margin: 0 auto 24px auto;
+}
+
+.gs-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+  margin-top: 30px;
+}
+
+.gs-step-card {
+  text-align: center;
+  padding: 10px;
+}
+
+.gs-step-img-wrapper {
+  margin-bottom: 14px;
+}
+
+.gs-step-card h4 {
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 6px;
+  border-bottom: 2px solid #ffcc00;
+  display: inline-block;
+  padding-bottom: 2px;
+}
+
+.gs-step-card p {
+  font-size: 13px;
+  color: #444444;
+  line-height: 1.45;
+}
+
+.gs-guides-footer-block {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 30px;
+  align-items: center;
+  background-color: #f7f7f7;
+  padding: 30px;
+  border-radius: 12px;
+}
+
+.guides-heading {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.guide-links-list {
+  list-style: none;
+  padding: 0;
+}
+
+.guide-links-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.circle-letter {
+  width: 24px;
+  height: 24px;
+  background-color: #111;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.guide-links-list a {
+  color: #d97700;
+  text-decoration: underline;
+}
+
+.gs-guides-yellow-video-card {
+  background-color: #ffdc00;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+/* 9. Yellow Ecosystem 3-Card Section */
+.yellow-ecosystem-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(180deg, #ffdc00 0%, #ffea55 75%, #ffffff 100%);
+  padding: 60px 20px 80px 20px;
+}
+
+.ecosystem-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.ecosystem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  text-align: center;
+}
+
+.ecosystem-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.ecosystem-icon-wrapper {
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.ecosystem-icon {
+  border-radius: 18px;
+  object-fit: contain;
+}
+
+.ecosystem-laptop-img { object-fit: contain; }
+
+.ecosystem-card h3 {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.ecosystem-card h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.ecosystem-card p {
+  font-size: 15px;
+  color: #222222;
+  line-height: 1.55;
+  margin-bottom: 24px;
+  min-height: 70px;
+}
+
+/* 10. Legal Disclaimers Footer */
+.footer-disclaimers {
+  background-color: #ffffff;
+  padding: 40px 20px 60px 20px;
+  font-size: 11px;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.footer-disclaimer-container {
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.footer-disclaimers p { margin-bottom: 14px; }
+.footer-disclaimers a { color: #0056b3; text-decoration: underline; }
+
+.footer-version-code {
+  text-align: right;
+  font-weight: 600;
+  color: #333333;
+  margin-top: 25px;
+}
+
+/* Responsive Media Queries */
+@media (max-width: 900px) {
+  .icon-features-grid,
+  .love-grid,
+  .app-power-grid,
+  .aid-card-grid,
+  .sensor-content-grid,
+  .gs-guides-footer-block,
+  .ecosystem-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .getting-started-tabs {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .l3p-hero-banner {
+    height: 380px;
+  }
+
+  .l3p-hero-circle {
+    width: 380px;
+    height: 380px;
+    left: -40px;
+  }
+}

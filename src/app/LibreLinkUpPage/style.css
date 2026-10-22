@@ -1,0 +1,470 @@
+/* ==========================================
+   LibreLinkUp Page Styles
+   ========================================== */
+
+.librelinkup-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, sans-serif;
+  color: #111111;
+  background-color: #ffffff;
+}
+
+.llu-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sup-num {
+  font-size: 60%;
+  top: -0.5em;
+  position: relative;
+  font-weight: 700;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* 1. Hero Section */
+.llu-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  background-color: #eaeaea;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+.llu-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  object-fit: cover;
+  object-position: right center;
+}
+
+.llu-hero-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -60px;
+  width: 480px;
+  height: 480px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  z-index: 2;
+}
+
+.llu-hero-content {
+  width: 300px;
+  padding-right: 40px;
+}
+
+.llu-hero-content h1 {
+  font-size: 34px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.llu-hero-content p {
+  font-size: 14px;
+  color: #555555;
+  line-height: 1.5;
+}
+
+/* 2. Overview Feature Grid */
+.llu-feature-section {
+  margin-bottom: 70px;
+}
+
+.llu-feature-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.llu-feature-media {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.app-icon-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.icon-img {
+  border-radius: 12px;
+}
+
+.mockup-img {
+  height: auto;
+  object-fit: contain;
+}
+
+.llu-feature-text h2 {
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.feature-intro {
+  font-size: 15px;
+  color: #333333;
+  line-height: 1.5;
+  margin-bottom: 18px;
+}
+
+.feature-bullets {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.feature-bullets li {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 10px;
+  color: #222222;
+}
+
+.store-buttons-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.store-btn img {
+  height: 38px;
+  width: auto;
+  display: block;
+}
+
+/* 3. How to Connect Section & Tabs */
+.llu-guide-section {
+  margin-bottom: 80px;
+}
+
+.guide-title {
+  font-size: 30px;
+  font-weight: 800;
+  margin-bottom: 30px;
+}
+
+.guide-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.guide-tab-btn {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px 14px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #111111;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.guide-tab-btn.active {
+  background-color: #1a222c;
+  color: #ffffff;
+  border-color: #1a222c;
+  border-bottom: 3px solid #ffcc00;
+}
+
+/* Card Display Panel */
+.guide-card {
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  padding: 40px;
+}
+
+.guide-card-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.guide-card-image {
+  display: flex;
+  justify-content: center;
+}
+
+.guide-img {
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+}
+
+.steps-intro {
+  font-size: 14px;
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.steps-list {
+  padding-left: 20px;
+}
+
+.steps-list li {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #222222;
+  margin-bottom: 12px;
+}
+
+.guide-card-footer {
+  font-size: 12px;
+  color: #555555;
+  line-height: 1.5;
+  border-top: 1px solid #e2e2e2;
+  padding-top: 20px;
+}
+
+/* 4. Full-Width Yellow Share Progress Banner */
+.llu-yellow-banner {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(180deg, #ffdc00 0%, #ffeb60 100%);
+  padding: 60px 20px;
+  margin-bottom: 60px;
+}
+
+.llu-yellow-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.llu-yellow-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.yellow-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.llu-yellow-text h2 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.white-line-short {
+  width: 40px;
+  height: 2px;
+  background-color: #ffffff;
+  margin-bottom: 16px;
+}
+
+.llu-yellow-text p {
+  font-size: 15px;
+  color: #111111;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.small-disclaimer {
+  font-size: 12px !important;
+  color: #333333 !important;
+  margin-top: 10px;
+}
+
+/* 5. Support Section */
+.llu-support-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background-color: #f7f7f7;
+  padding: 60px 20px;
+}
+
+.headset-icon {
+  font-size: 38px;
+  margin-bottom: 12px;
+}
+
+.llu-support-section h2 {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.llu-support-section p {
+  font-size: 14px;
+  color: #555555;
+  margin-bottom: 20px;
+}
+
+.btn-dark.pill-btn {
+  background-color: #1a222c;
+  color: #ffffff;
+  padding: 10px 28px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+}
+
+/* Responsive Handling */
+@media (max-width: 900px) {
+  .llu-feature-grid,
+  .guide-card-grid,
+  .llu-yellow-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .guide-tabs {
+    grid-template-columns: 1fr;
+  }
+
+  .llu-hero-banner {
+    height: 380px;
+  }
+
+  .llu-hero-circle {
+    width: 380px;
+    height: 380px;
+    left: -40px;
+  }
+}
+
+.last{
+    padding:100px;
+    margin-top:-100px;
+}
+
+
+
+
+
+
+/* Hero Banner Main Wrapper */
+.llu-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 480px; /* Explicit height */
+  background-color: #eaeaea;
+  overflow: hidden;
+  margin-bottom: 50px;
+}
+
+/* Background Image Container */
+.llu-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Image Full View */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center right;
+  display: block;
+}
+
+/* Circular Overlay Fix */
+.llu-hero-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -80px;
+  width: 520px;
+  height: 520px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  z-index: 2;
+}
+
+.llu-hero-content {
+  width: 300px;
+  padding-right: 40px;
+}
+
+
+
+.headernav{
+    margin-top:10px;
+    margin-left:100px;
+    margin-bottom:10px;
+}
+
+
+
+/* ==========================================
+   LibreLinkUp Legal Footer Styles
+   ========================================== */
+
+.llu-footer-legal {
+  border-top: 1px solid #e0e0e0;
+  padding: 30px 20px 40px 20px;
+  background-color: #ffffff;
+  font-size: 11px;
+  color: #666666;
+  line-height: 1.6;
+}
+
+.llu-footer-legal p {
+  margin-bottom: 8px;
+}
+
+.llu-footer-version {
+  text-align: right;
+  font-weight: 500;
+  margin-top: 12px;
+  color: #444444;
+}

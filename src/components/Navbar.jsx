@@ -46,7 +46,7 @@ export default function Navbar() {
                         <span>FreeStyle Libre 2 Plus sensor</span>
                       </a>
 
-                      <a href="#" className="mega-item">
+                      <a href="/libreapp" className="mega-item">
                         <div className="mega-img-wrap">
                           <img src="/Detailed-6_2mmol-No-Sensor-40pc_MMenu_212x436.webp" alt="Libre app" />
                         </div>
@@ -65,7 +65,7 @@ export default function Navbar() {
                   <div className="mega-column connected-care-col">
                     <h4 className="mega-section-title">Connected Care</h4>
                     <div className="mega-items-row">
-                      <a href="#" className="mega-item">
+                      <a href="/LibreLinkUpPage" className="mega-item">
                         <div className="mega-img-wrap">
                           <img src="/Detailed-6_2mmol-No-Sensor-40pc_MMenu_212x436.webp" alt="LibreLinkUp App" />
                         </div>
