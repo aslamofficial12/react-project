@@ -1,5 +1,7 @@
+"use client";
 import React from "react";
 import "./Navbar.css";
+
 import Link from "next/link";
 
 export default function Navbar() {
@@ -98,7 +100,17 @@ export default function Navbar() {
                     <img src="/freestyle_librelink2_sensor_2x.webp" alt="Libre 3 Box" className="banner-box-img" />
                     <div className="banner-action-group">
                       <span className="available-text">Available Now</span>
-                      <button className="ndss-btn">Via NDSS subsidy</button>
+                      {/* <button
+  className="ndss-btn"
+  onClick={() => window.location.href = "/freestyle-libre-3-plus"}
+>
+  Via NDSS subsidy
+</button> */}
+
+
+<Link href="/freestyle-libre-3-plus" className="ndss-btn">
+  Via NDSS subsidy
+</Link>
                     </div>
                   </div>
                 </div>
@@ -141,7 +153,7 @@ export default function Navbar() {
                   <div className="sub-gift-section">
                     <h4 className="mega-section-title center-title">Subscription Gifting</h4>
                     <div className="sub-cards-row center-items">
-                      <a href="#" className="sub-card-item">
+                      <a href="/subscription-gifting" className="sub-card-item">
                         <div className="sub-img-container">
                           <span className="badge-circle gift-badge">Gifted<br />subscription</span>
                           <img src="/2Every8Weeks_S_S.webp" alt="Subscription Gifting" />

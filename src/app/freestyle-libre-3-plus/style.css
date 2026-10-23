@@ -656,3 +656,296 @@
     left: -40px;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   Which Sensor Section Styles
+   ========================================== */
+
+.l3p-which-sensor-section {
+  margin-bottom: 70px;
+}
+
+/* Tab Header Buttons */
+.sensor-tabs-bar {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 860px;
+  margin: 0 auto 30px auto;
+  gap: 10px;
+}
+
+.sensor-tab-btn {
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 8px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #333333;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.sensor-tab-btn:hover {
+  border-color: #bbbbbb;
+}
+
+/* Selected Tab Style (Dark Slate background with yellow bottom accent) */
+.sensor-tab-btn.active {
+  background-color: #1a222c;
+  color: #ffffff;
+  border-color: #1a222c;
+  border-bottom: 3.5px solid #ffcc00;
+}
+
+/* Main Content Panel */
+.sensor-tab-content {
+  background-color: #ffffff;
+  padding: 20px 10px;
+}
+
+.sensor-content-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Reverse layout for Tab 1 (Image Left, Details Right) */
+.sensor-content-grid.reverse-layout {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.sensor-details h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.3;
+  margin-bottom: 12px;
+}
+
+.sensor-image {
+  display: flex;
+  justify-content: center;
+}
+
+.rounded-circle-img {
+  border-radius: 50%;
+  object-fit: cover;
+  width: 100%;
+  max-width: 380px;
+  height: auto;
+}
+
+.bullet-list-styled li {
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+.yellow-link {
+  color: #d97700;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.sensor-footer-text {
+  font-size: 13px;
+  color: #555555;
+  line-height: 1.5;
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+/* Responsive Handling */
+@media (max-width: 850px) {
+  .sensor-tabs-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .sensor-content-grid,
+  .sensor-content-grid.reverse-layout {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   Guides Footer Block (Exact Reference Alignment)
+   ========================================== */
+
+.gs-guides-footer-block {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f7f7f7;
+  padding: 40px 50px;
+  border-radius: 16px;
+  margin-top: 40px;
+  gap: 40px;
+}
+
+.gs-guides-links {
+  flex: 1;
+  max-width: 480px;
+}
+
+.guides-heading {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.4;
+  margin-bottom: 24px;
+}
+
+.guide-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guide-links-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+.guide-links-list li:last-child {
+  margin-bottom: 0;
+}
+
+.circle-letter {
+  width: 24px;
+  height: 24px;
+  background-color: #000000;
+  color: #ffffff;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.guide-links-list a {
+  color: #d97700;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+/* Big Yellow Banner Box (Vertical Card) */
+.gs-guides-yellow-video-card {
+  background-color: #ffdc00;
+  border-radius: 16px;
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 320px;
+  flex-shrink: 0;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.gs-guides-yellow-video-card:hover {
+  transform: translateY(-3px);
+}
+
+.yellow-card-circle-sensor {
+  position: relative;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.sensor-thumb-img {
+  width: 75%;
+  height: 75%;
+  object-fit: contain;
+}
+
+.play-icon-overlay {
+  position: absolute;
+  bottom: 5px;
+  font-size: 14px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+  color: #111111;
+}
+
+.yellow-card-text {
+  font-size: 16px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.35;
+  margin: 0;
+}
+
+@media (max-width: 850px) {
+  .gs-guides-footer-block {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .gs-guides-yellow-video-card {
+    width: 100%;
+  }
+}
+
+
+.headernav{
+    margin-top:10px;
+    margin-left:100px;
+    margin-bottom:10px;
+}

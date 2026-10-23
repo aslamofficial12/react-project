@@ -62,7 +62,7 @@ export default function LibreLinkUpPage() {
 
     <div className="headernav">
             <nav className="breadcrumb">
-                <span>🏠</span> &gt; <span>Libre App</span>
+                <span>🏠</span> &gt; <span>LibreLinkUpPage</span>
             </nav>
             </div>
      

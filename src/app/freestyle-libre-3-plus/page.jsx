@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import './style.css';
+import SubscribeForm from '../../components/SubscribeForm';
 
 export default function Libre3PlusPage() {
   const [activeGettingStartedTab, setActiveGettingStartedTab] = useState(0);
@@ -103,12 +104,20 @@ export default function Libre3PlusPage() {
   ];
 
   return (
+
+
+    <>
+    <div className="headernav">
+            <nav className="breadcrumb">
+                <span>🏠</span> &gt; <span>Libre App</span>
+            </nav>
+            </div>
     <main className="libre3plus-page">
       {/* 1. Hero Banner */}
       <section className="l3p-hero-banner">
         <div className="l3p-hero-bg">
           <Image
-            src="/ADC_Photo_FSL3_Sensor_Hand.webp"
+            src="/Hero-image.webp"
             alt="FreeStyle Libre 3 Plus"
             fill
             priority
@@ -310,12 +319,14 @@ export default function Libre3PlusPage() {
       </section>
 
       {/* 7. Which Libre Sensor is Right for Me? (Tabbed Comparison) */}
+   {/* Which Libre Sensor is Right for Me? (Tabbed Comparison) */}
       <section className="l3p-container l3p-which-sensor-section">
         <h2 className="section-title text-center">Which Libre sensor is right for me?</h2>
         <p className="section-desc text-center">
           The Libre 2 Plus sensor and Libre 3 Plus sensor are both available in Australia. Use this easy guide to understand which sensor is right for you.
         </p>
 
+        {/* Tab Selection Bar */}
         <div className="sensor-tabs-bar">
           <button
             className={`sensor-tab-btn ${activeSensorTab === 0 ? 'active' : ''}`}
@@ -331,32 +342,77 @@ export default function Libre3PlusPage() {
           </button>
         </div>
 
-        <div className="sensor-tab-content">
-          <div className="sensor-content-grid">
-            <div className="sensor-details">
-              <h3>Available via NDSS subsidy for people living with type 1 diabetes</h3>
-              <div className="yellow-line-short"></div>
-              <ul className="bullet-list-styled">
-                <li>Available as a standalone sensor (no AID required) with the all-new Libre app¹²...</li>
-                <li>... or pair with your chosen automated insulin delivery (AID) system: myLoop System or Omnipod 5 System.</li>
-                <li>Not compatible with FreeStyle LibreLink¹².</li>
-                <li>Not available for purchase via FreeStyleLibre.com.au</li>
-              </ul>
+        {/* Tab 0: FreeStyle Libre 3 Plus Sensor */}
+        {activeSensorTab === 0 && (
+          <div className="sensor-tab-content">
+            <div className="sensor-content-grid">
+              <div className="sensor-details">
+                <h3>Available via NDSS subsidy for people living with type 1 diabetes</h3>
+                <div className="yellow-line-short"></div>
+                <ul className="bullet-list-styled">
+                  <li>
+                    Available as a standalone sensor (no AID required) with the all-new Libre app<sup>12</sup>...
+                  </li>
+                  <li>
+                    ... or pair with your chosen automated insulin delivery (AID) system: myLoop System or Omnipod 5 System.
+                  </li>
+                  <li>
+                    Not compatible with FreeStyle LibreLink<sup>12</sup>.
+                  </li>
+                  <li>
+                    Not available for purchase via FreeStyleLibre.com.au
+                  </li>
+                </ul>
+              </div>
+              <div className="sensor-image">
+                <Image
+                  src="/Which_Sensor_L3P_540x540.webp"
+                  alt="FreeStyle Libre 3 Plus Sensor User"
+                  width={380}
+                  height={380}
+                  className="rounded-circle-img"
+                />
+              </div>
             </div>
-            <div className="sensor-image">
-              <Image
-                src="/Which_Sensor_L3P_540x540.webp"
-                alt="Which Sensor Choice"
-                width={320}
-                height={320}
-                className="rounded-circle-img"
-              />
+            <p className="sensor-footer-text text-center">
+              For people who prefer to use a reader, do not have a smartphone compatible with new Libre app, or are scanning the NovoPen® 6, the Libre 2 Plus sensor will remain available. (<a href="#compatibility" className="yellow-link">check your compatibility</a>).
+            </p>
+          </div>
+        )}
+
+        {/* Tab 1: FreeStyle Libre 2 Plus Sensor */}
+        {activeSensorTab === 1 && (
+          <div className="sensor-tab-content">
+            <div className="sensor-content-grid reverse-layout">
+              <div className="sensor-image">
+                <Image
+                  src="/Which_Sensor_L3P_540x540.webp" /* Or use Libre 2 Plus image if available */
+                  alt="FreeStyle Libre 2 Plus Sensor User"
+                  width={380}
+                  height={380}
+                  className="rounded-circle-img"
+                />
+              </div>
+              <div className="sensor-details">
+                <h3>
+                  Available for people living with type 2 diabetes, or for people living with type 1 diabetes who are unable to use Libre 3 Plus sensors
+                </h3>
+                <div className="yellow-line-short"></div>
+                <ul className="bullet-list-styled">
+                  <li>
+                    Available for purchase <a href="#purchase" className="yellow-link">here</a> for people living with type 2 diabetes.
+                  </li>
+                  <li>
+                    Works with the all-new Libre app<sup>12</sup>, or FreeStyle LibreLink<sup>12</sup> if your phone is not yet compatible with Libre app.
+                  </li>
+                  <li>
+                    Available via NDSS type 1 CGM subsidy for people who prefer to use a reader, do not have a smartphone compatible with the new Libre app, or are scanning the NovoPen® 6.
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
-          <p className="sensor-footer-text text-center">
-            For people who prefer to use a reader, do not have a smartphone compatible with new Libre app, or are scanning the NovoPen® 6, the Libre 2 Plus sensor will remain available. (<a href="#compatibility">check your compatibility</a>).
-          </p>
-        </div>
+        )}
       </section>
 
       {/* 8. Getting Started with Libre 3 Plus (Interactive Tabbed Steps) */}
@@ -404,24 +460,51 @@ export default function Libre3PlusPage() {
           </div>
 
           {/* Guide Banner Block */}
-          <div className="gs-guides-footer-block">
-            <div className="gs-guides-links">
-              <p className="guides-heading">
-                These guides and links will help you have the best experience with the Libre 3 Plus sensor
-              </p>
-              <ul className="guide-links-list">
-                <li><span className="circle-letter">A</span> <a href="#guide">The Complete Guide to Libre 3 Plus</a></li>
-                <li><span className="circle-letter">B</span> <a href="#adhesion">Sensor Adhesion Guide</a></li>
-                <li><span className="circle-letter">C</span> <a href="#support">Libre Product Support</a></li>
-              </ul>
-            </div>
-            <div className="gs-guides-yellow-video-card">
-              <div className="play-sensor-badge">
-                <Image src="/SensorApp_Video_Thumb_1.webp" alt="Sensor Video" width={90} height={90} />
-              </div>
-              <p>How do I apply and remove my FreeStyle Libre 3 Plus sensor?</p>
-            </div>
-          </div>
+         
+
+<div className="gs-guides-footer-block">
+  <div className="gs-guides-links">
+    <p className="guides-heading">
+      These guides and links will help you have the best experience with the Libre 3 Plus sensor
+    </p>
+    <ul className="guide-links-list">
+      <li>
+        <span className="circle-letter">A</span>
+        <a href="#guide">The Complete Guide to Libre 3 Plus</a>
+      </li>
+      <li>
+        <span className="circle-letter">B</span>
+        <a href="#adhesion">Sensor Adhesion Guide</a>
+      </li>
+      <li>
+        <span className="circle-letter">C</span>
+        <a href="#support">Libre Product Support</a>
+      </li>
+    </ul>
+  </div>
+
+  {/* Large Yellow Video Banner Box */}
+  <div className="gs-guides-yellow-video-card">
+    <div className="yellow-card-circle-sensor">
+      <Image
+        src="/ADC_Photo_FSL3_Sensor_Hand.webp" /* Or /SensorApp_Video_Thumb_1.webp */
+        alt="Sensor Video Thumbnail"
+        width={100}
+        height={100}
+        className="sensor-thumb-img"
+      />
+      <span className="play-icon-overlay">▶</span>
+    </div>
+    <p className="yellow-card-text">
+      How do I apply and remove my FreeStyle Libre 3 Plus sensor?
+    </p>
+  </div>
+</div>
+
+
+
+
+         
         </div>
       </section>
 
@@ -525,6 +608,9 @@ export default function Libre3PlusPage() {
           <p className="footer-version-code">ADC-2694371 v5.0</p>
         </div>
       </footer>
+      <>
+      <SubscribeForm /></>
     </main>
+    </>
   );
 }
