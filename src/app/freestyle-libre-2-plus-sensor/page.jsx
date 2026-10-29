@@ -31,30 +31,36 @@ export default function Page() {
   };
 
 
+// UPDATED: Fetch product through the Next.js API route to avoid browser CORS issues.
 useEffect(() => {
   async function fetchProduct() {
     try {
+      // UPDATED: Use the local Next.js API route instead of calling the backend directly.
       const url =
-        "http://192.168.31.180:8081/api/get-product?productKey=freeStyle-libre-2-plus-sensor";
+        "/api/product?productKey=freeStyle-libre-2-plus-sensor";
 
       console.log("1. API URL:", url);
 
       const response = await fetch(url);
-
-      console.log("2. Response status:", response.status);
-
       const data = await response.json();
 
+      console.log("2. Response status:", response.status);
       console.log("3. API response data:", data);
 
-      const productData = data.results?.[0];
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to fetch product");
+      }
 
-      if (!productData) {
-        console.error("Product not found in results:", data);
+      // UPDATED: This API returns the product object directly, not data.results[0].
+      const productData = data;
+
+      if (!productData?.masterData?.current) {
+        console.error("Product data is missing or has an unexpected shape:", data);
         return;
       }
 
-      setProduct(productData);
+      // UPDATED: Use the existing state setter name: setProducts.
+      setProducts(productData);
     } catch (error) {
       console.error("API fetch error:", error);
     }
@@ -71,7 +77,9 @@ useEffect(() => {
       <div className="container">
         <nav className="breadcrumb">
           <a href="#">🏠</a> <span>&gt;</span> <span>FreeStyle Libre 2 Plus Sensor</span>
-          <h1> welcome {products?.masterData.current.name["en-US"]}</h1>
+          {/* UPDATED: API response uses the en-GB locale. */}
+          <h1> welcome {products?.masterData?.current?.name?.["en-GB"]}</h1>
+          
         </nav>
 
         <section className="hero-header text-center">
@@ -108,10 +116,22 @@ useEffect(() => {
           </div>
 
           <div className="product-details">
-            <h2>FreeStyle Libre 2 Plus Sensor</h2>
-            <div className="price">$102.00</div>
+            {/* UPDATED: Product title now comes from the API. */}
+            <h2>{products?.masterData?.current?.name?.["en-GB"] || "FreeStyle Libre 2 Plus Sensor 2"}</h2>
+
+            {/* UPDATED: Price now comes from the API response (amount is stored in cents). */}
+            <div className="price">
+              {(() => {
+                const price = products?.masterData?.current?.masterVariant?.prices?.[0];
+                return price
+                  ? `${(price.value.centAmount / 100).toFixed(2)} ${price.value.currencyCode}`
+                  : "Price unavailable";
+              })()}
+            </div>
+
+            {/* UPDATED: Description now comes from the API. */}
             <p className="description">
-              <strong>Description: The Libre 2 Plus sensor provides up to 15-days of continuous glucose monitoring, with zero finger pricks!<sup>10</sup></strong>
+              {products?.masterData?.current?.description?.["en-GB"] || "Loading product description..."}
             </p>
             <ul className="feature-bullets">
               <li>Accurate<sup>76</sup> real-time glucose readings delivered straight to your smartphone<sup>55</sup></li>

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import "./LoginForm.css";
-import SubscribeForm from "./SubscribeForm";
 import { useRouter } from "next/navigation";
 
 export default function LoginForm() {
@@ -10,151 +9,139 @@ export default function LoginForm() {
   const [pass, setPass] = useState("");
   const [show, setShow] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   const router = useRouter();
-  
 
   function handleShow() {
-    setShow(!show);
+    setShow((prev) => !prev);
   }
 
   async function handleSubmit(e) {
     e.preventDefault();
 
-    if (!name || !pass) {
-      alert("Please fill all fields");
+    setError("");
+
+    if (!name.trim() || !pass) {
+      setError("Please enter username and password.");
       return;
     }
-
-
-
-    const credentials = btoa(`${name.trim()}:${pass}`);
 
     setLoading(true);
 
     try {
-      const response = await fetch("/api/user", {
-        method: "GET",
-        headers: {
-          Authorization: `Basic ${credentials}`,
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await fetch(
+        "/api/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: name.trim(),
+            password: pass,
+          }),
+        }
+      );
 
-      if (response.ok) {
-        // throw new Error("Login Failed");
-     
-       
-        //  router.push("/");
-        router.push(`/?name=${name}&pass=${pass}`);
-         
-         return;
-      }
+      const data = await response.json().catch(() => ({}));
 
       if (!response.ok) {
-        alert("Invalid Username or Password");
+        setError(
+          data.message || "Invalid username or password."
+        );
         return;
       }
 
-      
-      const data = await response.json();
-      console.log(data);
+      if (!data.token) {
+        setError("Login response did not contain a token.");
+        return;
+      }
 
-     
-      alert("Login Successfully");
+      // Store the token securely on the server in a production app.
+      // Do not put the password or token in the URL.
+      sessionStorage.setItem("authToken", data.token);
 
-
-      router.push(`/LoginSuccess?name=${name}`);
-
-
-      console.log({
-        name,
-        password: pass,
-      });
-
-    } catch (error) {   
-      console.log(error);
-    } finally {      
+      router.push("/home");
+    } catch (error) {
+      console.error("Login request failed:", error);
+      setError(
+        "Unable to connect to the server. Please try again."
+      );
+    } finally {
       setLoading(false);
     }
   }
 
   return (
-    <>
-      <div className="form-container">
-        <form
-          className="login-form"
-          onSubmit={handleSubmit}
+    <div className="form-container">
+      <form className="login-form" onSubmit={handleSubmit}>
+        <h1
+          style={{
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: "50px",
+          }}
         >
-          <h1
-            style={{
-              textAlign: "center",
-              fontWeight: "bold",
-              fontSize: "50px",
-            }}
-          >
-            Login
-          </h1>
+          Login
+        </h1>
 
-          <label>Name</label>
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          placeholder="Enter your username"
+          value={name}
+          autoComplete="username"
+          style={{
+            borderRadius: "10px",
+            border: "solid 1px grey",
+          }}
+          onChange={(e) => setName(e.target.value)}
+        />
 
+        <label htmlFor="password">Password</label>
+
+        <div className="password-box">
           <input
-            type="text"
-            placeholder="Enter your name"
-            value={name}
-            style={{ borderRadius: "10px", border: "solid 1px grey" }}
-            onChange={(e) => setName(e.target.value)}
+            id="password"
+            type={show ? "text" : "password"}
+            placeholder="Enter your password"
+            value={pass}
+            autoComplete="current-password"
+            style={{
+              border: "solid 1px grey",
+              borderRadius: "10px",
+            }}
+            onChange={(e) => setPass(e.target.value)}
           />
 
-          <label>Password</label>
-
-          <div className="password-box">
-            <input
-              type={show ? "text" : "password"}
-              placeholder="Enter your password"
-              value={pass}
-              style={{ border: "solid 1px grey", borderRadius: "10px" }}
-              onChange={(e) => setPass(e.target.value)}
-            />
-
-            <span>
-              <a
-                href="#"
-                style={{
-                  fontWeight: "10px",
-                  fontSize: "10px",
-                  color: "#bd9a00",
-                  fontStyle: "-moz-initial",
-                }}
-              >
-                forget your password?
-              </a>
-            </span>
-
-            <span
-              className="eye"
-              onClick={handleShow}
-            >
-              {show ? "🙈" : "👁️"}
-            </span>
-          </div>
-
-          {/* ✅ CHANGED: Removed onClick because onSubmit already calls handleSubmit */}
-          <button type="submit" disabled={loading}>
-            {/* ✅ CHANGED: Removed duplicate "Login" text */}
-            {loading ? "Logging in..." : "Login"}
-          </button>
-
-          <hr style={{ color: "grey" }} />
-
-          <a
-            href="http://localhost:3000/registration"
-            style={{ textAlign: "center" }}
+          <button
+            type="button"
+            className="eye"
+            onClick={handleShow}
+            aria-label={show ? "Hide password" : "Show password"}
           >
-            create a new account
-          </a>
-        </form>
-      </div>
-    </>
+            {show ? "Hide" : "Show"}
+          </button>
+        </div>
+
+        {error && (
+          <p role="alert" className="login-error">
+            {error}
+          </p>
+        )}
+
+        <button type="submit" disabled={loading}>
+          {loading ? "Logging in..." : "Login"}
+        </button>
+
+        <hr style={{ color: "grey" }} />
+
+        <a href="/registration" style={{ textAlign: "center" }}>
+          Create a new account
+        </a>
+      </form>
+    </div>
   );
 }
