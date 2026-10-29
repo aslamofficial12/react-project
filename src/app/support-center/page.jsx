@@ -7,7 +7,10 @@ import './style.css';
 
 // ------------------- 1. PRODUCT MANUALS DATA -------------------
 const categoryData = {
-  "Libre app": {
+
+
+
+"Libre app": {
     title: "Libre app",
     sup: "12",
     items: [
@@ -16,7 +19,8 @@ const categoryData = {
         text: "Check to ensure your phone is compatible with Libre app",
         linkText: "Check Compatibility",
         linkHref: "#compatibility",
-        type: "qr"
+        type: "qr",
+        imgUrl: "Mobile_compatibility_QR_-_Libre_app.webp"
       },
       {
         title: "Libre app manual for Libre 2 Plus sensor users",
@@ -25,7 +29,8 @@ const categoryData = {
         linkHref: "#manual-2",
         type: "manual",
         manualTitle: "App User's Manual",
-        manualSub: "For use with FreeStyle Libre 2 sensor and FreeStyle Libre 2 Plus sensor"
+        manualSub: "For use with FreeStyle Libre 2 sensor and FreeStyle Libre 2 Plus sensor",
+        imgUrl: "Libre2Plus_Libre_ap_Manual.webp"
       },
       {
         title: "Libre app manual for Libre 3 Plus sensor users",
@@ -34,7 +39,8 @@ const categoryData = {
         linkHref: "#manual-3",
         type: "manual",
         manualTitle: "App User's Manual",
-        manualSub: "For use with FreeStyle Libre 3 sensor, FreeStyle Libre 3 Plus sensor and Libre Select sensor"
+        manualSub: "For use with FreeStyle Libre 3 sensor, FreeStyle Libre 3 Plus sensor and Libre Select sensor",
+        imgUrl: "Libre3Plus_Libre_ap_Manual.webp"
       },
       {
         title: "Video Guides",
@@ -42,7 +48,7 @@ const categoryData = {
         linkText: "Watch Now",
         linkHref: "#videos",
         type: "video",
-        imgUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80"
+        imgUrl: "LibreApp_SupportImage1.webp"
       },
       {
         title: "Frequently Asked Questions",
@@ -50,66 +56,85 @@ const categoryData = {
         linkText: "More Details",
         linkHref: "#faq",
         type: "faq",
-        imgUrl: "https://images.unsplash.com/photo-1581579438747-1dc8d1e05d9e?auto=format&fit=crop&w=400&q=80"
+        imgUrl: "thumbnails_1200x1200-FAQ_1.webp"
       },
       {
         title: "Libre app information page",
         text: "Your go to source for everything about the Libre app",
         linkText: "More Details",
         linkHref: "#app-info",
-        type: "phone"
+        type: "phone",
+        imgUrl: "Libre_app_lockup.webp"
       }
     ]
   },
-  "FreeStyle Libre 2 Plus sensor": {
-    title: "FreeStyle Libre 2 Plus Sensor",
-    sup: "",
-    items: [
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ "FreeStyle Libre 2 Plus sensor": {
+    "title": "FreeStyle Libre 2 Plus Sensor",
+    "sup": "",
+    "items": [
       {
-        title: "Your Complete Guide to FreeStyle Libre 2 Plus",
-        text: "An essential resource for all FreeStyle Libre 2 Plus users.",
-        linkText: "More Details",
-        linkHref: "#guide",
-        type: "promo-card-1",
-        cardTitle: "Your Complete Guide to FreeStyle Libre 2 Plus"
+        "title": "Your Complete Guide to FreeStyle Libre 2 Plus",
+        "text": "An essential resource for all FreeStyle Libre 2 Plus users.",
+        "linkText": "More Details",
+        "linkHref": "#guide",
+        "type": "promo-card-1",
+        "cardTitle": "Your Complete Guide to FreeStyle Libre 2 Plus",
+        "imgUrl": "Libre3Plus_Libre_ap_Manual.webp"
       },
       {
-        title: "FreeStyle Libre 2 Plus Sensor Adhesion Guide",
-        text: "Learn how to correctly prepare the skin for sensor application, and tips for keeping your sensor secure.",
-        linkText: "More Details",
-        linkHref: "#adhesion",
-        type: "promo-card-2",
-        cardTitle: "Sensor Adhesion Guide"
+        "title": "FreeStyle Libre 2 Plus Sensor Adhesion Guide",
+        "text": "Learn how to correctly prepare the skin for sensor application, and tips for keeping your sensor secure.",
+        "linkText": "More Details",
+        "linkHref": "#adhesion",
+        "type": "promo-card-2",
+        "cardTitle": "Sensor Adhesion Guide",
+        "imgUrl": "Libre_app_lockup.webp"
       },
       {
-        title: "Video Guides",
-        text: "Our comprehensive library of instructional and informative videos to help you get the most out of the FreeStyle Libre 2 system.",
-        linkText: "Watch Now",
-        linkHref: "#videos",
-        type: "video-thumbnail",
-        imgUrl: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=400&q=80"
+        "title": "Video Guides",
+        "text": "Our comprehensive library of instructional and informative videos to help you get the most out of the FreeStyle Libre 2 system.",
+        "linkText": "Watch Now",
+        "linkHref": "#videos",
+        "type": "video-thumbnail",
+        "imgUrl": "LibreApp_SupportImage1.webp"
       },
       {
-        title: "FreeStyle Libre 2 Plus Important Safety Information",
-        text: "Important information to be aware of when using FreeStyle Libre 2 Plus.",
-        linkText: "More Details",
-        linkHref: "#safety",
-        type: "safety-card"
+        "title": "FreeStyle Libre 2 Plus Important Safety Information",
+        "text": "Important information to be aware of when using FreeStyle Libre 2 Plus.",
+        "linkText": "More Details",
+        "linkHref": "#safety",
+        "type": "safety-card"
       },
       {
-        title: "Frequently Asked Questions",
-        text: "Covering all aspects of FreeStyle Libre 2 Plus, including products, digital health tools, subsidy, special offers and more.",
-        linkText: "More Details",
-        linkHref: "#faq",
-        type: "faq-thumbnail",
-        imgUrl: "https://images.unsplash.com/photo-1581579438747-1dc8d1e05d9e?auto=format&fit=crop&w=400&q=80"
+        "title": "Frequently Asked Questions",
+        "text": "Covering all aspects of FreeStyle Libre 2 Plus, including products, digital health tools, subsidy, special offers and more.",
+        "linkText": "More Details",
+        "linkHref": "#faq",
+        "type": "faq-thumbnail",
+        "imgUrl": "thumbnails_1200x1200-FAQ_1.webp"
       },
       {
-        title: "FreeStyle Libre 2 Plus Sensor Purchase Page",
-        text: "Purchase FreeStyle Libre 2 Plus sensors online.",
-        linkText: "More Details",
-        linkHref: "#purchase",
-        type: "purchase-card"
+        "title": "FreeStyle Libre 2 Plus Sensor Purchase Page",
+        "text": "Purchase FreeStyle Libre 2 Plus sensors online.",
+        "linkText": "More Details",
+        "linkHref": "#purchase",
+        "type": "purchase-card",
+        "imgUrl": "Libre2Plus_Libre_ap_Manual.webp"
       }
     ]
   },

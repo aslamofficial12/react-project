@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./style.css";
 import TestimonialSlider from "../../components/TestimonialSlider/TestimonialSlider";
 import Recommendations from "../../components/Recommendations/Recommendations";
@@ -9,6 +9,7 @@ import SubscribeForm from "../../components/SubscribeForm";
 export default function Page() {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
+  const[products,setProducts]= useState(null);
 
   // Product Image Gallery Slider State with exact filenames
   const images = [
@@ -29,12 +30,48 @@ export default function Page() {
     setQuantity(quantity + 1);
   };
 
+
+useEffect(() => {
+  async function fetchProduct() {
+    try {
+      const url =
+        "http://192.168.31.180:8081/api/get-product?productKey=freeStyle-libre-2-plus-sensor";
+
+      console.log("1. API URL:", url);
+
+      const response = await fetch(url);
+
+      console.log("2. Response status:", response.status);
+
+      const data = await response.json();
+
+      console.log("3. API response data:", data);
+
+      const productData = data.results?.[0];
+
+      if (!productData) {
+        console.error("Product not found in results:", data);
+        return;
+      }
+
+      setProduct(productData);
+    } catch (error) {
+      console.error("API fetch error:", error);
+    }
+  }
+
+  fetchProduct();
+}, []);
   return (
+    <>
+
+
     <main className="libre-page">
       {/* Breadcrumbs & Hero Title */}
       <div className="container">
         <nav className="breadcrumb">
           <a href="#">🏠</a> <span>&gt;</span> <span>FreeStyle Libre 2 Plus Sensor</span>
+          <h1> welcome {products?.masterData.current.name["en-US"]}</h1>
         </nav>
 
         <section className="hero-header text-center">
@@ -510,5 +547,6 @@ export default function Page() {
 
       <SubscribeForm />
     </main>
+    </>
   );
 }

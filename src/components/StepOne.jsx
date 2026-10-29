@@ -1,3 +1,4 @@
+
 export default function StepOne({
   formData,
   handleChange,
@@ -6,12 +7,9 @@ export default function StepOne({
 }) {
   return (
     <div className="card">
-
       <h3>Step 1</h3>
-
       <h1>Personal Info</h1>
 
-      {/* First Name */}
       <input
         type="text"
         name="firstName"
@@ -26,7 +24,6 @@ export default function StepOne({
         </p>
       )}
 
-      {/* Last Name */}
       <input
         type="text"
         name="lastName"
@@ -41,10 +38,9 @@ export default function StepOne({
         </p>
       )}
 
-      <button onClick={next}>
+      <button type="button" onClick={next}>
         Next →
       </button>
-
     </div>
   );
 }

@@ -1,0 +1,439 @@
+/* ==========================================
+   mylife Loop System Page Styles
+   ========================================== */
+
+.mylife-page {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #111111;
+  background-color: #ffffff;
+}
+
+.mylife-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-right { text-align: right; }
+.margin-top-lg { margin-top: 32px; }
+
+.yellow-line-short {
+  width: 40px;
+  height: 3px;
+  background-color: #ffcc00;
+  margin: 10px 0 16px 0;
+}
+
+.yellow-link {
+  color: #d97700;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: underline;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.btn-dark.pill-btn {
+  background-color: #1a222c;
+  color: #ffffff;
+  padding: 11px 26px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-dark.pill-btn:hover {
+  background-color: #000000;
+}
+
+/* Breadcrumb */
+.mylife-breadcrumb {
+  font-size: 12px;
+  color: #666666;
+  padding: 16px 0;
+}
+
+.mylife-breadcrumb span {
+  color: #333333;
+}
+
+/* 1. Hero Section */
+.mylife-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background-color: #e5e5e5;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.mylife-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* Circle Overlay Box with Yellow Butterfly Ornament */
+.mylife-hero-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -80px;
+  width: 520px;
+  height: 520px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mylife-hero-content {
+  width: 310px;
+  padding-right: 40px;
+}
+
+.mylife-hero-content h1 {
+  font-size: 28px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.hero-subtext {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333333;
+  margin: 0;
+}
+
+.yellow-butterfly-overlay {
+  position: absolute;
+  bottom: -20px;
+  left: 120px;
+  z-index: 3;
+}
+
+.butterfly-img {
+  object-fit: contain;
+}
+
+/* 2. AID Intro Section */
+.aid-intro-section {
+  margin-bottom: 60px;
+  padding-left: 280px; /* Offset to align with circle card bottom */
+}
+
+.aid-intro-content h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  margin-bottom: 8px;
+}
+
+.aid-intro-content p {
+  font-size: 15px;
+  color: #444444;
+  line-height: 1.6;
+  max-width: 600px;
+}
+
+/* 3. Single-App Setup Section */
+.single-app-section {
+  margin-bottom: 80px;
+}
+
+.section-title {
+  font-size: 30px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.25;
+  margin-bottom: 40px;
+}
+
+.single-app-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.bullet-list-styled {
+  padding-left: 20px;
+  margin-bottom: 24px;
+}
+
+.bullet-list-styled li {
+  font-size: 14px;
+  color: #333333;
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.support-links-group {
+  margin-top: 20px;
+}
+
+.single-app-diagram {
+  display: flex;
+  justify-content: center;
+}
+
+.diagram-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* 4. Subsidy Access Section */
+.subsidy-access-section {
+  margin-bottom: 80px;
+}
+
+.subsidy-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 50px;
+  align-items: center;
+}
+
+.rounded-card-img {
+  border-radius: 12px;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+}
+
+.subsidy-block h3 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.subsidy-block p {
+  font-size: 14px;
+  color: #444444;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+/* 5. Legal Disclaimers Footer */
+.footer-disclaimers {
+  background-color: #ffffff;
+  padding: 40px 20px 60px 20px;
+  font-size: 11px;
+  color: #666666;
+  line-height: 1.6;
+  border-top: 1px solid #e0e0e0;
+}
+
+.footer-disclaimer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.version-number-text {
+  font-weight: 700;
+  color: #111111;
+  margin-bottom: 12px;
+}
+
+.footer-disclaimers p {
+  margin-bottom: 10px;
+}
+
+.footer-version-code {
+  font-weight: 700;
+  color: #333333;
+  margin-top: 20px;
+}
+
+/* Responsive Handling */
+@media (max-width: 900px) {
+  .aid-intro-section {
+    padding-left: 0;
+  }
+
+  .single-app-grid,
+  .subsidy-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .mylife-hero-banner {
+    height: 380px;
+  }
+
+  .mylife-hero-circle {
+    width: 380px;
+    height: 380px;
+    left: -40px;
+  }
+
+  .yellow-butterfly-overlay {
+    left: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   Hero & AID Intro Section (Pixel-Perfect Fix)
+   ========================================== */
+
+.mylife-hero-section {
+  position: relative;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.mylife-hero-banner {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  background-color: #e5e5e5;
+  overflow: hidden; /* Prevents hero image overflow */
+}
+
+.mylife-hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-img {
+  object-fit: cover;
+  object-position: center right;
+}
+
+/* Fixed Circle Overlay - Shifted away from left edge to avoid crop */
+.mylife-hero-circle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 5%; /* Percentage offset keeps circle fully visible on all screens */
+  width: 440px;
+  height: 440px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.mylife-hero-content {
+  width: 300px;
+  text-align: left;
+  padding: 0 10px;
+}
+
+.mylife-hero-content h1 {
+  font-size: 24px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.25;
+  margin-bottom: 12px;
+}
+
+.hero-subtext {
+  font-size: 15px;
+  font-weight: 800;
+  color: #111111;
+  margin: 0;
+}
+
+/* Lower Section with Yellow Butterfly & Text */
+.hero-bottom-row {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 30px;
+  align-items: flex-start;
+  padding-top: 10px;
+  position: relative;
+  z-index: 3;
+}
+
+/* Butterfly Overlap Fix */
+.butterfly-wrapper {
+  position: relative;
+  margin-top: -65px; /* Pulls butterfly graphic up to cross the banner edge seamlessly */
+  display: flex;
+  justify-content: center;
+}
+
+.butterfly-img {
+  object-fit: contain;
+}
+
+.aid-intro-content {
+  padding-top: 15px;
+}
+
+.aid-intro-content h2 {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111111;
+  line-height: 1.3;
+  margin-bottom: 10px;
+}
+
+.aid-intro-content p {
+  font-size: 14.5px;
+  color: #444444;
+  line-height: 1.6;
+  max-width: 650px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 900px) {
+  .mylife-hero-banner {
+    height: 380px;
+  }
+
+  .mylife-hero-circle {
+    left: 10px;
+    width: 340px;
+    height: 340px;
+  }
+
+  .mylife-hero-content h1 {
+    font-size: 18px;
+  }
+
+  .hero-bottom-row {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .butterfly-wrapper {
+    margin-top: -45px;
+  }
+}

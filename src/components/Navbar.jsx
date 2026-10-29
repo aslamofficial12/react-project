@@ -108,9 +108,9 @@ export default function Navbar() {
 </button> */}
 
 
-<Link href="/freestyle-libre-3-plus" className="ndss-btn">
-  Via NDSS subsidy
-</Link>
+                      <Link href="/freestyle-libre-3-plus" className="ndss-btn">
+                        Via NDSS subsidy
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -225,19 +225,19 @@ export default function Navbar() {
                 <div className="discover-column">
                   <h4 className="discover-title">Apps And Connected Care</h4>
                   <ul className="discover-links">
-                    <li><a href="#">Libre App</a></li>
-                    <li><a href="#">LibreLinkUp</a></li>
-                    <li><a href="#">LibreView</a></li>
-                    <li><a href="#">FreeStyle LibreLink</a></li>
+                    <li><a href="/libreapp">Libre App</a></li>
+                    <li><a href="/LibreLinkUpPage">LibreLinkUp</a></li>
+                    <li><a href="/libreview">LibreView</a></li>
+                    <li><a href="/freestylelibrelink">FreeStyle LibreLink</a></li>
                   </ul>
                 </div>
 
                 <div className="discover-column">
                   <h4 className="discover-title">Partnerships</h4>
                   <ul className="discover-links">
-                    <li><a href="#">Pair Libre 3 Plus With The MyLoop System</a></li>
-                    <li><a href="#">Omnipod® 5 Automated Insulin Delivery System (AID)</a></li>
-                    <li><a href="#">NovoPen® 6 Smart Insulin Pen</a></li>
+                    <li><a href="/myloop-partnership">Pair Libre 3 Plus With The MyLoop System</a></li>
+                    <li><a href="/omnipod-partnership">Omnipod® 5 Automated Insulin Delivery System (AID)</a></li>
+                    <li><a href="/novopen">NovoPen® 6 Smart Insulin Pen</a></li>
                   </ul>
                 </div>
 
@@ -256,7 +256,7 @@ export default function Navbar() {
                 <div className="product-support-column">
                   <h4 className="product-support-title">Product Info</h4>
                   <ul className="product-support-links">
-                    <li><a href="#">Product Info And Manuals</a></li>
+                    <li><a href="/support-center">Product Info And Manuals</a></li>
                     <li><a href="#">FAQs</a></li>
                     <li><a href="#">Video Guides</a></li>
                     <li><a href="#">Libre 2 Plus Mobile Compatibility</a></li>
@@ -269,7 +269,7 @@ export default function Navbar() {
                 <div className="product-support-column">
                   <h4 className="product-support-title">Customer Service</h4>
                   <ul className="product-support-links">
-                    <li><a href="#">Contact Support</a></li>
+                    <li><a href="/Contact-us">Contact Support</a></li>
                     <li><a href="#">Track Your Order</a></li>
                     <li><a href="#">Safety Information</a></li>
                     <li><a href="#">Sensor Replacement Request</a></li>
@@ -286,10 +286,10 @@ export default function Navbar() {
 
             <div className="dropdown libre3-dropdown-menu">
               <ul className="dropdown-links-list">
-                <li><a href="#">FreeStyle Libre 3 Plus Sensor</a></li>
-                <li><a href="#">Pair Libre 3 Plus With The Omnipod® 5 Automated Insulin Delivery System (AID)</a></li>
-                <li><a href="#">Pair Libre 3 Plus With The Mylife Loop System</a></li>
-                <li><a href="#">Libre 3 Plus Mobile Compatibility</a></li>
+                <li><a href="/freestyle-libre-3-plus">FreeStyle Libre 3 Plus Sensor</a></li>
+                <li><a href="/omnipod-partnership">Pair Libre 3 Plus With The Omnipod® 5 Automated Insulin Delivery System (AID)</a></li>
+                <li><a href="/myloop-partnership">Pair Libre 3 Plus With The Mylife Loop System</a></li>
+                <li><a href="/Mobile-Compatibility">Libre 3 Plus Mobile Compatibility</a></li>
               </ul>
             </div>
           </li>

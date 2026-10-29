@@ -1,0 +1,450 @@
+.contact-page-container {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #222;
+  background-color: #fff;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* Header */
+.contact-header {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.title-area h1 {
+  font-size: 2.2rem;
+  font-weight: 400;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.yellow-underline {
+  width: 35px;
+  height: 3px;
+  background-color: #fdb813;
+}
+
+.hero-image-wrapper {
+  border-radius: 50% / 40%;
+  overflow: hidden;
+  max-width: 380px;
+}
+
+.hero-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Sensor Support Banner */
+.sensor-support-section {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.sensor-card {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  gap: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sensor-card::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  background: radial-gradient(circle, #fffdf0 0%, #fff 70%);
+  z-index: 1;
+}
+
+.sensor-illustration {
+  z-index: 2;
+  flex-shrink: 0;
+}
+
+.sensor-info {
+  z-index: 2;
+}
+
+.sensor-info h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.small-yellow-underline {
+  width: 25px;
+  height: 2px;
+  background-color: #fdb813;
+  margin-bottom: 12px;
+}
+
+.sensor-info p {
+  font-size: 0.95rem;
+  color: #555;
+  line-align: 1.5;
+  margin-bottom: 20px;
+}
+
+.submit-request-btn {
+  background-color: #1a1a1a;
+  color: #fff;
+  border: none;
+  padding: 10px 22px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.submit-request-btn:hover {
+  background-color: #333;
+}
+
+/* We're here to help Section */
+.help-section {
+  text-align: center;
+  max-width: 900px;
+  margin: 60px auto 40px;
+  padding: 0 20px;
+}
+
+.help-section h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.help-section .small-yellow-underline {
+  margin: 0 auto 12px;
+}
+
+.help-subtitle {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+.help-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.help-card {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 25px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+}
+
+.card-icon-circle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.dot-icon {
+  font-size: 1.1rem;
+}
+
+.help-card h3 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: #666;
+  line-align: 1.4;
+  margin-bottom: 16px;
+}
+
+.card-contact-info {
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.card-contact-info a {
+  color: #f36f21;
+  text-decoration: none;
+}
+
+.phone-number {
+  color: #f36f21;
+  font-weight: 600;
+}
+
+/* Form Section */
+.form-section-wrapper {
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.form-container {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding: 40px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-header h2 {
+  font-size: 1.6rem;
+  color: #2b4c7e;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.form-header p {
+  color: #555;
+  font-size: 0.9rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+}
+
+.form-row.three-cols {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+}
+
+.form-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  width: 100%;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #111;
+  margin-bottom: 6px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1px solid #b5b5b5;
+  border-radius: 3px;
+  padding: 10px;
+  font-size: 0.9rem;
+  background-color: #fff;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #2b4c7e;
+}
+
+.file-upload-box {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  border: 1px dashed #aaa;
+  padding: 10px;
+  border-radius: 4px;
+  background: #fafafa;
+}
+
+.upload-btn {
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 6px 14px;
+  border-radius: 3px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.drop-text {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* reCAPTCHA Mock */
+.recaptcha-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  border: 1px solid #c3c3c3;
+  padding: 12px 16px;
+  border-radius: 3px;
+  max-width: 320px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.recaptcha-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.65rem;
+  color: #555;
+}
+
+.recaptcha-spinner {
+  font-size: 1.1rem;
+  color: #4285f4;
+}
+
+.policy-label {
+  font-weight: normal;
+  color: #333;
+}
+
+.privacy-link {
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+.form-submit-wrapper {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.submit-btn {
+  background-color: #f25c33;
+  color: white;
+  border: none;
+  padding: 12px 60px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+}
+
+.submit-btn:hover {
+  background-color: #e04e25;
+}
+
+.form-footer-version {
+  text-align: right;
+  font-size: 0.75rem;
+  color: #888;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .form-row, .form-row.three-cols {
+    flex-direction: column;
+    display: flex;
+  }
+}
+
+
+
+
+/* Header / Hero Section */
+.contact-header {
+  padding: 50px 20px;
+  max-width: 900px; /* Aligned with your sensor card and form width */
+  margin: 0 auto;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.title-area h1 {
+  font-size: 2.4rem;
+  font-weight: 400;
+  color: #111;
+  margin-bottom: 8px;
+}
+
+.yellow-underline {
+  width: 35px;
+  height: 3px;
+  background-color: #fdb813;
+}
+
+.hero-image-wrapper {
+  /* Creates the custom curved/oval frame seen in the design */
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  overflow: hidden;
+  width: 320px;
+  height: 250px;
+  flex-shrink: 0;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive fix for mobile screens */
+@media (max-width: 768px) {
+  .header-content {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .yellow-underline {
+    margin: 0 auto;
+  }
+}
