@@ -1,225 +1,141 @@
-.form-container{
-  /* height:100vh; */
-   /* min-height:calc(100vh - 100px); */
-
-   min-height: calc(100vh - 100px);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:white;
+/* Container layout to center the card */
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f9fafb;
 }
 
-
-.login-form{
-  width:450px;
-  padding:50px;
-  /* background:white; */
-  border-radius:10px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
+/* Card-style wrapper matching your .login-form class */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 36px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
-
-.login-form input{
-  padding:12px;
-  font-size:16px;
-}
-
-
-.password-box{
-  position:relative;
-}
-
-
-.password-box input{
-  width:100%;
-}
-
-
-.eye{
-  position:absolute;
-  right:10px;
-  top:10px;
-  cursor:pointer;
-}
-
-
-button{
-  padding:12px;
-  background:black;
-  color:white;
-  border:none;
-  cursor:pointer;
-  border-radius:10px;
-  margin-top:60px;
-}
-
-.lastdiv{
-  padding:60px 30px;
-  background-color:rgb(230, 230, 230);
-}
-.lastdiv p{
-  font-style:initial;
-  font-size:25px;
+/* Professional Heading style */
+.login-form h1 {
   text-align: center;
-  color:rgb(0, 0, 0);
+  font-weight: 700;
+  font-size: 32px !important; /* Overrides inline 50px for better proportions */
+  color: #111827;
+  margin-bottom: 4px;
 }
 
-.footerBox-form{
-  display:flex;
-  justify-content:center;
-  
+/* Labels */
+.login-form label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: -8px;
 }
 
-.footerBox-form{
-    width:100%;
-    margin:0 auto;
-  
+/* Global text/password inputs styling */
+.login-form input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #d1d5db !important;
+  border-radius: 10px !important;
+  font-size: 15px;
+  outline: none;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  box-sizing: border-box;
 }
 
-
-/* First Row */
-
-.footerBox-fields-row{
-  width:100%;
-    display:flex;
-    gap:30px;
-    
-    margin-bottom:30px;
+.login-form input:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
 }
 
-
-/* Name & Email */
-
-.field{
-    flex:1;
-    display:flex;
-    flex-direction:column;
+/* Fixes the password box layout so the Show button fits nicely */
+.password-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
 }
 
-
-.field label{
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:10px;
-    color:#1b2740;
+.password-box input {
+  padding-right: 65px; /* Leaves room for the Show/Hide button */
 }
 
-
-.field input{
-    width:100%;
-    height:50px;
-    padding:0 15px;
-    font-size:16px;
-    border:1px solid #bfbfbf;
-    border-radius:4px;
-    outline:none;
+/* Styled Eye / Show-Hide button matching your .eye class */
+.eye {
+  position: absolute;
+  right: 12px;
+  background: transparent;
+  border: none;
+  color: #6b7280;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
 }
 
-
-.field input:focus{
-    border-color:#000;
+.eye:hover {
+  color: #111827;
 }
 
-
-/* Dropdown */
-
-.form-group{
-    display:flex;
-    flex-direction:column;
-    margin-bottom:30px;
+/* Error message matching your .login-error class */
+.login-error {
+  color: #dc2626;
+  font-size: 13px;
+  margin: 0;
 }
 
-
-.form-group label{
-    font-size:18px;
-    font-weight:600;
-    margin-bottom:10px;
-    color:#1b2740;
+/* Main submit button styling */
+.login-form button[type="submit"] {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  margin-top: 6px;
 }
 
-
-.form-group span{
-    color:red;
+.login-form button[type="submit"]:hover:not(:disabled) {
+  background-color: #000000;
 }
 
-
-.form-group select{
-    width:100%;
-    height:50px;
-    padding:0 15px;
-    font-size:16px;
-    border:1px solid #bfbfbf;
-    border-radius:4px;
-    outline:none;
-    background:white;
+.login-form button[type="submit"]:active:not(:disabled) {
+  transform: scale(0.98);
 }
 
-
-.form-group select:focus{
-    border-color:black;
+.login-form button[type="submit"]:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
 }
 
-
-/* Checkbox */
-
-.tickbox{
-    display:flex;
-    align-items:flex-start;
-    gap:18px;
-    margin-top:20px;
+/* Divider styling */
+.login-form hr {
+  border: none;
+  border-top: 1px solid #e5e7eb;
+  margin: 8px 0;
 }
 
-
-.tickbox input{
-    width:22px;
-    height:22px;
-    margin-top:5px;
-    cursor:pointer;
+/* Signup Link matching your .signup-link class */
+.signup-link {
+  text-align: center;
+  font-size: 14px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 500;
 }
 
-
-.tickbox label{
-    font-size:18px;
-    line-height:1.8;
-    color:#555;
-}
-
-
-.tickbox a{
-    color:#0056d6;
-    text-decoration:none;
-}
-
-
-.tickbox a:hover{
-    text-decoration:underline;
-}
-
-
-/* Button */
-
-.subscribe-btn{
-    display:block;
-    margin:40px auto 0;
-    padding:15px 40px;
-    border:none;
-    border-radius:15px;
-    background:#1d2330;
-    color:white;
-    font-size:22px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-
-.subscribe-btn:hover{
-    background:black;
-}
-
-.main-formbox-container{
-    width:50%;
-    margin:0 auto;
+.signup-link:hover {
+  text-decoration: underline;
 }

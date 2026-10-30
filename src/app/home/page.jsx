@@ -56,7 +56,7 @@ export default function Page() {
             </div>
           </div>
           <div className="cgm-banner-text">
-            <h2>The #1 CGM system worldwide[cite: 1]</h2>
+            <h2>The #1 CGM system worldwide</h2>
             <div className="accent-line-left"></div>
             <p>
               Empower your health journey. Real-time glucose insights, anytime, anywhere, with FreeStyle Libre.

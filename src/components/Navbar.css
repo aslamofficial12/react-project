@@ -1539,3 +1539,82 @@
   background-color: #f8f9fa !important;
   color: #002b66 !important;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* NEW CHANGE: Profile icon wrapper */
+.profile-menu-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* NEW CHANGE: Profile dropdown container */
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  width: 220px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.12);
+  z-index: 9999;
+}
+
+/* NEW CHANGE: Username and login status */
+.profile-user {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.profile-user strong {
+  font-size: 15px;
+  color: #222222;
+  overflow-wrap: anywhere;
+}
+
+.profile-user span {
+  font-size: 12px;
+  color: #777777;
+}
+
+/* NEW CHANGE: Divider between username and logout */
+.profile-divider {
+  height: 1px;
+  background: #eeeeee;
+  margin: 12px 0;
+}
+
+/* NEW CHANGE: Logout button design */
+.logout-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  color: #dc2626;
+  padding: 8px 0;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: left;
+}
+
+.logout-btn:hover {
+  color: #991b1b;
+}

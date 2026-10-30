@@ -22,6 +22,7 @@ export default function LoginForm() {
 
     setError("");
 
+    // Step 1: Validate input fields
     if (!name.trim() || !pass) {
       setError("Please enter username and password.");
       return;
@@ -30,41 +31,93 @@ export default function LoginForm() {
     setLoading(true);
 
     try {
-      const response = await fetch(
-        "/api/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            username: name.trim(),
-            password: pass,
-          }),
-        }
-      );
+      // Step 2: Send login request to Next.js API
+      const response = await fetch("/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: name.trim(),
+          password: pass,
+        }),
+      });
 
+      // Step 3: Read API response
       const data = await response.json().catch(() => ({}));
 
+      // Step 4: Check API status
+      console.log("Login API status:", response.status);
+
+      // Avoid logging the token or other sensitive response data
+      console.log("Login API message:", data.message);
+
       if (!response.ok) {
-        setError(
-          data.message || "Invalid username or password."
-        );
+        setError(data.message || "Invalid username or password.");
         return;
       }
 
+      // Step 5: Check whether backend returned a token
       if (!data.token) {
+        console.error("Login succeeded, but the API response has no token.");
         setError("Login response did not contain a token.");
         return;
       }
 
-      // Store the token securely on the server in a production app.
-      // Do not put the password or token in the URL.
-      sessionStorage.setItem("authToken", data.token);
+      // // Step 6: Store token for this browser tab (testing approach)
+      // sessionStorage.setItem("authToken", data.token);
 
+
+      // Step 6: Store token and session ID
+      sessionStorage.setItem("authToken", data.token);
+      sessionStorage.setItem("sessionId", data.session);
+      sessionStorage.setItem("username", name.trim());
+
+      // Step 7: Retrieve stored values
+      const storedToken = sessionStorage.getItem("authToken");
+      const storedSession = sessionStorage.getItem("sessionId");
+      const storedUsername = sessionStorage.getItem("username");
+
+      // Step 8: Check both values
+      if (storedToken && storedSession && storedUsername) {
+        console.log("Token: Stored successfully");
+        console.log("Session ID: Stored successfully");
+        console.log("Both values stored successfully!");
+        console.log("Username: Stored successfully");
+      } else {
+        console.log("Token:", storedToken ? "Stored" : "Not found");
+        console.log("Session ID:", storedSession ? "Stored" : "Not found");
+
+      }
+
+
+
+
+      window.dispatchEvent(new Event("auth-change"));
+
+
+
+
+
+
+
+
+
+
+
+      // // Step 7: Verify that the token was stored
+      // const storedToken = sessionStorage.getItem("authToken");
+
+      // console.log(
+      //   "Token storage check:",
+      //   storedToken ? "Token stored successfully" : "Token not found"
+      // );
+
+      // Step 8: Navigate after successful login
       router.push("/home");
     } catch (error) {
       console.error("Login request failed:", error);
+
       setError(
         "Unable to connect to the server. Please try again."
       );
@@ -76,27 +129,19 @@ export default function LoginForm() {
   return (
     <div className="form-container">
       <form className="login-form" onSubmit={handleSubmit}>
-        <h1
-          style={{
-            textAlign: "center",
-            fontWeight: "bold",
-            fontSize: "50px",
-          }}
-        >
+        <h1>
           Login
         </h1>
 
         <label htmlFor="username">Username</label>
+
         <input
           id="username"
           type="text"
           placeholder="Enter your username"
           value={name}
           autoComplete="username"
-          style={{
-            borderRadius: "10px",
-            border: "solid 1px grey",
-          }}
+          required
           onChange={(e) => setName(e.target.value)}
         />
 
@@ -109,10 +154,7 @@ export default function LoginForm() {
             placeholder="Enter your password"
             value={pass}
             autoComplete="current-password"
-            style={{
-              border: "solid 1px grey",
-              borderRadius: "10px",
-            }}
+            required
             onChange={(e) => setPass(e.target.value)}
           />
 
@@ -136,9 +178,9 @@ export default function LoginForm() {
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <hr style={{ color: "grey" }} />
+        <hr className="divider" />
 
-        <a href="/registration" style={{ textAlign: "center" }}>
+        <a href="/registration" className="signup-link">
           Create a new account
         </a>
       </form>
