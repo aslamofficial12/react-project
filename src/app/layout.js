@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
+import SessionTimeout from "../components/SessionTimeout";
 import "./globals.css";
 
 export default function RootLayout({ children }) {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+          <SessionTimeout />
         {!hideNavbar && <Navbar />}
 
         {children}

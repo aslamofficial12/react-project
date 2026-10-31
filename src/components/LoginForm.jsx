@@ -72,46 +72,30 @@ export default function LoginForm() {
       sessionStorage.setItem("authToken", data.token);
       sessionStorage.setItem("sessionId", data.session);
       sessionStorage.setItem("username", name.trim());
+      sessionStorage.setItem("expires",data.expires)
 
       // Step 7: Retrieve stored values
       const storedToken = sessionStorage.getItem("authToken");
       const storedSession = sessionStorage.getItem("sessionId");
       const storedUsername = sessionStorage.getItem("username");
+      const timeExpire=sessionStorage.getItem("expires");
 
       // Step 8: Check both values
-      if (storedToken && storedSession && storedUsername) {
+      if (storedToken && storedSession && storedUsername && timeExpire) {
         console.log("Token: Stored successfully");
         console.log("Session ID: Stored successfully");
         console.log("Both values stored successfully!");
         console.log("Username: Stored successfully");
+                console.log("timeExpire: timeExpire working and "+timeExpire);
       } else {
         console.log("Token:", storedToken ? "Stored" : "Not found");
         console.log("Session ID:", storedSession ? "Stored" : "Not found");
+        console.log("Session expires:", timeExpire ? "timeExpireworking" : "Not found");
 
       }
 
-
-
-
       window.dispatchEvent(new Event("auth-change"));
 
-
-
-
-
-
-
-
-
-
-
-      // // Step 7: Verify that the token was stored
-      // const storedToken = sessionStorage.getItem("authToken");
-
-      // console.log(
-      //   "Token storage check:",
-      //   storedToken ? "Token stored successfully" : "Token not found"
-      // );
 
       // Step 8: Navigate after successful login
       router.push("/home");

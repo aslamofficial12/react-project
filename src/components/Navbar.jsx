@@ -38,80 +38,59 @@ export default function Navbar() {
 
   // UPDATED: Logout function
   // Logout happens only when the user clicks the Logout button
- 
 
 
+  const handleLogout = async () => {
+    try {
+      // Get token and sessionId
+      const token = sessionStorage.getItem("authToken");
+      const sessionId = sessionStorage.getItem("sessionId");
 
+      if (!token || !sessionId) {
+        throw new Error("Token or Session ID missing.");
+      }
 
+      // Call Next.js logout API
+      const response = await fetch("/api/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          sessionId: sessionId,
+        }),
+        cache: "no-store",
+      });
 
+      const data = await response.json().catch(() => ({}));
 
+      console.log("Logout response:", data);
 
-const handleLogout = async () => {
-  try {
-    // Get token and sessionId
-    const token = sessionStorage.getItem("authToken");
-    const sessionId = sessionStorage.getItem("sessionId");
+      if (!response.ok) {
+        throw new Error(
+          data.message || "Backend logout failed."
+        );
+      }
 
-    if (!token || !sessionId) {
-      throw new Error("Token or Session ID missing.");
+      // Clear session only after successful logout
+      sessionStorage.removeItem("authToken");
+      sessionStorage.removeItem("sessionId");
+      sessionStorage.removeItem("username");
+
+      setUsername("");
+      setShowProfile(false);
+
+      window.dispatchEvent(new Event("auth-change"));
+
+      router.push("/login");
+
+    } catch (error) {
+      console.error("Logout API error:", error);
+      alert(error.message || "Logout failed.");
     }
+  };
 
-    // Call Next.js logout API
-    const response = await fetch("/api/logout", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        sessionId: sessionId,
-      }),
-      cache: "no-store",
-    });
-
-    const data = await response.json().catch(() => ({}));
-
-    console.log("Logout response:", data);
-
-    if (!response.ok) {
-      throw new Error(
-        data.message || "Backend logout failed."
-      );
-    }
-
-    // Clear session only after successful logout
-    sessionStorage.removeItem("authToken");
-    sessionStorage.removeItem("sessionId");
-    sessionStorage.removeItem("username");
-
-    setUsername("");
-    setShowProfile(false);
-
-    window.dispatchEvent(new Event("auth-change"));
-
-    router.push("/login");
-
-  } catch (error) {
-    console.error("Logout API error:", error);
-    alert(error.message || "Logout failed.");
-  }
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
 
   return (
     <header className="navbar-header">
@@ -369,6 +348,7 @@ const handleLogout = async () => {
                 <li><a href="/subsidy">NDSS Subsidy</a></li>
                 <li><a href="/dvaAccess">DVA Access</a></li>
                 <li><a href="/allAccess">All Access Options</a></li>
+                <li><a href="/type2subsidy">Have your say: Type 2 CGM subsidy</a></li>
               </ul>
             </div>
           </li>
@@ -399,7 +379,7 @@ const handleLogout = async () => {
                     </li>
                     <li><a href="#">Product Info And Manuals</a></li>
                     <li><a href="#">Video Guides</a></li>
-                    <li><a href="#">AnzCGM - Quality Matters</a></li>
+                    <li><a href="/quality">AnzCGM - Quality Matters</a></li>
                   </ul>
                 </div>
 
