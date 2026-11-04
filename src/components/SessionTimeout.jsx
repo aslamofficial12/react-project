@@ -11,7 +11,7 @@ export default function SessionTimeout() {
   useEffect(() => {
 
     // 10 minutes = 600000 milliseconds
-    const IDLE_TIME = 60 * 1000;
+    const IDLE_TIME = 10 * 60 * 1000;
 
     let timer = null;
     let isLoggingOut = false;
@@ -28,7 +28,7 @@ export default function SessionTimeout() {
 
       // Session ID retrieve panrom
       const sessionId = sessionStorage.getItem("sessionId");
-        const token = sessionStorage.getItem("authToken");
+      const token = sessionStorage.getItem("authToken");
 
       try {
 

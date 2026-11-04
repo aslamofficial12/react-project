@@ -4,11 +4,13 @@ import { useEffect, useState } from "react";
 import SubscribeForm from "../../components/SubscribeForm";
 import "./style.css";
 import FAQ from "../../components/faq/Faq";
+import { useCart } from "../../context/CartContext";
 
 export default function Subscription() {
     const [subscription, setSubscription] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const { addToCart } = useCart();
 
     useEffect(() => {
         const fetchSubscription = async () => {
@@ -188,7 +190,18 @@ export default function Subscription() {
 
                             </ul> */}
 
-                            <button className="subscribe-btn">
+                            {/* ADD TO CART: 4-week subscription */}
+                            <button
+                                className="subscribe-btn"
+                                onClick={() =>
+                                    addToCart({
+                                        id: "libre-4-weeks",
+                                        name: subscription.sectionTwoImage4weekTitle,
+                                        price: 204,
+                                        image: subscription.sectionTwoImage4week,
+                                    })
+                                }
+                            >
                                 {subscription.subscribeButton}
                             </button>
 
@@ -244,7 +257,18 @@ export default function Subscription() {
 
                             </ul> */}
 
-                            <button className="subscribe-btn">
+                            {/* ADD TO CART: 8-week subscription */}
+                            <button
+                                className="subscribe-btn"
+                                onClick={() =>
+                                    addToCart({
+                                        id: "libre-8-weeks",
+                                        name: subscription.sectionTwoImage8weekTitle,
+                                        price: 204,
+                                        image: subscription.sectionTwoImage4week,
+                                    })
+                                }
+                            >
                                 {subscription.subscribeButton}
                             </button>
 

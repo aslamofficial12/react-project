@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer/Footer";
 import SessionTimeout from "../components/SessionTimeout";
 import "./globals.css";
+import { CartProvider } from "../context/CartContext";
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
@@ -16,10 +17,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <CartProvider>
           <SessionTimeout />
         {!hideNavbar && <Navbar />}
 
         {children}
+
+        </CartProvider>
 
         <Footer />
       </body>

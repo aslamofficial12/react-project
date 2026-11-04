@@ -39,6 +39,8 @@ export default function ContactPage() {
   };
 
   return (
+
+    <>
     <div className="contact-page-container">
       {/* Header / Hero Section */}
 {/* Header / Hero Section */}
@@ -130,8 +132,10 @@ export default function ContactPage() {
 
         <ContactForm />
 
-        <SubscribeForm />
+     
       </section>
     </div>
+       <SubscribeForm />
+    </>
   );
 }

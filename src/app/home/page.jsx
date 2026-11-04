@@ -9,43 +9,29 @@ export default function Page() {
 
   return (
     <div className="landing-container">
-      {/* Top Utility Bar */}
-      {/* <div className="utility-bar">
-        <div className="utility-links">
-          <a href="#mobile">Mobile Compatibility</a>
-          <a href="#moments">Libre Moments</a>
-          <a href="#safety">Important Safety Information</a>
-        </div>
-        <div className="utility-brand">
-          <span className="abbott-logo">Abbott</span>
-        </div>
-      </div> */}
 
-      {/* Main Navigation Bar */}
-
-      {/* Hero Section */}
-   <section 
-  className="hero-section" 
-  style={{ backgroundImage: `url('hero_banner_3plus.webp')` }}
->
-  <div className="hero-content">
-    <span className="hero-tag">NOW AVAILABLE!</span>
-    <div className="hero-brand-title">
-      <span className="sub-butterfly"></span>
-      <span className="brand-name-lg">
-        FreeStyle <strong>Libre 3</strong> <span className="plus-badge">PLUS</span>
-      </span>
-    </div>
-    <h1 className="hero-headline">
-      The world’s smallest sensor<sup>85</sup><br />
-      For ALL Australians with type 1 diabetes
-    </h1>
-    <div className="hero-cta-group">
-      <a href="#subsidy" className="btn-yellow">Subsidy Information</a>
-      <a href="#more" className="btn-white-outline">More about the Libre 3 Plus</a>
-    </div>
-  </div>
-</section>
+      <section
+        className="hero-section"
+        style={{ backgroundImage: `url('hero_banner_3plus.webp')` }}
+      >
+        <div className="hero-content">
+          <span className="hero-tag">NOW AVAILABLE!</span>
+          <div className="hero-brand-title">
+            <span className="sub-butterfly"></span>
+            <span className="brand-name-lg">
+              FreeStyle <strong>Libre 3</strong> <span className="plus-badge">PLUS</span>
+            </span>
+          </div>
+          <h1 className="hero-headline">
+            The world’s smallest sensor<sup>85</sup><br />
+            For ALL Australians with type 1 diabetes
+          </h1>
+          <div className="hero-cta-group">
+            <a href="#subsidy" className="btn-yellow">Subsidy Information</a>
+            <a href="#more" className="btn-white-outline">More about the Libre 3 Plus</a>
+          </div>
+        </div>
+      </section>
 
       {/* Brand #1 CGM Section with Overlapping Butterfly */}
       <section className="cgm-banner-section">
@@ -66,7 +52,7 @@ export default function Page() {
       </section>
 
       {/* Dynamic Tab Switcher Section (Features & Quality Matters) */}
-     
+
       {/* CGM Explanation Section */}
       <section className="bg-yellow cgm-explanation-section">
         <h2 className="section-title">What is Continuous Glucose Monitoring (CGM)?</h2>
@@ -89,15 +75,15 @@ export default function Page() {
 
 
 
- <div className="sensor-section-container">
+      <div className="sensor-section-container">
         <div className="tab-switcher">
-          <button 
+          <button
             className={`tab-btn ${activeTab === 'features' ? 'active' : ''}`}
             onClick={() => setActiveTab('features')}
           >
             Features
           </button>
-          <button 
+          <button
             className={`tab-btn ${activeTab === 'quality' ? 'active' : ''}`}
             onClick={() => setActiveTab('quality')}
           >
@@ -118,7 +104,7 @@ export default function Page() {
                 <h4>Easy to use and comfortable to wear</h4>
                 <p>Every aspect of the Libre family of sensors is designed to be easy to use, so you can spend less time thinking about glucose management and more time for yourself.</p>
               </div>
-              
+
               <div className="feature-item">
                 <div className="feature-icon-wrapper">
                   <img src="Component_36_88px-1.webp" alt="IBOA & MBPA Free" className="feature-icon" />
@@ -126,7 +112,7 @@ export default function Page() {
                 <h4>IBOA & MBPA Free[cite: 4]</h4>
                 <p>The adhesive used in the Libre family of sensors is free from IBOA and MBPA[cite: 4], common allergens.</p>
               </div>
-              
+
               <div className="feature-item">
                 <div className="feature-icon-wrapper">
                   <img src="Component_36_88px-2.webp" alt="Waterproof" className="feature-icon" />
@@ -134,7 +120,7 @@ export default function Page() {
                 <h4>Waterproof[cite: 4]</h4>
                 <p>The Libre family of sensors can be used while bathing, swimming[cite: 4], and exercising, so you can have uninterrupted enjoyment of the activities you love.</p>
               </div>
-              
+
               <div className="feature-item">
                 <div className="feature-icon-wrapper">
                   <img src="Vector_1.webp" alt="Small & discreet" className="feature-icon" />
@@ -154,12 +140,12 @@ export default function Page() {
                 <h4>Proven Performance</h4>
                 <p>The Libre family of sensors undergo extensive testing, from clinical trials to real-world studies with people like you, showing Libre systems are accurate<sup>5, 76</sup> and reliable.<sup>5, 27, 69</sup></p>
               </div>
-              
+
               <div className="feature-item">
                 <h4>Smart Quality Checks</h4>
                 <p>Libre CGM sensors meet the anzCGM standards,^<sup>, 97</sup> delivering accuracy you can rely on, data you can trust, and support when it matters most. With minute-by-minute glucose readings built on the quality that only Libre can deliver, you can manage your diabetes with confidence.</p>
               </div>
-              
+
               <div className="feature-item">
                 <h4>HITRUST® Certified, for trusted data security†</h4>
                 <p>We’re committed to protecting your privacy and guarding the information you choose to share when using our products. Our digital tools and apps are HITRUST® certified,† meeting the highest global standards for data security and privacy.</p>
@@ -168,18 +154,6 @@ export default function Page() {
           </section>
         )}
       </div>
-
-
-
-
-
-
-
-
-
-
-
-
 
       <TestimonialSlider />
 
@@ -212,8 +186,8 @@ export default function Page() {
       </section>
 
       {/* Split Circle Hero Section */}
-      <section 
-        className="split-circle-section" 
+      <section
+        className="split-circle-section"
         style={{ backgroundImage: `url('images.jpg')` }}
       >
         <div className="white-circle-card">
@@ -228,44 +202,44 @@ export default function Page() {
         <h2 className="section-title">Accessing Libre</h2>
         <div className="accent-line"></div>
         <div className="accessing-grid">
-          <div 
+          <div
             className="access-hero-card"
             style={{ backgroundImage: `url('Accessing_FSL2_-01.webp')` }}
           >
             <div className="badge-pill">$15 Trial*</div>
-            <p>The $15 trial is the perfect way to experience Libre 2 Plus for the first time[cite: 2].</p>
+            <p>The $15 trial is the perfect way to experience Libre 2 Plus for the first time</p>
           </div>
-          
+
           <div className="access-stacked-list">
             <div className="access-list-item">
-              <div 
+              <div
                 className="thumb-box"
                 style={{ backgroundImage: `url('Accessing_FSL2_-06.webp')` }}
               ></div>
               <div className="access-info">
-                <p>Libre sensors are subsidised for Australians with type 1 diabetes (eligibility criteria apply)[cite: 2].</p>
+                <p>Libre sensors are subsidised for Australians with type 1 diabetes (eligibility criteria apply)</p>
                 <a href="#" className="link-orange">Learn More</a>
               </div>
             </div>
-            
+
             <div className="access-list-item">
-              <div 
+              <div
                 className="thumb-box"
                 style={{ backgroundImage: `url('Accessing_FSL2_-07_1.webp')` }}
               ></div>
               <div className="access-info">
-                <p>Subscribe and Save to receive up to 20% off your Libre 2 Plus sensor purchases[cite: 2].</p>
+                <p>Subscribe and Save to receive up to 20% off your Libre 2 Plus sensor purchases</p>
                 <a href="#" className="link-orange">Subscribe</a>
               </div>
             </div>
-            
+
             <div className="access-list-item">
-              <div 
+              <div
                 className="thumb-box"
                 style={{ backgroundImage: `url('Accessing_FSL2_-08_1.webp')` }}
               ></div>
               <div className="access-info">
-                <p>Find out all the available options to access the Libre system[cite: 2].</p>
+                <p>Find out all the available options to access the Libre system</p>
                 <a href="#" className="link-orange">All access options</a>
               </div>
             </div>
@@ -277,7 +251,7 @@ export default function Page() {
       <section className="bg-yellow support-help-section">
         <h2 className="section-title">Need help?</h2>
         <p className="section-subtitle">
-          Explore these handy resources to help you get started and get the most out of your Libre experience[cite: 1].
+          Explore these handy resources to help you get started and get the most out of your Libre experience.
         </p>
 
         <div className="card-grid-2">
@@ -287,7 +261,7 @@ export default function Page() {
                 <img src="Logo_FS_YCH_RGB_1.webp" alt="Libre Customer Care Icon" className="support-icon" />
               </div>
               <h3>Libre Customer Care</h3>
-              <p>Our expert team are here to address all your needs. Call us Monday to Friday between 8am and 7pm AEDT (excluding Public Holidays)[cite: 1].</p>
+              <p>Our expert team are here to address all your needs. Call us Monday to Friday between 8am and 7pm AEDT (excluding Public Holidays).</p>
             </div>
             <a href="tel:1800801478" className="btn-dark">Call 1800 801 478 ↗</a>
           </div>
@@ -298,7 +272,7 @@ export default function Page() {
                 <img src="Icon_Question_Mark_Large_Light_Background_2_Color_4.webp" alt="Product Information Icon" className="support-icon" />
               </div>
               <h3>Product Information</h3>
-              <p>Essential resources for all Libre users[cite: 1].</p>
+              <p>Essential resources for all Libre users.</p>
             </div>
             <a href="#product-info" className="btn-dark">Product information ↗</a>
           </div>

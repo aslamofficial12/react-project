@@ -1814,6 +1814,104 @@
 
 
 
+.worldwideSection {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  background-color: #ffffff;
+  overflow: hidden;
+}
+
+/* Butterfly styled as a centered element */
+.butterflyIcon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px; /* Space between the butterfly and the text below */
+}
+
+.butterflyImg {
+  width: 100px; /* Adjust scale to match your preference */
+  height: auto;
+  object-fit: contain;
+}
+
+/* Row container for text and the right-side feature image */
+.worldwideContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.worldwideText {
+  flex: 1;
+  max-width: 450px;
+  text-align: left; /* Change to 'center' if you want text centered too */
+}
+
+.worldwideText h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.yellowDivider {
+  width: 40px;
+  height: 3px;
+  background-color: #ffc107;
+  margin-bottom: 20px;
+}
+
+.worldwideText p {
+  font-size: 1rem;
+  color: #555555;
+  line-height: 1.6;
+}
+
+.worldwideImageContainer {
+  flex: 0 0 auto;
+}
+
+.worldwideImage {
+  width: 380px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 968px) {
+  .worldwideContent {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .worldwideText {
+    text-align: center;
+  }
+
+  .yellowDivider {
+    margin: 0 auto 20px auto;
+  }
+
+  .worldwideImage {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+
+
+
+
+
 
 
 

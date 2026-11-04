@@ -224,7 +224,76 @@ export default function FreeStyleLibrePage() {
       {/* ==================================================
           2. WORLDWIDE SECTION
       ================================================== */}
-      <section className="worldwideSection">
+
+
+
+<section className="worldwideSection">
+  {/* Center / Floating Butterfly Icon */}
+  {/* <div className="butterflyIcon">
+    <img 
+      src="Vector (1).webp" 
+      alt="Butterfly Icon" 
+      className="butterflyImg" 
+    />
+  </div> */}
+
+  {/* Content Container (Text + Optional Feature Image) */}
+  <div className="worldwideContent">
+
+
+ {landing?.worldwideImage && (
+      <div className="worldwideImageContainer">
+        <img
+          src={landing.worldwideImage}
+          alt={landing?.worldwideTitle}
+          className="worldwideImage"
+        />
+      </div>
+    )}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div className="worldwideText">
+      <h2>
+        {landing?.worldwideTitle}
+      </h2>
+
+      <div className="yellowDivider"></div>
+
+      <p>
+        {landing?.worldwideDescription}
+      </p>
+    </div>
+
+  
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+      {/* <section className="worldwideSection">
 
         <div className="butterflyIcon">
           <div className="yellowShape"></div>
@@ -252,7 +321,7 @@ export default function FreeStyleLibrePage() {
           />
         )}
 
-      </section>
+      </section> */}
 
 
       {/* ==================================================

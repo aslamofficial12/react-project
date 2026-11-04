@@ -5,11 +5,15 @@ import "./style.css";
 import TestimonialSlider from "../../components/TestimonialSlider/TestimonialSlider";
 import Recommendations from "../../components/Recommendations/Recommendations";
 import SubscribeForm from "../../components/SubscribeForm";
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const [quantity, setQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState(0);
   const[products,setProducts]= useState(null);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const router = useRouter();
 
   // Product Image Gallery Slider State with exact filenames
   const images = [
@@ -68,11 +72,25 @@ useEffect(() => {
 
   fetchProduct();
 }, []);
+
+
+
+
+// <-- REPLACED old cartpopup() with these functions
+  const handleAddToCartClick = () => {
+    setIsModalOpen(true); // Opens the popup modal
+  };
+
+  const handleSubscribeNowRedirect = () => {
+    router.push("/subscription"); // Redirects to subscription page
+  };
+
+// function cartpopup(){
+//   alert("Save 20% by converting your order into a subscription! Pause or cancel anytime. ");
+// }
   return (
     <>
-
-
-    <main className="libre-page">
+ <main className="libre-page">
       {/* Breadcrumbs & Hero Title */}
       <div className="container">
         <nav className="breadcrumb">
@@ -140,13 +158,13 @@ useEffect(() => {
               <li>Option to pair with the Omnipod® 5 Automated Insulin Delivery System^ (<a href="#">Learn more</a>)</li>
             </ul>
 
-            <div className="cart-actions">
+            {/* <div className="cart-actions">
               <div className="quantity-selector">
                 <button type="button" onClick={decreaseQuantity}>-</button>
                 <input type="text" value={quantity} readOnly />
                 <button type="button" onClick={increaseQuantity}>+</button>
               </div>
-              <button className="btn-dark add-to-cart">Add to Cart</button>
+              <button className="btn-dark add-to-cart" onClick={cartpopup}>Add to Cart</button>
             </div>
 
             <p className="shipping-info">
@@ -156,7 +174,43 @@ useEffect(() => {
               Save 20%<sup>51</sup> on sensor purchases with Subscribe and Save.
             </p>
             <button className="btn-dark btn-subscribe">Subscribe and Save Now</button>
-          </div>
+          </div> */}
+
+
+
+
+
+<div className="cart-actions">
+    <div className="quantity-selector">
+      <button type="button" onClick={decreaseQuantity}>-</button>
+      <input type="text" value={quantity} readOnly />
+      <button type="button" onClick={increaseQuantity}>+</button>
+    </div>
+
+    <button className="btn-dark add-to-cart" onClick={handleAddToCartClick}>Add to Cart</button>
+  </div>
+
+  <button 
+    className="btn-dark btn-subscribe"
+    onClick={handleSubscribeNowRedirect}
+  >
+    Subscribe and Save Now
+  </button>
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
         </section>
 
         <div className="disclaimer-text">
@@ -554,6 +608,55 @@ useEffect(() => {
 
       </section>
 
+{/* NEW: Custom Popup Modal Component Implementation */}
+   {/* Separate Styled Popup Modal */}
+      {isModalOpen && (
+        <div className="custom-modal-overlay">
+          <div className="custom-modal-box">
+            
+            {/* Close Button */}
+            <button 
+              onClick={() => setIsModalOpen(false)}
+              className="custom-modal-close"
+            >
+              &times;
+            </button>
+
+            {/* Icon */}
+            <div className="custom-modal-icon">
+              🎁
+            </div>
+
+            {/* Modal Content */}
+            <h3 className="custom-modal-title">
+              Save 20% by converting your order into a subscription!
+            </h3>
+            <p className="custom-modal-desc">
+              Pause or cancel anytime with no lock-in contracts.
+            </p>
+            
+            {/* Action Buttons */}
+            <div className="custom-modal-actions">
+              <button 
+                onClick={handleSubscribeNowRedirect}
+                className="custom-btn-subscribe"
+              >
+                Subscribe Now
+              </button>
+              <button 
+                onClick={() => setIsModalOpen(false)}
+                className="custom-btn-close"
+              >
+                Close
+              </button>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+
+
       {/* Footer Legal Disclaimer */}
       <footer className="footer-legal">
         <div className="container">
@@ -563,6 +666,7 @@ useEffect(() => {
           <p>Apple and the Apple logo are trademarks of Apple Inc., registered in the U.S. and other countries. App Store is a service mark of Apple Inc., registered in the U.S. and other countries. Google Play and the Google Play logo are trademarks of Google LLC.</p>
           <div className="footer-code text-right">ADC-2654865 V7.0</div>
         </div>
+
       </footer>
 
       <SubscribeForm />
