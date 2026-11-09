@@ -11,6 +11,7 @@ export default function Subscription() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const { addToCart } = useCart();
+    const [creatingCart, setCreatingCart] = useState(false);
 
     useEffect(() => {
         const fetchSubscription = async () => {
@@ -36,6 +37,57 @@ export default function Subscription() {
 
         fetchSubscription();
     }, []);
+    const handleSubscribe = async (product) => {
+
+        try {
+
+            setCreatingCart(true);
+
+            // 1. Call Next.js API route
+            const response = await fetch("/api/create-cart", {
+                method: "POST",
+            });
+
+            // 2. Get API response
+            const data = await response.json();
+
+            console.log("Create Cart Response:", data);
+
+            // 3. Check API success
+            if (!response.ok) {
+                throw new Error(
+                    data.message || "Unable to create cart"
+                );
+            }
+
+            // 4. Get cart ID from response
+            const cartId = data.id;
+
+            if (cartId === undefined || cartId === null) {
+                throw new Error("Cart ID not found in API response");
+            }
+
+            // 5. Store cart ID in sessionStorage
+            sessionStorage.setItem(
+                "subscriptionId",
+                String(cartId)
+            );
+
+            // 6. Add product to existing cart
+            addToCart(product);
+
+            console.log("Cart ID stored:", cartId);
+
+        } catch (error) {
+
+            console.error("Subscribe Error:", error.message);
+
+        } finally {
+
+            setCreatingCart(false);
+
+        }
+    };
 
     // Loading
     if (loading) {
@@ -71,590 +123,544 @@ export default function Subscription() {
 
         <>
 
+            <div className="mainCard">
+
+                {/* ================= SECTION 1 ================= */}
+                <section className="sectionOne">
+
+                    <div className="sectionOne-content">
+
+                        {/* Contentful title */}
+                        <h1>
+                            {subscription.title}
+                        </h1>
+
+                        {/* You can add description from Contentful later */}
+                        <p>
+                            {subscription.titleParagraph}
+                        </p>
+
+                        <a href="#">
+                            {subscription.termsApply}
+                        </a>
+
+                        <div className="buttonHead">
+
+                            <button className="ButtonOne">
+                                Purchase for My Self
+                            </button>
+
+                            <button className="ButtonTwo">
+                                Purchase for My Gift
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div className="sectionOne-image">
+
+                        <img
+                            // src="/Subscription_Hero_Desktop.webp"
+                            src={subscription.mainbanner}
+                            alt="Subscription"
+                        />
+
+                    </div>
+
+                </section>
 
 
+                {/* ================= SECTION 2 ================= */}
+                <section className="sectionTwo">
 
+                    <h1 className="sectionTwo-title">{subscription.sectionTwoTitle}
 
-        
-        <div className="mainCard">
-
-            {/* ================= SECTION 1 ================= */}
-            <section className="sectionOne">
-
-                <div className="sectionOne-content">
-
-                    {/* Contentful title */}
-                    <h1>
-                        {subscription.title}
                     </h1>
 
-                    {/* You can add description from Contentful later */}
-                    <p>
-                        {subscription.titleParagraph}
-                    </p>
+                    <hr className="yellow-line" />
 
-                    <a href="#">
-                        {subscription.termsApply}
-                    </a>
+                    <div className="subscription-cards">
 
-                    <div className="buttonHead">
+                        {/* CARD 1 */}
+                        <div className="subscription-card">
 
-                        <button className="ButtonOne">
-                            Purchase for My Self
-                        </button>
 
-                        <button className="ButtonTwo">
-                            Purchase for My Gift
-                        </button>
 
-                    </div>
-                </div>
+                            <img src={subscription.sectionTwoImage4week} />
 
-                <div className="sectionOne-image">
+                            <div className="card-content">
 
-                    <img
-                        // src="/Subscription_Hero_Desktop.webp"
-                        src={subscription.mainbanner}
-                        alt="Subscription"
-                    />
+                                <h2>
+                                    {subscription.sectionTwoImage4weekTitle}
+                                </h2>
 
-                </div>
+                                <hr />
 
-            </section>
 
 
-            {/* ================= SECTION 2 ================= */}
-            <section className="sectionTwo">
 
-                <h1 className="sectionTwo-title">{subscription.sectionTwoTitle}
 
-                </h1>
+                                <ul>
+                                    {subscription.listFieldOne?.map((feature, index) => (
+                                        <li
+                                            key={index}
+                                            className={index === 0 ? "highlight" : ""}
+                                        >
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
 
-                <hr className="yellow-line" />
 
-                <div className="subscription-cards">
 
-                    {/* CARD 1 */}
-                    <div className="subscription-card">
-
-
-
-                        <img src={subscription.sectionTwoImage4week} />
-
-                        <div className="card-content">
-
-                            <h2>
-                                {subscription.sectionTwoImage4weekTitle}
-                            </h2>
-
-                            <hr />
-
-
-
-
-
-                            <ul>
-                                {subscription.listFieldOne?.map((feature, index) => (
-                                    <li
-                                        key={index}
-                                        className={index === 0 ? "highlight" : ""}
-                                    >
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-
-
-
-
-
-
-
-                            {/* <ul>
-
-                                <li className="highlight">
-                                    Perfect for uninterrupted glucose management.
-                                </li>
-
-                                <li>
-                                    Perfect for uninterrupted glucose management.
-                                </li>
-
-                                <li>
-                                    No lock-in contracts. Pause or cancel any time.
-                                </li>
-
-                                <li>
-                                    You're in charge. Terms apply.
-                                </li>
-
-                            </ul> */}
-
-                            {/* ADD TO CART: 4-week subscription */}
-                            <button
-                                className="subscribe-btn"
-                                onClick={() =>
-                                    addToCart({
-                                        id: "libre-4-weeks",
-                                        name: subscription.sectionTwoImage4weekTitle,
-                                        price: 204,
-                                        image: subscription.sectionTwoImage4week,
-                                    })
-                                }
-                            >
-                                {subscription.subscribeButton}
-                            </button>
-
-                        </div>
-
-                    </div>
-
-
-                    {/* CARD 2 */}
-                    <div className="subscription-card">
-
-                        <img
-                            src={subscription.sectionTwoImage4week}
-                            alt="8 weeks"
-                        />
-
-                        <div className="card-content">
-
-                            <h2>
-                                {subscription.sectionTwoImage8weekTitle}
-                            </h2>
-
-                            <hr />
-
-                             <ul>
-                                {subscription.listFieldTwo?.map((feature, index) => (
-                                    <li
-                                        key={index}
-                                        className={index === 0 ? "highlight" : ""}
-                                    >
-                                        {feature}
-                                    </li>
-                                ))}
-                            </ul>
-
-                            {/* <ul>
-
-                                <li className="highlight">
-                                    Flexible for your needs, upgrade anytime.
-                                </li>
-
-                                <li>
-                                    Perfect for uninterrupted glucose management.
-                                </li>
-
-                                <li>
-                                    No lock-in contracts. Pause or cancel any time.
-                                </li>
-
-                                <li>
-                                    You're in charge. Terms apply.
-                                </li>
-
-                            </ul> */}
-
-                            {/* ADD TO CART: 8-week subscription */}
-                            <button
-                                className="subscribe-btn"
-                                onClick={() =>
-                                    addToCart({
-                                        id: "libre-8-weeks",
-                                        name: subscription.sectionTwoImage8weekTitle,
-                                        price: 204,
-                                        image: subscription.sectionTwoImage4week,
-                                    })
-                                }
-                            >
-                                {subscription.subscribeButton}
-                            </button>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* ================= SECTION 3 ================= */}
-            <section className="section-three">
-
-                <div className="section-three-container-one">
-
-                    <div className="section-three-con-image">
-                        {/* <h2>image not contentful</h2> */}
-
-                        <img
-                            src={subscription.loadingImage}
-                            alt="phone-vibration"
-                        />
-
-                    </div>
-
-                </div>
-
-                <div
-                    style={{ marginBottom: "50px" }}
-                    className="section-three-container-two"
-                >
-
-                    <h2 style={{ padding: "0px" }}>
-                        Never pay shipping, ever.
-                        <br />
-                        &
-                        <br />
-                        Every 6th order free!
-                    </h2>
-
-                </div>
-
-            </section>
-
-
-            {/* ================= SECTION 4 ================= */}
-            <section className="sectionFour">
-
-                <h2
-                    style={{
-                        textAlign: "center",
-                        marginTop: "20px",
-                        marginBottom: "0px",
-                        fontSize: "40px",
-                        fontFamily: "poppins",
-                    }}
-                >
-                    {subscription.sectionFourTitle}
-                </h2>
-
-                <hr className="yellow-line" />
-
-                <p
-                    style={{
-                        textAlign: "center",
-                        fontSize: "25px",
-                        marginTop: "0px",
-                    }}
-                >
-                    {/* Unlock more value with Subscribe and Save */}
-                    {subscription.sectionFourSubTitle}
-                </p>
-
-                <div className="main-section-four">
-
-                    <div className="section-four-head">
-
-                        <div className="section-four-right">
-                            <h2>this image still not change</h2>
-
-                            <img
-                                style={{
-                                    borderRadius: "10px",
-                                    padding: "30px",
-                                }}
-                                className="image-right"
-                                src={subscription.loyaltyImageFour}
-                                alt="Subscription benefits"
-                            />
-
-                        </div>
-
-                        <div className="section-four-left">
-
-                            <h1
-                                style={{
-                                    fontSize: "35px",
-                                    marginTop: "60px",
-                                }}
-                            >
-                                Need an extra sensor
-                                <br />
-                                before your next
-                                <br />
-                                delivery?
-                            </h1>
-
-                            <hr className="yellow-line-two" />
-
-                            <p style={{ fontSize: "25px" }}>
-                                Get a top-up sensor, delivered with free shipping,
-                                <br />
-                                with just a couple of clicks.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* ================= SECTION 5 ================= */}
-            <section className="sectionFive">
-
-                <div className="main-section-four">
-
-                    <div className="section-four-head">
-
-                        <div
-                            className="section-four-right"
-                            style={{ marginTop: "120px" }}
-                        >
-
-                            <h1
-                                style={{
-                                    fontSize: "35px",
-                                    marginTop: "60px",
-                                }}
-                            >
-                                Flexible options to suit your needs
-                            </h1>
-
-                            <hr className="yellow-line-two" />
-
-                            <p style={{ fontSize: "25px" }}>
-                                Choose between the 4-week or 8-week
-                                <br />
-                                subscription option, whichever works best for
-                                <br />
-                                your needs and lifestyle.
-                            </p>
-
-                        </div>
-
-                        <div className="section-four-left">
-
-                            <img
-                                style={{
-                                    borderRadius: "10px",
-                                    padding: "30px",
-                                }}
-                                className="image-right"
-                                src={subscription.loyaltyImageTwo}
-                                alt="Flexible subscription options"
-                            />
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            {/* ================= FAQ ================= */}
-            <section className="sectionSeven">
-
-                <h2
-                    style={{
-                        textAlign: "center",
-                        marginTop: "20px",
-                        marginBottom: "0px",
-                        fontSize: "40px",
-                        fontFamily: "poppins",
-                    }}
-                >
-                    Frequently asked question
-                </h2>
-
-                <hr className="yellow-line" />
-
-                <div className="sectionSevenHead">
-                    <FAQ />
-                </div>
-
-            </section>
-
-
-            {/* ================= HELPFUL RESOURCES ================= */}
-            <section className="section-six">
-
-                <h2
-                    style={{
-                        fontSize: "40px",
-                        textAlign: "center",
-                    }}
-                >
-                    Helpful Resources
-                </h2>
-
-                <hr className="yellow-line" />
-
-                <div className="section-six-main">
-
-                    <div className="section-six-head">
-
-                        <div
-                            className="section-six-one"
-                            style={{
-                                width: "33%",
-                                padding: "30px",
-                            }}
-                        >
-
-                            <img
-                                src={subscription.helpResourceImageOne}
-                                alt="Support"
-                                style={{
-                                    width: "500px",
-                                    height: "400px",
-                                    padding: "40px",
-                                }}
-                            />
-
-                            <div style={{ marginLeft: "40px" }}>
-
-                                <h1 style={{ fontSize: "30px" }}>
-                                    Support
-                                </h1>
-
-                                <p style={{ fontSize: "18px" }}>
-                                    We have all the information you need to have
-                                    a great experience with the Libre 2 system,
-                                    including videos, product manuals and FAQs.
-                                </p>
-
-                                <a
-                                    href="#"
-                                    style={{
-                                        color: "blue",
-                                        fontSize: "20px",
-                                    }}
+                                {/* ADD TO CART: 4-week subscription */}
+                                {/* <button
+                                    className="subscribe-btn"
+                                    onClick={() =>
+                                        addToCart({
+                                            id: "libre-4-weeks",
+                                            name: subscription.sectionTwoImage4weekTitle,
+                                            price: 204,
+                                            image: subscription.sectionTwoImage4week,
+                                        })
+                                    }
                                 >
-                                    Access Support
-                                </a>
+                                    {subscription.subscribeButton}
+                                </button> */}
+
+
+
+                                <button
+                                    className="subscribe-btn"
+                                    disabled={creatingCart}
+                                    onClick={() =>
+                                        handleSubscribe({
+                                            id: "libre-4-weeks",
+                                            name: subscription.sectionTwoImage4weekTitle,
+                                            price: 204,
+                                            image: subscription.sectionTwoImage4week,
+                                        })
+                                    }
+                                >
+                                    {creatingCart ? "Processing..." : subscription.subscribeButton}
+                                </button>
 
                             </div>
 
                         </div>
 
 
-                        <div
-                            className="section-six-two"
-                            style={{
-                                width: "33%",
-                                padding: "30px",
-                            }}
-                        >
+                        {/* CARD 2 */}
+                        <div className="subscription-card">
 
                             <img
-                                src={subscription.helpResourceImageTwo}
-                                alt="Product Support"
-                                style={{
-                                    width: "500px",
-                                    height: "400px",
-                                    padding: "40px",
-                                }}
+                                src={subscription.sectionTwoImage4week}
+                                alt="8 weeks"
                             />
 
-                            <h1
-                                style={{
-                                    fontSize: "30px",
-                                    marginLeft: "40px",
-                                }}
-                            >
-                                Product Support
-                            </h1>
+                            <div className="card-content">
 
-                            <p
-                                style={{
-                                    fontSize: "18px",
-                                    marginLeft: "40px",
-                                }}
-                            >
-                                Find out all the available options to access
-                                the Libre 2 system.
-                            </p>
+                                <h2>
+                                    {subscription.sectionTwoImage8weekTitle}
+                                </h2>
 
-                            <a
-                                href="#"
-                                style={{
-                                    color: "blue",
-                                    marginLeft: "40px",
-                                    fontSize: "20px",
-                                    marginTop: "20px",
-                                }}
-                            >
-                                Learn The Basics
-                            </a>
+                                <hr />
 
-                        </div>
+                                <ul>
+                                    {subscription.listFieldTwo?.map((feature, index) => (
+                                        <li
+                                            key={index}
+                                            className={index === 0 ? "highlight" : ""}
+                                        >
+                                            {feature}
+                                        </li>
+                                    ))}
+                                </ul>
 
 
-                        <div
-                            className="section-six-three"
-                            style={{
-                                width: "33%",
-                                padding: "30px",
-                            }}
-                        >
 
-                            <img
-                                src={subscription.helpResourceImageThree}
-                                alt="Access Options"
-                                style={{
-                                    width: "500px",
-                                    height: "400px",
-                                    padding: "40px",
-                                }}
-                            />
+                                {/* ADD TO CART: 8-week subscription */}
+                                {/* <button
+                                    className="subscribe-btn"
+                                    onClick={() =>
+                                        addToCart({
+                                            id: "libre-8-weeks",
+                                            name: subscription.sectionTwoImage8weekTitle,
+                                            price: 204,
+                                            image: subscription.sectionTwoImage4week,
+                                        })
+                                    }
+                                >
+                                    {subscription.subscribeButton}
+                                </button> */}
 
-                            <h1
-                                style={{
-                                    fontSize: "30px",
-                                    marginLeft: "40px",
-                                }}
-                            >
-                                Access Options
-                            </h1>
 
-                            <p
-                                style={{
-                                    fontSize: "18px",
-                                    marginLeft: "40px",
-                                    marginTop: "10px",
-                                }}
-                            >
-                                Getting started with the FreeStyle
-                                <br />
-                                Libre 2 system
-                            </p>
 
-                            <a
-                                href="#"
-                                style={{
-                                    color: "blue",
-                                    marginLeft: "40px",
-                                    fontSize: "20px",
-                                }}
-                            >
-                                All Access Option
-                            </a>
+                                <button
+                                    className="subscribe-btn"
+                                    disabled={creatingCart}
+                                    onClick={() =>
+                                        handleSubscribe({
+                                            id: "libre-8-weeks",
+                                            name: subscription.sectionTwoImage8weekTitle,
+                                            price: 204,
+                                            image: subscription.sectionTwoImage4week,
+                                        })
+                                    }
+                                >
+                                    {creatingCart ? "Processing..." : subscription.subscribeButton}
+                                </button>
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </section>
+                </section>
 
 
-            {/* ================= SUBSCRIBE FORM ================= */}
-            <section className="section-five">
+                {/* ================= SECTION 3 ================= */}
+                <section className="section-three">
 
-                <SubscribeForm />
+                    <div className="section-three-container-one">
 
-            </section>
+                        <div className="section-three-con-image">
+                            {/* <h2>image not contentful</h2> */}
 
-        </div>
+                            <img
+                                src={subscription.loadingImage}
+                                alt="phone-vibration"
+                            />
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        style={{ marginBottom: "50px" }}
+                        className="section-three-container-two"
+                    >
+
+                        <h2 style={{ padding: "0px" }}>
+                            Never pay shipping, ever.
+                            <br />
+                            &
+                            <br />
+                            Every 6th order free!
+                        </h2>
+
+                    </div>
+
+                </section>
+
+
+                {/* ================= SECTION 4 ================= */}
+                <section className="sectionFour">
+
+                    <h2
+                        style={{
+                            textAlign: "center",
+                            marginTop: "20px",
+                            marginBottom: "0px",
+                            fontSize: "40px",
+                            fontFamily: "poppins",
+                        }}
+                    >
+                        {subscription.sectionFourTitle}
+                    </h2>
+
+                    <hr className="yellow-line" />
+
+                    <p
+                        style={{
+                            textAlign: "center",
+                            fontSize: "25px",
+                            marginTop: "0px",
+                        }}
+                    >
+                        {/* Unlock more value with Subscribe and Save */}
+                        {subscription.sectionFourSubTitle}
+                    </p>
+
+                    <div className="main-section-four">
+
+                        <div className="section-four-head">
+
+                            <div className="section-four-right">
+                                <h2>this image still not change</h2>
+
+                                <img
+                                    style={{
+                                        borderRadius: "10px",
+                                        padding: "30px",
+                                    }}
+                                    className="image-right"
+                                    src={subscription.loyaltyImageFour}
+                                    alt="Subscription benefits"
+                                />
+
+                            </div>
+
+                            <div className="section-four-left">
+
+                                <h1
+                                    style={{
+                                        fontSize: "35px",
+                                        marginTop: "60px",
+                                    }}
+                                >
+                                    Need an extra sensor
+                                    <br />
+                                    before your next
+                                    <br />
+                                    delivery?
+                                </h1>
+
+                                <hr className="yellow-line-two" />
+
+                                <p style={{ fontSize: "25px" }}>
+                                    Get a top-up sensor, delivered with free shipping,
+                                    <br />
+                                    with just a couple of clicks.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* ================= SECTION 5 ================= */}
+                <section className="sectionFive">
+
+                    <div className="main-section-four">
+
+                        <div className="section-four-head">
+
+                            <div
+                                className="section-four-right"
+                                style={{ marginTop: "120px" }}
+                            >
+
+                                <h1
+                                    style={{
+                                        fontSize: "35px",
+                                        marginTop: "60px",
+                                    }}
+                                >
+                                    Flexible options to suit your needs
+                                </h1>
+
+                                <hr className="yellow-line-two" />
+
+                                <p style={{ fontSize: "25px" }}>
+                                    Choose between the 4-week or 8-week
+                                    <br />
+                                    subscription option, whichever works best for
+                                    <br />
+                                    your needs and lifestyle.
+                                </p>
+
+                            </div>
+
+                            <div className="section-four-left">
+
+                                <img
+                                    style={{
+                                        borderRadius: "10px",
+                                        padding: "30px",
+                                    }}
+                                    className="image-right"
+                                    src={subscription.loyaltyImageTwo}
+                                    alt="Flexible subscription options"
+                                />
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* ================= FAQ ================= */}
+                <section className="sectionSeven">
+
+                    <h2
+                        style={{
+                            textAlign: "center",
+                            marginTop: "20px",
+                            marginBottom: "0px",
+                            fontSize: "40px",
+                            fontFamily: "poppins",
+                        }}
+                    >
+                        Frequently asked question
+                    </h2>
+
+                    <hr className="yellow-line" />
+
+                    <div className="sectionSevenHead">
+                        <FAQ />
+                    </div>
+
+                </section>
+
+
+                {/* ================= HELPFUL RESOURCES ================= */}
+                <section className="section-six">
+
+                    <h2
+                        style={{
+                            fontSize: "40px",
+                            textAlign: "center",
+                        }}
+                    >
+                        Helpful Resources
+                    </h2>
+
+                    <hr className="yellow-line" />
+
+                    <div className="section-six-main">
+
+                        <div className="section-six-head">
+
+                            <div
+                                className="section-six-one"
+                                style={{
+                                    width: "33%",
+                                    padding: "30px",
+                                }}
+                            >
+
+                                <img
+                                    src={subscription.helpResourceImageOne}
+                                    alt="Support"
+                                    style={{
+                                        width: "500px",
+                                        height: "400px",
+                                        padding: "40px",
+                                    }}
+                                />
+
+                                <div style={{ marginLeft: "40px" }}>
+
+                                    <h1 style={{ fontSize: "30px" }}>
+                                        Support
+                                    </h1>
+
+                                    <p style={{ fontSize: "18px" }}>
+                                        We have all the information you need to have
+                                        a great experience with the Libre 2 system,
+                                        including videos, product manuals and FAQs.
+                                    </p>
+
+                                    <a
+                                        href="#"
+                                        style={{
+                                            color: "blue",
+                                            fontSize: "20px",
+                                        }}
+                                    >
+                                        Access Support
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+
+                            <div
+                                className="section-six-two"
+                                style={{
+                                    width: "33%",
+                                    padding: "30px",
+                                }}
+                            >
+
+                                <img
+                                    src={subscription.helpResourceImageTwo}
+                                    alt="Product Support"
+                                    style={{
+                                        width: "500px",
+                                        height: "400px",
+                                        padding: "40px",
+                                    }}
+                                />
+
+                                <h1
+                                    style={{
+                                        fontSize: "30px",
+                                        marginLeft: "40px",
+                                    }}
+                                >
+                                    Product Support
+                                </h1>
+
+                                <p
+                                    style={{
+                                        fontSize: "18px",
+                                        marginLeft: "40px",
+                                    }}
+                                >
+                                    Find out all the available options to access
+                                    the Libre 2 system.
+                                </p>
+
+                                <a href="#"
+                                    style={{
+                                        color: "blue",
+                                        marginLeft: "40px",
+                                        fontSize: "20px",
+                                        marginTop: "20px",
+                                    }}
+                                >
+                                    Learn The Basics
+                                </a>
+
+                            </div>
+
+
+                            <div className="section-six-three" style={{ width: "33%", padding: "30px", }}>
+
+                                <img src={subscription.helpResourceImageThree} alt="Access Options" style={{ width: "500px", height: "400px", padding: "40px", }}
+                                />
+
+                                <h1 style={{ fontSize: "30px", marginLeft: "40px", }}>
+                                    Access Options
+                                </h1>
+
+                                <p style={{ fontSize: "18px", marginLeft: "40px", marginTop: "10px", }}>
+                                    Getting started with the FreeStyle
+                                    <br />
+                                    Libre 2 system
+                                </p>
+
+                                <a href="#" style={{ color: "blue", marginLeft: "40px", fontSize: "20px", }}>
+                                    All Access Option
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                {/* ================= SUBSCRIBE FORM ================= */}
+                <section className="section-five">
+
+                    <SubscribeForm />
+
+                </section>
+
+            </div>
         </>
     );
 }

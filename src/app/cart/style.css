@@ -1,0 +1,364 @@
+
+.shopping-cart-page {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+    color: #202633;
+    font-family: Arial, sans-serif;
+}
+
+/* Page heading */
+.shopping-cart-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Main two-column layout */
+.cart-main-layout {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 35px;
+    align-items: start;
+}
+
+/* Product table */
+.cart-products-section {
+    width: 100%;
+}
+
+.cart-table-header {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 75px 75px 45px;
+    gap: 10px;
+    padding: 12px 5px;
+    border-bottom: 1px solid #d7d7d7;
+    font-size: 10px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.cart-table-header span:first-child {
+    text-align: left;
+}
+
+/* Product row */
+.cart-product-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 75px 75px 45px;
+    gap: 10px;
+    align-items: start;
+    padding: 15px 5px;
+    border-bottom: 1px solid #d7d7d7;
+    min-height: 110px;
+}
+
+.cart-product-info {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    min-width: 0;
+}
+
+.cart-product-image {
+    width: 65px;
+    height: 75px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.cart-product-details h3 {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 0 0 5px;
+}
+
+.cart-product-details p {
+    font-size: 10px;
+    line-height: 1.5;
+    margin: 4px 0;
+    color: #666;
+}
+
+.cart-product-details strong {
+    font-size: 11px;
+}
+
+/* Quantity controls */
+.cart-quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #d5d5d5;
+    height: 27px;
+}
+
+.cart-quantity button {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 3px 5px;
+    font-size: 13px;
+}
+
+.cart-quantity span {
+    font-size: 11px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.cart-item-subtotal {
+    text-align: center;
+    font-size: 11px;
+    padding-top: 7px;
+}
+
+.cart-remove-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 5px;
+}
+
+/* Cart buttons */
+.cart-action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 15px 0;
+}
+
+.cart-outline-btn {
+    padding: 9px 13px;
+    border: 1px solid #202633;
+    background: white;
+    color: #202633;
+    border-radius: 5px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.cart-outline-btn:hover {
+    background: #202633;
+    color: white;
+}
+
+/* Summary */
+.cart-summary-section {
+    padding: 0 5px;
+}
+
+.cart-summary-section h2 {
+    font-size: 17px;
+    margin: 0 0 18px;
+    letter-spacing: 1px;
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 7px 0;
+    font-size: 11px;
+}
+
+.summary-muted {
+    color: #777;
+    font-size: 10px;
+    text-align: right;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid #ddd;
+    padding: 12px 0;
+    font-size: 12px;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: #202633;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.checkout-btn:hover {
+    background: #384253;
+}
+
+.checkout-note {
+    text-align: center;
+    font-size: 10px;
+    color: #777;
+    margin: 8px 0 22px;
+}
+
+/* Coupon */
+.coupon-section h3 {
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.coupon-section p {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.coupon-input-group {
+    display: flex;
+    gap: 5px;
+}
+
+.coupon-input-group input {
+    flex: 1;
+    min-width: 0;
+    padding: 9px;
+    border: 1px solid #202633;
+    font-size: 10px;
+}
+
+.coupon-input-group button {
+    padding: 8px 12px;
+    border: 1px solid #202633;
+    border-radius: 5px;
+    background: white;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+/* Shipping calculator */
+.shipping-calculator {
+    border: 1px solid #d0d0d0;
+    padding: 20px;
+    margin-top: 35px;
+}
+
+.shipping-calculator h2 {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0 0 10px;
+}
+
+.shipping-calculator > p {
+    font-size: 10px;
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.shipping-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+
+.shipping-field label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.shipping-field input,
+.shipping-field select {
+    width: 100%;
+    height: 36px;
+    padding: 0 10px;
+    border: 1px solid #202633;
+    background: white;
+    color: #202633;
+    font-size: 10px;
+    outline: none;
+}
+
+.shipping-calculate-btn {
+    padding: 9px 15px;
+    background: #202633;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.empty-cart {
+    padding: 30px 10px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+
+    .shopping-cart-page {
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .shopping-cart-title {
+        font-size: 24px;
+    }
+
+    .cart-main-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    .cart-product-row {
+        grid-template-columns: minmax(0, 1fr) 65px 65px 30px;
+        gap: 5px;
+    }
+
+    .cart-table-header {
+        grid-template-columns: minmax(0, 1fr) 65px 65px 30px;
+        gap: 5px;
+        font-size: 8px;
+    }
+
+    .cart-product-image {
+        width: 50px;
+        height: 60px;
+    }
+
+    .cart-product-details h3 {
+        font-size: 10px;
+    }
+
+    .cart-action-buttons {
+        flex-wrap: wrap;
+    }
+
+    .shipping-calculator {
+        padding: 15px;
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .cart-product-row {
+        grid-template-columns: minmax(0, 1fr) 55px 60px 25px;
+        gap: 3px;
+    }
+
+    .cart-table-header {
+        grid-template-columns: minmax(0, 1fr) 55px 60px 25px;
+        gap: 3px;
+    }
+
+    .cart-product-image {
+        width: 42px;
+    }
+
+    .cart-product-info {
+        gap: 5px;
+    }
+}
