@@ -3,9 +3,11 @@ import React, { useState } from 'react';
 import './style.css';
 import EffortlessManagement from '../../components/EffortlessManagement/EffortlessManagement';
 import TestimonialSlider from '../../components/TestimonialSlider/TestimonialSlider';
+import { useRouter } from "next/navigation";
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState('features');
+  const router=useRouter();
 
   return (
     <div className="landing-container">
@@ -27,8 +29,8 @@ export default function Page() {
             For ALL Australians with type 1 diabetes
           </h1>
           <div className="hero-cta-group">
-            <a href="#subsidy" className="btn-yellow">Subsidy Information</a>
-            <a href="#more" className="btn-white-outline">More about the Libre 3 Plus</a>
+            <a href="/subsidy" className="btn-yellow">Subsidy Information</a>
+            <a href="/freestyle-libre-3-plus" className="btn-white-outline">More about the Libre 3 Plus</a>
           </div>
         </div>
       </section>
@@ -180,7 +182,7 @@ export default function Page() {
           </div>
 
           <div className="app-btn-wrapper text-center">
-            <a href="#app" className="btn-dark-pill">More about Libre app</a>
+            <a href="/libreapp" className="btn-dark-pill">More about Libre app</a>
           </div>
         </div>
       </section>
@@ -193,7 +195,7 @@ export default function Page() {
         <div className="white-circle-card">
           <h2>Take the first step and trial Libre 2 Plus</h2>
           <div className="accent-line"></div>
-          <button className="btn-yellow">Trial Now for $15*</button>
+          <button className="btn-yellow" onClick={()=>(router.push("/freestylelibre2-trial"))}>Trial Now for $15*</button>
         </div>
       </section>
 
@@ -206,7 +208,7 @@ export default function Page() {
             className="access-hero-card"
             style={{ backgroundImage: `url('Accessing_FSL2_-01.webp')` }}
           >
-            <div className="badge-pill">$15 Trial*</div>
+            <div className="badge-pill"><a href="/freestylelibre2-trial">$15 Trial*</a></div>
             <p>The $15 trial is the perfect way to experience Libre 2 Plus for the first time</p>
           </div>
 
@@ -218,7 +220,7 @@ export default function Page() {
               ></div>
               <div className="access-info">
                 <p>Libre sensors are subsidised for Australians with type 1 diabetes (eligibility criteria apply)</p>
-                <a href="#" className="link-orange">Learn More</a>
+                <a href="/ndssSubsidy" className="link-orange">Learn More</a>
               </div>
             </div>
 
@@ -229,7 +231,7 @@ export default function Page() {
               ></div>
               <div className="access-info">
                 <p>Subscribe and Save to receive up to 20% off your Libre 2 Plus sensor purchases</p>
-                <a href="#" className="link-orange">Subscribe</a>
+                <a href="/subscription" className="link-orange">Subscribe</a>
               </div>
             </div>
 
@@ -240,7 +242,7 @@ export default function Page() {
               ></div>
               <div className="access-info">
                 <p>Find out all the available options to access the Libre system</p>
-                <a href="#" className="link-orange">All access options</a>
+                <a href="/allAccess" className="link-orange">All access options</a>
               </div>
             </div>
           </div>
@@ -274,7 +276,7 @@ export default function Page() {
               <h3>Product Information</h3>
               <p>Essential resources for all Libre users.</p>
             </div>
-            <a href="#product-info" className="btn-dark">Product information ↗</a>
+            <a href="/support-center" className="btn-dark">Product information ↗</a>
           </div>
         </div>
       </section>

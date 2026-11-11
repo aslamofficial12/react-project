@@ -1,0 +1,114 @@
+.terms-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 60px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+/* Breadcrumb Styling */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 24px;
+}
+
+.home-link {
+  color: #333333;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.home-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.separator {
+  margin: 0 8px;
+  font-size: 11px;
+  color: #888888;
+}
+
+.current-page {
+  color: #666666;
+}
+
+/* Header Styling */
+.terms-title {
+  font-size: 40px;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin: 0 0 16px 0;
+  letter-spacing: -0.5px;
+}
+
+.yellow-underline {
+  width: 48px;
+  height: 4px;
+  background-color: #ffd100;
+  margin-bottom: 36px;
+}
+
+/* Section Styling */
+.terms-section {
+  margin-bottom: 32px;
+}
+
+.section-heading {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.terms-section h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #222222;
+  margin-top: 16px;
+  margin-bottom: 8px;
+}
+
+.terms-section p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #555555;
+  margin-bottom: 16px;
+}
+
+.meta-info {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+/* Lists */
+.bullet-list,
+.numbered-list {
+  margin: 12px 0 16px 24px;
+  padding: 0;
+}
+
+.bullet-list li,
+.numbered-list li {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: #555555;
+  margin-bottom: 10px;
+}
+
+/* Link Styling */
+.orange-link {
+  color: #e65c00;
+  text-decoration: none;
+  word-break: break-all;
+}
+
+.orange-link:hover {
+  text-decoration: underline;
+}

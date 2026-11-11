@@ -13,6 +13,16 @@ export default function Subscription() {
     const { addToCart } = useCart();
     const [creatingCart, setCreatingCart] = useState(false);
 
+
+    useEffect(() => {
+        const productId = sessionStorage.getItem("productId");
+
+        console.log("Received Product ID:", productId);
+    }, []);
+
+
+
+
     useEffect(() => {
         const fetchSubscription = async () => {
             try {
@@ -37,46 +47,220 @@ export default function Subscription() {
 
         fetchSubscription();
     }, []);
-    const handleSubscribe = async (product) => {
+    // const handleSubscribe = async (product) => {
 
+    //     try {
+
+    //         setCreatingCart(true);
+
+    //         // 1. Call Next.js API route
+    //         const response = await fetch("/api/create-cart", {
+    //             method: "POST",
+    //         });
+
+    //         // 2. Get API response
+    //         const data = await response.json();
+
+    //         console.log("Create Cart Response:", data);
+
+    //         // 3. Check API success
+    //         if (!response.ok) {
+    //             throw new Error(
+    //                 data.message || "Unable to create cart"
+    //             );
+    //         }
+
+    //         // 4. Get cart ID from response
+    //         const cartId = data.id;
+
+    //         if (cartId === undefined || cartId === null) {
+    //             throw new Error("Cart ID not found in API response");
+    //         }
+
+    //         // 5. Store cart ID in sessionStorage
+    //         sessionStorage.setItem(
+    //             "subscriptionId",
+    //             String(cartId)
+    //         );
+
+    //         // 6. Add product to existing cart
+    //         addToCart(product);
+
+    //         console.log("Cart ID stored:", cartId);
+
+    //     } catch (error) {
+
+    //         console.error("Subscribe Error:", error.message);
+
+    //     } finally {
+
+    //         setCreatingCart(false);
+
+    //     }
+    // };
+
+
+
+
+
+
+
+
+    // const handleSubscribe = async (product, variantId, quantity = 1) => {
+    //     try {
+    //         setCreatingCart(true);
+
+    //         // 1. First API - Create Cart
+    //         const response = await fetch("/api/create-cart", {
+    //             method: "POST",
+    //         });
+
+    //         const data = await response.json();
+
+    //         console.log("Create Cart Response:", data);
+
+    //         if (!response.ok) {
+    //             throw new Error(data.message || "Unable to create cart");
+    //         }
+
+    //         // 2. Get Cart ID
+    //         const cartId = data.id;
+
+    //         if (!cartId) {
+    //             throw new Error("Cart ID not found");
+    //         }
+
+    //         // 3. Store Cart ID
+    //         sessionStorage.setItem("subscriptionId", String(cartId));
+
+
+    //         // 4. Get already stored Product ID
+    //         const productId = sessionStorage.getItem("productId");
+
+    //         if (!productId) {
+    //             throw new Error("Product ID not found in session");
+    //         }
+
+    //         // 5. Second API - Add Product to Cart
+    //         const addResponse = await fetch(
+    //             "http://192.168.31.180:8081/api/add-cart",
+    //             {
+    //                 method: "POST",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                 },
+    //                 body: JSON.stringify({
+    //                     cartId: cartId,
+    //                     productId: productId,
+    //                     variantId: variantId,
+    //                     quantity: quantity,
+    //                 }),
+    //             }
+    //         );
+
+    //         const addData = await addResponse.json();
+
+    //         console.log("Add Cart Response:", addData);
+
+    //         if (!addResponse.ok) {
+    //             throw new Error(addData.message || "Unable to add product");
+    //         }
+
+    //         // 6. Add to local cart
+    //         addToCart(product);
+
+    //         console.log("Cart ID:", cartId);
+    //         console.log("Product ID:", productId);
+    //         console.log("Variant ID:", variantId);
+    //         console.log("Quantity:", quantity);
+
+    //     } catch (error) {
+    //         console.error("Subscribe Error:", error.message);
+    //     } finally {
+    //         setCreatingCart(false);
+    //     }
+    // };
+
+
+    // NEW CODE - REPLACE OLD handleSubscribe FUNCTION
+
+    const handleSubscribe = async (product, variantId, quantity = 1) => {
         try {
-
             setCreatingCart(true);
 
-            // 1. Call Next.js API route
+            // STEP 1: Create Cart API
             const response = await fetch("/api/create-cart", {
                 method: "POST",
             });
 
-            // 2. Get API response
             const data = await response.json();
 
             console.log("Create Cart Response:", data);
 
-            // 3. Check API success
             if (!response.ok) {
-                throw new Error(
-                    data.message || "Unable to create cart"
-                );
+                throw new Error(data.message || "Unable to create cart");
             }
 
-            // 4. Get cart ID from response
+            // STEP 2: Get Cart ID
             const cartId = data.id;
 
-            if (cartId === undefined || cartId === null) {
-                throw new Error("Cart ID not found in API response");
+            if (!cartId) {
+                throw new Error("Cart ID not found");
             }
 
-            // 5. Store cart ID in sessionStorage
-            sessionStorage.setItem(
-                "subscriptionId",
-                String(cartId)
+            // STEP 3: Store Cart ID
+            sessionStorage.setItem("subscriptionId", String(cartId));
+
+            // STEP 4: Get Product ID
+            const productId = sessionStorage.getItem("productId");
+
+            if (!productId) {
+                throw new Error("Product ID not found in session");
+            }
+
+            // STEP 5: Add Product to Backend Cart
+            const addResponse = await fetch(
+                "http://192.168.31.180:8081/api/add-cart",
+                {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        cartId: cartId,
+                        productId: productId,
+                        variantId: variantId,
+                        quantity: quantity,
+                    }),
+                }
             );
 
-            // 6. Add product to existing cart
-            addToCart(product);
+            // IMPORTANT CHANGE:
+            // OLD: await addResponse.json()
+            // NEW: await addResponse.text()
+            // Because backend returns "Added to cart"
 
-            console.log("Cart ID stored:", cartId);
+            const addData = await addResponse.text();
+
+            console.log("Add Cart Response:", addData);
+
+            // STEP 6: Check Backend Response
+            if (!addResponse.ok) {
+                throw new Error(addData || "Unable to add product");
+            }
+
+            // STEP 7: Add Product to Frontend CartContext
+            addToCart({
+                ...product,
+                quantity: quantity,
+            });
+
+            console.log("Successfully Added to Cart!");
+
+            console.log("Cart ID:", cartId);
+            console.log("Product ID:", productId);
+            console.log("Variant ID:", variantId);
+            console.log("Quantity:", quantity);
 
         } catch (error) {
 
@@ -88,6 +272,7 @@ export default function Subscription() {
 
         }
     };
+
 
     // Loading
     if (loading) {
@@ -212,25 +397,7 @@ export default function Subscription() {
                                 </ul>
 
 
-
-                                {/* ADD TO CART: 4-week subscription */}
                                 {/* <button
-                                    className="subscribe-btn"
-                                    onClick={() =>
-                                        addToCart({
-                                            id: "libre-4-weeks",
-                                            name: subscription.sectionTwoImage4weekTitle,
-                                            price: 204,
-                                            image: subscription.sectionTwoImage4week,
-                                        })
-                                    }
-                                >
-                                    {subscription.subscribeButton}
-                                </button> */}
-
-
-
-                                <button
                                     className="subscribe-btn"
                                     disabled={creatingCart}
                                     onClick={() =>
@@ -240,6 +407,26 @@ export default function Subscription() {
                                             price: 204,
                                             image: subscription.sectionTwoImage4week,
                                         })
+                                    }
+                                >
+                                    {creatingCart ? "Processing..." : subscription.subscribeButton}
+                                </button> */}
+
+
+                                <button
+                                    className="subscribe-btn"
+                                    disabled={creatingCart}
+                                    onClick={() =>
+                                        handleSubscribe(
+                                            {
+                                                id: "libre-4-weeks",
+                                                name: subscription.sectionTwoImage4weekTitle,
+                                                price: 204,
+                                                image: subscription.sectionTwoImage4week,
+                                            },
+                                            1, // variantId
+                                            1  // quantity
+                                        )
                                     }
                                 >
                                     {creatingCart ? "Processing..." : subscription.subscribeButton}
@@ -300,6 +487,25 @@ export default function Subscription() {
                                     className="subscribe-btn"
                                     disabled={creatingCart}
                                     onClick={() =>
+                                        handleSubscribe(
+                                            {
+                                                id: "libre-8-weeks",
+                                                name: subscription.sectionTwoImage8weekTitle,
+                                                price: 204,
+                                                image: subscription.sectionTwoImage4week,
+                                            },
+                                            1, // Variant ID - verify with backend
+                                            1  // Quantity
+                                        )
+                                    }
+                                >
+                                    {creatingCart ? "Processing..." : subscription.subscribeButton}
+                                </button>
+
+                                {/* <button
+                                    className="subscribe-btn"
+                                    disabled={creatingCart}
+                                    onClick={() =>
                                         handleSubscribe({
                                             id: "libre-8-weeks",
                                             name: subscription.sectionTwoImage8weekTitle,
@@ -309,7 +515,7 @@ export default function Subscription() {
                                     }
                                 >
                                     {creatingCart ? "Processing..." : subscription.subscribeButton}
-                                </button>
+                                </button> */}
                             </div>
 
                         </div>
@@ -387,7 +593,7 @@ export default function Subscription() {
                         <div className="section-four-head">
 
                             <div className="section-four-right">
-                                <h2>this image still not change</h2>
+                                {/* <h2>this image still not change</h2> */}
 
                                 <img
                                     style={{

@@ -2,6 +2,8 @@
 
 import React, { useState } from "react";
 import "./EffortlessManagement.css";
+import {useRouter} from "next/navigation";
+
 
 const cardsData = [
   {
@@ -28,6 +30,7 @@ const cardsData = [
 
 export default function EffortlessManagement() {
   const [activeButton, setActiveButton] = useState("What is the Libre system?");
+  const router = useRouter();
 
   return (
     <section className="effortless-section">
@@ -39,7 +42,9 @@ export default function EffortlessManagement() {
         <div className="effortless-toggle-wrapper">
           <button 
             className={`toggle-pill ${activeButton === "What is the Libre system?" ? "active" : ""}`}
-            onClick={() => setActiveButton("What is the Libre system?")}
+            onClick={() => {setActiveButton("What is the Libre system?");
+              router.push("./what-is-freestyle-libre-2-plus")
+            }}
           >
             What is the Libre system?
           </button>

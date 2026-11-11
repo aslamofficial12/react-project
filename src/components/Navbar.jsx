@@ -1,11 +1,13 @@
 "use client";
 
+
 import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCart } from "../context/CartContext";
 import CartSidebar from "./CartSidebar";
+
 
 export default function Navbar() {
 
@@ -23,6 +25,7 @@ export default function Navbar() {
 
   // EXISTING CODE: Initialize Next.js router
   const router = useRouter();
+
 
   // EXISTING CODE: Read username when Navbar loads
   useEffect(() => {
@@ -89,6 +92,7 @@ export default function Navbar() {
     }
   };
 
+  
   return (
     <>
       <header className="navbar-header">
@@ -415,7 +419,7 @@ export default function Navbar() {
                     <h4 className="discover-title">All about Libre</h4>
 
                     <ul className="discover-links">
-                      <li><a href="/getting">Getting Started With Libre</a></li>
+                      <li><a href="/getting-started-with-libre">Getting Started With Libre</a></li>
                       <li><a href="/what-is-freestyle-libre-2-plus">What Is FreeStyle Libre 2 Plus</a></li>
                       <li>
                         <a href="/topten-tips-libre">
@@ -563,7 +567,7 @@ export default function Navbar() {
           {/* RIGHT SIDE ACTIONS */}
           <div className="nav-actions">
 
-            <button className="trial-btn">$15 Trial</button>
+            <button className="trial-btn" onClick={()=>router.push("/freestylelibre2-trial")}>$15 Trial</button>
 
             {/* SEARCH BUTTON */}
             <button className="icon-btn" aria-label="Search">

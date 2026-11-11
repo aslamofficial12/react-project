@@ -9,7 +9,7 @@ export async function POST() {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify({
-                    currency: "EUR"
+                    currency: "USD"
                 }),
                 cache: "no-store"
             }
