@@ -1,5 +1,7 @@
+
 "use client";
-import React from "react";
+
+import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "./CartSidebar.css";
 
@@ -12,8 +14,77 @@ export default function CartSidebar() {
         removeFromCart,
         updateQuantity,
         totalItems,
-        subtotal
+        subtotal,
+        cartId,
+        lineItemId,
+        version
     } = useCart();
+
+    // Which product is currently being removed
+    const [removing, setRemoving] = useState(null);
+
+    // Remove Product API function
+    const handleRemoveProduct = async (item) => {
+
+        try {
+
+            setRemoving(item.id);
+
+            // STEP 1: Check required cart details
+            if (!cartId || !lineItemId || version === null || version === undefined) {
+                throw new Error("Cart details are missing");
+            }
+
+            // STEP 2: Call Remove Product API
+            const response = await fetch("/api/remove-product", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    cartId: cartId,
+                    lineItemId: lineItemId,
+                    version: version,
+                    quantity: item.quantity,
+                }),
+            });
+
+            // STEP 3: Read API response
+            const responseText = await response.text();
+
+            console.log("Remove Product Status:", response.status);
+            console.log("Remove Product Response:", responseText);
+
+            let data = {};
+
+            try {
+                data = responseText ? JSON.parse(responseText) : {};
+            } catch {
+                data = { message: responseText };
+            }
+
+            // STEP 4: Check API success
+            if (!response.ok) {
+                throw new Error(
+                    data.message || `Remove failed: ${response.status}`
+                );
+            }
+
+            // STEP 5: Remove product from frontend cart
+            removeFromCart(item.id);
+
+            console.log("Product removed successfully!");
+
+        } catch (error) {
+
+            console.error("Remove Product Error:", error.message);
+
+        } finally {
+
+            setRemoving(null);
+
+        }
+    };
 
     // Don't display sidebar when closed
     if (!isCartOpen) {
@@ -112,12 +183,11 @@ export default function CartSidebar() {
                                 {/* Remove product */}
                                 <button
                                     className="cart-remove-btn"
-                                    onClick={() =>
-                                        removeFromCart(item.id)
-                                    }
+                                    onClick={() => handleRemoveProduct(item)}
+                                    disabled={removing === item.id}
                                     aria-label={`Remove ${item.name}`}
                                 >
-                                    🗑
+                                    {removing === item.id ? "..." : "🗑"}
                                 </button>
 
                             </div>

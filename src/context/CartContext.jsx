@@ -28,6 +28,11 @@ export function CartProvider({ children }) {
     // Starting-la cart empty-ah irukkum
     const [cartItems, setCartItems] = useState([]);
 
+    const [cartId,setCartId]=useState(null);
+    const [version,setVersion]=useState(null);
+    const [lineItemId,setLineItemId] = useState(null);
+
+
 
     // STEP 4: Create isCartOpen state
     // Cart sidebar open-ah irukka close-ah irukka nu control pannum
@@ -73,6 +78,18 @@ export function CartProvider({ children }) {
     // STEP 7: Add product to cart
     // Subscription page-la Subscribe Now click pannumbodhu
     // addToCart() function call aagi product details inga receive aagum
+
+const updateCartDetails = (newCartId,lineItemId,newVersion)=>{
+    setCartId(newCartId);
+      setLineItemId(lineItemId);
+    setVersion(newVersion);
+  
+};
+
+
+
+
+
     const addToCart = (product) => {
 
 
@@ -228,8 +245,14 @@ export function CartProvider({ children }) {
                 updateQuantity, 
                 clearCart, // Product quantity update panna
                 totalItems,      // Total quantity calculate panna
-                subtotal         // Total price calculate panna
-
+                subtotal ,        // Total price calculate panna
+                cartId,
+                setCartId,
+                version,
+                setVersion,
+                updateCartDetails,
+                lineItemId,
+                setLineItemId
             }}
         >
 
