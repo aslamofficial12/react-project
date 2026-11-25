@@ -4,6 +4,7 @@
 import React, { useState } from "react";
 import { useCart } from "../context/CartContext";
 import "./CartSidebar.css";
+import {useRouter} from "next/navigation";
 
 export default function CartSidebar() {
 
@@ -19,6 +20,8 @@ export default function CartSidebar() {
         lineItemId,
         version
     } = useCart();
+
+    const router= useRouter();
 
     // Which product is currently being removed
     const [removing, setRemoving] = useState(null);
@@ -220,7 +223,10 @@ export default function CartSidebar() {
 
                     <button
                         className="view-cart-btn"
-                        onClick={() => setIsCartOpen(false)}
+                        onClick={() => {setIsCartOpen(false);
+router.push("/cart")
+                            
+                        }}
                     >
                         View And Edit Cart
                     </button>
