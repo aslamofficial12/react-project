@@ -9,7 +9,7 @@ const recommendationsData = [
     title: "Product Support",
     description: "We have all the information you need to have a great experience with the Libre 2 system, including videos, product manuals and FAQs.",
     linkText: "Access Support",
-    linkHref: "#",
+    linkHref: "/support-center",
   },
   {
     image: "/you_might_like2.webp",
@@ -25,7 +25,7 @@ const recommendationsData = [
     titleSup: "52",
     description: "The $15 trial is the perfect way to experience the Libre 2 Plus sensor for the first time.",
     linkText: "Trial Here",
-    linkHref: "#",
+    linkHref: "/freestylelibre2-trial",
   },
 ];
 

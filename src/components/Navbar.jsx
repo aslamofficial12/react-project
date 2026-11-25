@@ -398,7 +398,7 @@ export default function Navbar() {
                 </div>
 
                 <ul className="dropdown-links-list">
-                  <li><a href="/subsidy">NDSS Subsidy</a></li>
+                  <li><a href="/ndssSubsidy">NDSS Subsidy</a></li>
                   <li><a href="/dvaAccess">DVA Access</a></li>
                   <li><a href="/allAccess">All Access Options</a></li>
                   <li><a href="/type2subsidy">Have your say: Type 2 CGM subsidy</a></li>
