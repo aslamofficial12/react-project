@@ -28,9 +28,9 @@ export function CartProvider({ children }) {
     // Starting-la cart empty-ah irukkum
     const [cartItems, setCartItems] = useState([]);
 
-    const [cartId,setCartId]=useState(null);
-    const [version,setVersion]=useState(null);
-    const [lineItemId,setLineItemId] = useState(null);
+    const [cartId, setCartId] = useState(null);
+    const [version, setVersion] = useState(null);
+    const [lineItemId, setLineItemId] = useState(null);
 
 
 
@@ -58,6 +58,21 @@ export function CartProvider({ children }) {
             setCartItems(JSON.parse(savedCart));
         }
 
+        const savedCartId = sessionStorage.getItem("cartId");
+        const savedLineItemId = sessionStorage.getItem("LineItemId");
+        const savedVersion = sessionStorage.getItem("version");
+
+        if (savedCartId) {
+            setCartId(savedCartId);
+        }
+
+        if (savedLineItemId) {
+            setLineItemId(savedLineItemId);
+        }
+        if (savedVersion) {
+            setVersion(Number(savedVersion));
+        }
+
     }, []); // Empty array = component first time mount aagumbodhu mattum run aagum
 
 
@@ -79,12 +94,29 @@ export function CartProvider({ children }) {
     // Subscription page-la Subscribe Now click pannumbodhu
     // addToCart() function call aagi product details inga receive aagum
 
-const updateCartDetails = (newCartId,lineItemId,newVersion)=>{
-    setCartId(newCartId);
-      setLineItemId(lineItemId);
-    setVersion(newVersion);
-  
-};
+    const updateCartDetails = (newCartId, lineItemId, newVersion) => {
+        setCartId(newCartId);
+        setLineItemId(lineItemId);
+        setVersion(newVersion);
+
+        if (newCartId) {
+            sessionStorage.setItem("cartId", newCartId)
+        }
+        // if(newLineItemId){
+
+        // }
+        if (lineItemId) {
+            sessionStorage.setItem("LineItemId",lineItemId);
+        }
+
+        // Save latest version
+        if (newVersion !== null && newVersion !== undefined) {
+            sessionStorage.setItem("version", String(newVersion));
+        }
+
+
+
+    };
 
 
 
@@ -242,10 +274,10 @@ const updateCartDetails = (newCartId,lineItemId,newVersion)=>{
                 setIsCartOpen,   // Sidebar open/close update panna
                 addToCart,       // New product add panna
                 removeFromCart,  // Product remove panna
-                updateQuantity, 
+                updateQuantity,
                 clearCart, // Product quantity update panna
                 totalItems,      // Total quantity calculate panna
-                subtotal ,        // Total price calculate panna
+                subtotal,        // Total price calculate panna
                 cartId,
                 setCartId,
                 version,

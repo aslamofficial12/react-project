@@ -128,7 +128,7 @@ export default function Page() {
                     alt={images[selectedImage]?.label || "product image"}
                   />
                 ) : (
-                  <div><h2>loading on process</h2></div>
+                  <div><h2>loading on process </h2></div>
 
                 )}
               </div>
