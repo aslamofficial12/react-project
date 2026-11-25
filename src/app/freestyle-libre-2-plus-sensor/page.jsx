@@ -16,18 +16,15 @@ export default function Page() {
   const router = useRouter();
 
   // Product Image Gallery Slider State with exact filenames
-  // const images = [
-  //   "/fsl2plus_box_and_sensor_clean.webp",
-  //   "/fsl2p_angle_right.webp",
-  //   "/fsl2p_pdp_image_1.webp",
-  //   "/fsl2p_pdp_image_2.webp",
-  //   "/fsl2p_pdp_image_3.webp",
-  //   "/fsl2p_pdp_image_4.webp"
-  // ];
-  // const [selectedImage, setSelectedImage] = useState(0);
-
+  const images = [
+    "/fsl2plus_box_and_sensor_clean.webp",
+    "/fsl2p_angle_right.webp",
+    "/fsl2p_pdp_image_1.webp",
+    "/fsl2p_pdp_image_2.webp",
+    "/fsl2p_pdp_image_3.webp",
+    "/fsl2p_pdp_image_4.webp"
+  ];
   const [selectedImage, setSelectedImage] = useState(0);
-  const images = products?.masterData?.staged?.masterVariant?.images || [];
 
   const decreaseQuantity = () => {
     if (quantity > 1) setQuantity(quantity - 1);
@@ -38,6 +35,43 @@ export default function Page() {
   };
 
 
+  // UPDATED: Fetch product through the Next.js API route to avoid browser CORS issues.
+  // useEffect(() => {
+  //   async function fetchProduct() {
+  //     try {
+  //       // UPDATED: Use the local Next.js API route instead of calling the backend directly.
+  //       const url =
+  //         "/api/product?productKey=freeStyle-libre-2-plus-sensor";
+
+  //       console.log("1. API URL:", url);
+
+  //       const response = await fetch(url);
+  //       const data = await response.json();
+
+  //       console.log("2. Response status:", response.status);
+  //       console.log("3. API response data:", data);
+
+  //       if (!response.ok) {
+  //         throw new Error(data.error || "Failed to fetch product");
+  //       }
+
+  //       // UPDATED: This API returns the product object directly, not data.results[0].
+  //       const productData = data;
+
+  //       if (!productData?.masterData?.current) {
+  //         console.error("Product data is missing or has an unexpected shape:", data);
+  //         return;
+  //       }
+
+  //       // UPDATED: Use the existing state setter name: setProducts.
+  //       setProducts(productData);
+  //     } catch (error) {
+  //       console.error("API fetch error:", error);
+  //     }
+  //   }
+
+  //   fetchProduct();
+  // }, []);
 
 
   useEffect(() => {
@@ -48,7 +82,6 @@ export default function Page() {
 
         const response = await fetch(url);
         const data = await response.json();
-        console.log("product details :", data)
 
         if (!response.ok) {
           throw new Error(data.error || "Failed to fetch product");
@@ -101,13 +134,13 @@ export default function Page() {
           <nav className="breadcrumb">
             <a href="#">🏠</a> <span>&gt;</span> <span>FreeStyle Libre 2 Plus Sensor</span>
             {/* UPDATED: API response uses the en-GB locale. */}
-            {/* <h1> welcome {products?.masterData?.current?.name?.["en-GB"]}</h1> */}
+            <h1> welcome {products?.masterData?.current?.name?.["en-GB"]}</h1>
 
           </nav>
 
           <section className="hero-header text-center">
             <h1>
-              FreeStyle Libre 2 Plus: Accurate<sup><a href="http://localhost:3000/Disclaimers " >76</a></sup>, trusted quality in a 15-day Continuous Glucose Monitor (CGM)
+              FreeStyle Libre 2 Plus: Accurate<sup>76</sup>, trusted quality in a 15-day Continuous Glucose Monitor (CGM)
             </h1>
             <p className="subtitle">
               For people living with type 1, type 2, gestational and all other types of diabetes. Subsidised for
@@ -119,29 +152,20 @@ export default function Page() {
           {/* Product Section with Uniform Image Slider */}
           <section className="product-section">
             <div className="product-gallery">
-
-
               <div className="main-image">
-                {images.length > 0 ? (
-                  <img
-                    src={images[selectedImage]?.url}
-                    alt={images[selectedImage]?.label || "product image"}
-                  />
-                ) : (
-                  <div><h2>loading on process</h2></div>
-
-                )}
+                <img
+                  src={images[selectedImage]}
+                  alt="FreeStyle Libre 2 Plus Product View"
+                />
               </div>
-
-
               <div className="thumbnails">
-                {images.map((imgUrl, index) => (
+                {images.map((imgSrc, index) => (
                   <div
-                    key={`product-image-${index}`}
+                    key={index}
                     className={`thumb ${selectedImage === index ? "active" : ""}`}
                     onClick={() => setSelectedImage(index)}
                   >
-                    <img src={imgUrl.url} alt={imgUrl.label || `thumb-${index + 1}`} />
+                    <img src={imgSrc} alt={`thumb-${index + 1}`} />
                   </div>
                 ))}
               </div>
@@ -172,7 +196,23 @@ export default function Page() {
                 <li>Option to pair with the Omnipod® 5 Automated Insulin Delivery System^ (<a href="/omnipod-partnership">Learn more</a>)</li>
               </ul>
 
+              {/* <div className="cart-actions">
+              <div className="quantity-selector">
+                <button type="button" onClick={decreaseQuantity}>-</button>
+                <input type="text" value={quantity} readOnly />
+                <button type="button" onClick={increaseQuantity}>+</button>
+              </div>
+              <button className="btn-dark add-to-cart" onClick={cartpopup}>Add to Cart</button>
+            </div>
 
+            <p className="shipping-info">
+              Shipping calculated during checkout. Spend $300 or more in a single order and receive free shipping on that order.
+            </p>
+            <p className="subscribe-promo">
+              Save 20%<sup>51</sup> on sensor purchases with Subscribe and Save.
+            </p>
+            <button className="btn-dark btn-subscribe">Subscribe and Save Now</button>
+          </div> */}
 
 
 
@@ -201,7 +241,7 @@ export default function Page() {
           </section>
 
           <div className="disclaimer-text">
-            <p>Each box contains 1x FreeStyle Libre 2 Plus sensor, sensor applicator and instructions for use. <a href="/terms-of-sale">Terms of sale</a></p>
+            <p>Each box contains 1x FreeStyle Libre 2 Plus sensor, sensor applicator and instructions for use. <a href="#">Terms of sale</a></p>
             <p><strong>Always follow the directions for use. <a href="important-safety-information">Read the warnings</a> before purchase.</strong></p>
             <p>This product is indicated for measuring interstitial fluid glucose levels in people (aged 2+) with diabetes mellitus.</p>
           </div>
@@ -471,7 +511,7 @@ export default function Page() {
                 <a href="#" className="guide-item">
                   <span className="badge">A</span> Complete Guide to Libre 2 Plus
                 </a>
-                <a href="https://www.youtube.com/embed/8XTLbH3skFE?si=uCDn7FQuZThqanop" className="guide-item">
+                <a href="#" className="guide-item">
                   <span className="badge">B</span> Sensor Application Guide
                 </a>
               </div>

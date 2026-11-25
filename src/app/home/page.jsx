@@ -4,11 +4,10 @@ import './style.css';
 import EffortlessManagement from '../../components/EffortlessManagement/EffortlessManagement';
 import TestimonialSlider from '../../components/TestimonialSlider/TestimonialSlider';
 import { useRouter } from "next/navigation";
-import SubscribeForm from '../../components/SubscribeForm';
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState('features');
-  const router = useRouter();
+  const router=useRouter();
 
   return (
     <div className="landing-container">
@@ -30,7 +29,7 @@ export default function Page() {
             For ALL Australians with type 1 diabetes
           </h1>
           <div className="hero-cta-group">
-            <a href="/ndssSubsidy" className="btn-yellow">Subsidy Information</a>
+            <a href="/subsidy" className="btn-yellow">Subsidy Information</a>
             <a href="/freestyle-libre-3-plus" className="btn-white-outline">More about the Libre 3 Plus</a>
           </div>
         </div>
@@ -196,7 +195,7 @@ export default function Page() {
         <div className="white-circle-card">
           <h2>Take the first step and trial Libre 2 Plus</h2>
           <div className="accent-line"></div>
-          <button className="btn-yellow" onClick={() => (router.push("/freestylelibre2-trial"))}>Trial Now for $15*</button>
+          <button className="btn-yellow" onClick={()=>(router.push("/freestylelibre2-trial"))}>Trial Now for $15*</button>
         </div>
       </section>
 
@@ -279,22 +278,8 @@ export default function Page() {
             </div>
             <a href="/support-center" className="btn-dark">Product information ↗</a>
           </div>
-
-          {/* <div className="bottom">
-            <a href="/support-center">Available to new customers only.  See full terms and conditions.</a>
-            <a href="/support-center">anzCGM evidence for on-market Libre sensors </a>
-            <a href="/support-center">Why the HITRUST certification is so broadly accepted</a>
-          </div> */}
-
-          <div className="bottom">
-            <a href="/trial-terms">Available to new customers only. See full terms and conditions.</a>
-            {/* <a href="/support-center">anzCGM evidence for on-market Libre sensors</a>
-  <a href="/support-center">Why the HITRUST certification is so broadly accepted</a> */}
-          </div>
-
         </div>
       </section>
-      <SubscribeForm></SubscribeForm>
     </div>
   );
 }

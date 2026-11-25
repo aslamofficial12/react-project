@@ -187,317 +187,317 @@ export default function Subscription() {
 
 
 
-    // const handleSubscribe = async (product, variantId, quantity = 1) => {
-    //     try {
-    //         setCreatingCart(true);
+// const handleSubscribe = async (product, variantId, quantity = 1) => {
+//     try {
+//         setCreatingCart(true);
 
-    //         // STEP 1: Create Cart API
-    //         const response = await fetch("/api/create-cart", {
-    //             method: "POST",
-    //         });
+//         // STEP 1: Create Cart API
+//         const response = await fetch("/api/create-cart", {
+//             method: "POST",
+//         });
 
-    //         const data = await response.json();
+//         const data = await response.json();
 
-    //         console.log("Create Cart Response:", data);
+//         console.log("Create Cart Response:", data);
 
-    //         if (!response.ok) {
-    //             throw new Error(data.message || "Unable to create cart");
-    //         }
+//         if (!response.ok) {
+//             throw new Error(data.message || "Unable to create cart");
+//         }
 
-    //         // STEP 2: Get Cart ID
-    //         const newCartId = data.id;
+//         // STEP 2: Get Cart ID
+//         const newCartId = data.id;
 
-    //         if (!newCartId) {
-    //             throw new Error("Cart ID not found");
-    //         }
+//         if (!newCartId) {
+//             throw new Error("Cart ID not found");
+//         }
 
-    //         // STEP 3: Store Cart ID
-    //         sessionStorage.setItem("subscriptionId", String(newCartId));
+//         // STEP 3: Store Cart ID
+//         sessionStorage.setItem("subscriptionId", String(newCartId));
 
-    //         // STEP 4: Get Product ID
-    //         const productId = sessionStorage.getItem("productId");
+//         // STEP 4: Get Product ID
+//         const productId = sessionStorage.getItem("productId");
 
-    //         if (!productId) {
-    //             throw new Error("Product ID not found in session");
-    //         }
+//         if (!productId) {
+//             throw new Error("Product ID not found in session");
+//         }
 
-    //         // STEP 5: Add Product API
-    //         const addResponse = await fetch("/api/add-cart", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 cartId: newCartId,
-    //                 productId: productId,
-    //                 variantId: variantId,
-    //                 quantity: quantity,
-    //             }),
-    //         });
+//         // STEP 5: Add Product API
+//         const addResponse = await fetch("/api/add-cart", {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//             },
+//             body: JSON.stringify({
+//                 cartId: newCartId,
+//                 productId: productId,
+//                 variantId: variantId,
+//                 quantity: quantity,
+//             }),
+//         });
 
-    //         // STEP 6: Read API response
-    //         const addData = await addResponse.json();
+//         // STEP 6: Read API response
+//         const addData = await addResponse.json();
 
-    //         console.log("Add Cart Response:", addData);
+//         console.log("Add Cart Response:", addData);
 
-    //         if (!addResponse.ok) {
-    //             throw new Error(addData.message || "Unable to add product");
-    //         }
+//         if (!addResponse.ok) {
+//             throw new Error(addData.message || "Unable to add product");
+//         }
 
-    //         // STEP 7: Get LineItemId and Version
-    //         const newLineItemId = addData.lineItemId;
-    //         const newVersion = addData.version;
+//         // STEP 7: Get LineItemId and Version
+//         const newLineItemId = addData.lineItemId;
+//         const newVersion = addData.version;
 
-    //         // STEP 8: Update CartContext
-    //         updateCartDetails(
-    //             newCartId,
-    //             newLineItemId,
-    //             newVersion
-    //         );
+//         // STEP 8: Update CartContext
+//         updateCartDetails(
+//             newCartId,
+//             newLineItemId,
+//             newVersion
+//         );
 
-    //         // STEP 9: Store in sessionStorage
-    //         sessionStorage.setItem("LineItemId", newLineItemId);
-    //         sessionStorage.setItem("version", String(newVersion));
+//         // STEP 9: Store in sessionStorage
+//         sessionStorage.setItem("LineItemId", newLineItemId);
+//         sessionStorage.setItem("version", String(newVersion));
 
-    //         // STEP 10: Add product to frontend cart
-    //         addToCart({
-    //             ...product,
-    //             quantity: quantity,
-    //         });
+//         // STEP 10: Add product to frontend cart
+//         addToCart({
+//             ...product,
+//             quantity: quantity,
+//         });
 
-    //         // Console verification
-    //         console.log("Cart ID:", newCartId);
-    //         console.log("Line Item ID:", newLineItemId);
-    //         console.log("Version:", newVersion);
+//         // Console verification
+//         console.log("Cart ID:", newCartId);
+//         console.log("Line Item ID:", newLineItemId);
+//         console.log("Version:", newVersion);
 
-    //     } catch (error) {
-    //         console.error("Subscribe Error:", error.message);
-    //     } finally {
-    //         setCreatingCart(false);
-    //     }
-    // };
+//     } catch (error) {
+//         console.error("Subscribe Error:", error.message);
+//     } finally {
+//         setCreatingCart(false);
+//     }
+// };
 
 
 
-    const handleSubscribe = async (product, variantId, quantity = 1) => {
+const handleSubscribe = async (product, variantId, quantity = 1) => {
+    try {
+        setCreatingCart(true);
+
+        // STEP 1: Create Cart API
+        const response = await fetch("/api/create-cart", {
+            method: "POST",
+        });
+
+        // Response text read panrom
+        const responseText = await response.text();
+
+        console.log("Create Cart Status:", response.status);
+        console.log("Create Cart Response:", responseText);
+
+        // JSON response-ah convert panrom
+        let data = {};
+
         try {
-            setCreatingCart(true);
-
-            // STEP 1: Create Cart API
-            const response = await fetch("/api/create-cart", {
-                method: "POST",
-            });
-
-            // Response text read panrom
-            const responseText = await response.text();
-
-            console.log("Create Cart Status:", response.status);
-            console.log("Create Cart Response:", responseText);
-
-            // JSON response-ah convert panrom
-            let data = {};
-
-            try {
-                data = responseText ? JSON.parse(responseText) : {};
-            } catch {
-                data = { message: responseText };
-            }
-
-            // API error check
-            if (!response.ok) {
-                throw new Error(
-                    data.message || `Create Cart failed: ${response.status}`
-                );
-            }
-
-            // STEP 2: Get Cart ID
-            const newCartId = data.id;
-
-            if (!newCartId) {
-                throw new Error("Cart ID not found");
-            }
-
-            // STEP 3: Store Cart ID
-            sessionStorage.setItem(
-                "subscriptionId",
-                String(newCartId)
-            );
-
-            // STEP 4: Get Product ID
-            const productId = sessionStorage.getItem("productId");
-
-            if (!productId) {
-                throw new Error("Product ID not found in session");
-            }
-
-            // // STEP 5: Add Product API
-            // const addResponse = await fetch("/api/add-cart", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         cartId: newCartId,
-            //         productId: productId,
-            //         variantId: variantId,
-            //         quantity: quantity,
-            //     }),
-            // });
-
-            // // STEP 6: Read Add Cart response
-            // const addResponseText = await addResponse.json();
-
-            // console.log("Add Cart Status:", addResponse.status);
-            // console.log("Add Cart Response:", addResponseText);
-
-            // let addData = {};
-
-            // try {
-            //     addData = addResponseText
-            //         ? JSON.parse(addResponseText)
-            //         : {};
-            // } catch {
-            //     addData = { message: addResponseText };
-            // }
-
-            // // STEP 7: Check Add Cart API success
-            // if (!addResponse.ok) {
-            //     throw new Error(
-            //         addData.message ||
-            //         `Add Cart failed: ${addResponse.status}`
-            //     );
-            // }
-
-            // // STEP 8: Get LineItemId and Version
-            // const newLineItemId = addData.lineItemId;
-            // const newVersion = addData.version;
-
-            // // STEP 9: Update CartContext only if values exist
-            // if (
-            //     newLineItemId &&
-            //     newVersion !== undefined &&
-            //     newVersion !== null
-            // ) {
-            //     updateCartDetails(
-            //         newCartId,
-            //         newLineItemId,
-            //         newVersion
-            //     );
-
-            //     // Store values in sessionStorage
-            //     sessionStorage.setItem(
-            //         "LineItemId",
-            //         newLineItemId
-            //     );
-
-            //     sessionStorage.setItem(
-            //         "version",
-            //         String(newVersion)
-            //     );
-
-            //     console.log("Line Item ID:", newLineItemId);
-            //     console.log("Version:", newVersion);
-            // } else {
-            //     console.warn(
-            //         "Add Cart response does not contain lineItemId and version"
-            //     );
-            // }
-
-
-
-            // STEP 5: Add Product API
-            const addResponse = await fetch(
-                "http://192.168.31.180:8081/api/add-cart",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        cartId: newCartId,
-                        productId: productId,
-                        variantId: variantId,
-                        quantity: quantity,
-                    }),
-                }
-            );
-
-            // STEP 6: Read JSON response
-            const addData = await addResponse.json();
-
-            console.log("Add Cart Status:", addResponse.status);
-            console.log("Add Cart Response:", addData);
-
-            // STEP 7: Check API success
-            if (!addResponse.ok) {
-                throw new Error(
-                    addData.message || `Add Cart failed: ${addResponse.status}`
-                );
-            }
-
-            // STEP 8: Get LineItemId and Version
-            const newLineItemId = addData.lineItemId;
-            const newVersion = addData.version;
-
-            if (!newLineItemId || newVersion === undefined || newVersion === null) {
-                throw new Error("LineItemId or Version missing in response");
-            }
-
-            // STEP 9: Update CartContext
-            updateCartDetails(
-                newCartId,
-                newLineItemId,
-                newVersion
-            );
-
-            // Store values in sessionStorage
-            sessionStorage.setItem("LineItemId", newLineItemId);
-            sessionStorage.setItem("version", String(newVersion));
-
-            console.log("Line Item ID:", newLineItemId);
-            console.log("Version:", newVersion);
-
-            // STEP 10: Update frontend CartContext
-            addToCart({
-                ...product,
-                quantity: quantity,
-            });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // STEP 10: Update frontend CartContext
-            addToCart({
-                ...product,
-                quantity: quantity,
-            });
-
-            console.log("Successfully Added to Cart!");
-            console.log("Cart ID:", newCartId);
-            console.log("Product ID:", productId);
-
-        } catch (error) {
-            console.error("Subscribe Error:", error.message);
-        } finally {
-            setCreatingCart(false);
+            data = responseText ? JSON.parse(responseText) : {};
+        } catch {
+            data = { message: responseText };
         }
-    };
+
+        // API error check
+        if (!response.ok) {
+            throw new Error(
+                data.message || `Create Cart failed: ${response.status}`
+            );
+        }
+
+        // STEP 2: Get Cart ID
+        const newCartId = data.id;
+
+        if (!newCartId) {
+            throw new Error("Cart ID not found");
+        }
+
+        // STEP 3: Store Cart ID
+        sessionStorage.setItem(
+            "subscriptionId",
+            String(newCartId)
+        );
+
+        // STEP 4: Get Product ID
+        const productId = sessionStorage.getItem("productId");
+
+        if (!productId) {
+            throw new Error("Product ID not found in session");
+        }
+
+        // // STEP 5: Add Product API
+        // const addResponse = await fetch("/api/add-cart", {
+        //     method: "POST",
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //     },
+        //     body: JSON.stringify({
+        //         cartId: newCartId,
+        //         productId: productId,
+        //         variantId: variantId,
+        //         quantity: quantity,
+        //     }),
+        // });
+
+        // // STEP 6: Read Add Cart response
+        // const addResponseText = await addResponse.json();
+
+        // console.log("Add Cart Status:", addResponse.status);
+        // console.log("Add Cart Response:", addResponseText);
+
+        // let addData = {};
+
+        // try {
+        //     addData = addResponseText
+        //         ? JSON.parse(addResponseText)
+        //         : {};
+        // } catch {
+        //     addData = { message: addResponseText };
+        // }
+
+        // // STEP 7: Check Add Cart API success
+        // if (!addResponse.ok) {
+        //     throw new Error(
+        //         addData.message ||
+        //         `Add Cart failed: ${addResponse.status}`
+        //     );
+        // }
+
+        // // STEP 8: Get LineItemId and Version
+        // const newLineItemId = addData.lineItemId;
+        // const newVersion = addData.version;
+
+        // // STEP 9: Update CartContext only if values exist
+        // if (
+        //     newLineItemId &&
+        //     newVersion !== undefined &&
+        //     newVersion !== null
+        // ) {
+        //     updateCartDetails(
+        //         newCartId,
+        //         newLineItemId,
+        //         newVersion
+        //     );
+
+        //     // Store values in sessionStorage
+        //     sessionStorage.setItem(
+        //         "LineItemId",
+        //         newLineItemId
+        //     );
+
+        //     sessionStorage.setItem(
+        //         "version",
+        //         String(newVersion)
+        //     );
+
+        //     console.log("Line Item ID:", newLineItemId);
+        //     console.log("Version:", newVersion);
+        // } else {
+        //     console.warn(
+        //         "Add Cart response does not contain lineItemId and version"
+        //     );
+        // }
+
+
+
+        // STEP 5: Add Product API
+        const addResponse = await fetch(
+            "http://192.168.31.180:8081/api/add-cart",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    cartId: newCartId,
+                    productId: productId,
+                    variantId: variantId,
+                    quantity: quantity,
+                }),
+            }
+        );
+
+        // STEP 6: Read JSON response
+        const addData = await addResponse.json();
+
+        console.log("Add Cart Status:", addResponse.status);
+        console.log("Add Cart Response:", addData);
+
+        // STEP 7: Check API success
+        if (!addResponse.ok) {
+            throw new Error(
+                addData.message || `Add Cart failed: ${addResponse.status}`
+            );
+        }
+
+        // STEP 8: Get LineItemId and Version
+        const newLineItemId = addData.lineItemId;
+        const newVersion = addData.version;
+
+        if (!newLineItemId || newVersion === undefined || newVersion === null) {
+            throw new Error("LineItemId or Version missing in response");
+        }
+
+        // STEP 9: Update CartContext
+        updateCartDetails(
+            newCartId,
+            newLineItemId,
+            newVersion
+        );
+
+        // Store values in sessionStorage
+        sessionStorage.setItem("LineItemId", newLineItemId);
+        sessionStorage.setItem("version", String(newVersion));
+
+        console.log("Line Item ID:", newLineItemId);
+        console.log("Version:", newVersion);
+
+        // STEP 10: Update frontend CartContext
+        addToCart({
+            ...product,
+            quantity: quantity,
+        });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // STEP 10: Update frontend CartContext
+        addToCart({
+            ...product,
+            quantity: quantity,
+        });
+
+        console.log("Successfully Added to Cart!");
+        console.log("Cart ID:", newCartId);
+        console.log("Product ID:", productId);
+
+    } catch (error) {
+        console.error("Subscribe Error:", error.message);
+    } finally {
+        setCreatingCart(false);
+    }
+};
 
 
 

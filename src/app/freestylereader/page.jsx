@@ -1,11 +1,10 @@
 "use client"
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./style.css";
 
 export default function ProductDetailPage() {
   const [quantity, setQuantity] = useState(1);
   const [openSection, setOpenSection] = useState("description"); // 'description' or 'specifications'
-  const [products, setProducts] = useState(null);
 
   const handleDecrease = () => {
     if (quantity > 1) setQuantity(quantity - 1);
@@ -19,96 +18,8 @@ export default function ProductDetailPage() {
     setOpenSection(openSection === section ? null : section);
   };
 
-
-
-  useEffect(() => {
-    async function fetchProduct() {
-      try {
-        const url =
-          "/api/product?productKey=freeStyle-libre-2-plus-reader";
-
-        const response = await fetch(url);
-        const data = await response.json();
-
-        if (!response.ok) {
-          throw new Error(data.error || "Failed to fetch product");
-        }
-
-        const productData = data;
-
-        if (!productData?.masterData?.current) {
-          console.error("Product data is missing:", data);
-          return;
-        }
-
-        setProducts(productData);
-
-        // Store product ID in sessionStorage
-        const productIdReader = productData.id;
-        console.log("master data:", data.masterData)
-
-        sessionStorage.setItem("productId reader", productIdReader);
-
-        console.log("Stored Product ID freestyleReader :", productIdReader);
-        console.log("total product details", data);
-
-      } catch (error) {
-        console.error("API fetch error:", error);
-      }
-    }
-
-    fetchProduct();
-  }, []);
-
-  //  const current = products?.masterData?.current;
-  //   const price =current.masterVariant.prices[0].value.centAmount / 100;
-  //  if (!current) {
-  //   return <p>Loading product details...</p>;
-  // }
-
-
-
-  // const current = products?.masterData?.current;
-
-  // const price = current.masterVariant.prices[0].value.centAmount / 100;
-
-  // if (!current) {
-  //   return <p>Loading product details...</p>;
-  // }
-  const current = products?.masterData?.current;
-
-  if (!current) {
-    return <p>Loading product details...</p>;
-  }
-
-  const prices = current.masterVariant?.prices;
-
-  if (!prices || prices.length === 0) {
-    return <p>Price not available</p>;
-  }
-
-  const priceData = prices[0].value;
-
-  const price =
-    priceData.centAmount /
-    Math.pow(10, priceData.fractionDigits);
-
-
-
-
-
-
-
-
-
   return (
-
-
     <div className="pdp-container">
-
-
-
-
       {/* Breadcrumb Navigation */}
       <nav className="pdp-breadcrumb">
         <a href="/" className="home-icon">
@@ -117,13 +28,12 @@ export default function ProductDetailPage() {
           </svg>
         </a>
         <span className="separator">&gt;</span>
-
-        <span className="current-page">{current.name["en-GB"] || "loading"} welcome</span>
+        <span className="current-page">FreeStyle Libre 2 Reader</span>
       </nav>
 
       {/* Main Product Showcase Section */}
       <div className="pdp-main-grid">
-
+        {/* Left Column: Image Showcase */}
         <div className="pdp-image-col">
           <div className="pdp-image-wrapper">
             <img
@@ -136,8 +46,8 @@ export default function ProductDetailPage() {
 
         {/* Right Column: Details and Purchase */}
         <div className="pdp-details-col">
-          <h1 className="pdp-title">{current.name["en-GB"]}</h1>
-          <div className="pdp-price">${price.toFixed(2)}</div>
+          <h1 className="pdp-title">FreeStyle Libre 2 Reader</h1>
+          <div className="pdp-price">$105.00</div>
 
           <div className="pdp-purchase-row">
             <div className="quantity-selector">
@@ -202,8 +112,9 @@ export default function ProductDetailPage() {
             <div className="accordion-item">
               <button
                 type="button"
-                className={`accordion-header ${openSection === "description" ? "active" : ""
-                  }`}
+                className={`accordion-header ${
+                  openSection === "description" ? "active" : ""
+                }`}
                 onClick={() => toggleAccordion("description")}
               >
                 <span>Description</span>
@@ -230,8 +141,9 @@ export default function ProductDetailPage() {
             <div className="accordion-item">
               <button
                 type="button"
-                className={`accordion-header ${openSection === "specifications" ? "active" : ""
-                  }`}
+                className={`accordion-header ${
+                  openSection === "specifications" ? "active" : ""
+                }`}
                 onClick={() => toggleAccordion("specifications")}
               >
                 <span>Specifications</span>

@@ -1173,17 +1173,3 @@ body {
     font-size: 1.4rem;
   }
 }
-
- .bottom {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Aligns all links neatly on the left edge */
-  /* gap: 8px;                /* Clean spacing instead of <br> */
-  width: fit-content;      /* Shrinks box to fit the longest line */
-  margin: 0 auto;          /* Centers the whole block horizontally */
-  text-align: left; 
-
-}
-.bottom a {
-  color:orange;
-}
