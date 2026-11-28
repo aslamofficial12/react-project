@@ -47,236 +47,9 @@ export default function Subscription() {
 
         fetchSubscription();
     }, []);
-    // const handleSubscribe = async (product) => {
 
-    //     try {
 
-    //         setCreatingCart(true);
-
-    //         // 1. Call Next.js API route
-    //         const response = await fetch("/api/create-cart", {
-    //             method: "POST",
-    //         });
-
-    //         // 2. Get API response
-    //         const data = await response.json();
-
-    //         console.log("Create Cart Response:", data);
-
-    //         // 3. Check API success
-    //         if (!response.ok) {
-    //             throw new Error(
-    //                 data.message || "Unable to create cart"
-    //             );
-    //         }
-
-    //         // 4. Get cart ID from response
-    //         const cartId = data.id;
-
-    //         if (cartId === undefined || cartId === null) {
-    //             throw new Error("Cart ID not found in API response");
-    //         }
-
-    //         // 5. Store cart ID in sessionStorage
-    //         sessionStorage.setItem(
-    //             "subscriptionId",
-    //             String(cartId)
-    //         );
-
-    //         // 6. Add product to existing cart
-    //         addToCart(product);
-
-    //         console.log("Cart ID stored:", cartId);
-
-    //     } catch (error) {
-
-    //         console.error("Subscribe Error:", error.message);
-
-    //     } finally {
-
-    //         setCreatingCart(false);
-
-    //     }
-    // };
-
-
-
-
-
-
-
-
-    // const handleSubscribe = async (product, variantId, quantity = 1) => {
-    //     try {
-    //         setCreatingCart(true);
-
-    //         // 1. First API - Create Cart
-    //         const response = await fetch("/api/create-cart", {
-    //             method: "POST",
-    //         });
-
-    //         const data = await response.json();
-
-    //         console.log("Create Cart Response:", data);
-
-    //         if (!response.ok) {
-    //             throw new Error(data.message || "Unable to create cart");
-    //         }
-
-    //         // 2. Get Cart ID
-    //         const cartId = data.id;
-
-    //         if (!cartId) {
-    //             throw new Error("Cart ID not found");
-    //         }
-
-    //         // 3. Store Cart ID
-    //         sessionStorage.setItem("subscriptionId", String(cartId));
-
-
-    //         // 4. Get already stored Product ID
-    //         const productId = sessionStorage.getItem("productId");
-
-    //         if (!productId) {
-    //             throw new Error("Product ID not found in session");
-    //         }
-
-    //         // 5. Second API - Add Product to Cart
-    //         const addResponse = await fetch(
-    //             "http://192.168.31.180:8081/api/add-cart",
-    //             {
-    //                 method: "POST",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                 },
-    //                 body: JSON.stringify({
-    //                     cartId: cartId,
-    //                     productId: productId,
-    //                     variantId: variantId,
-    //                     quantity: quantity,
-    //                 }),
-    //             }
-    //         );
-
-    //         const addData = await addResponse.json();
-
-    //         console.log("Add Cart Response:", addData);
-
-    //         if (!addResponse.ok) {
-    //             throw new Error(addData.message || "Unable to add product");
-    //         }
-
-    //         // 6. Add to local cart
-    //         addToCart(product);
-
-    //         console.log("Cart ID:", cartId);
-    //         console.log("Product ID:", productId);
-    //         console.log("Variant ID:", variantId);
-    //         console.log("Quantity:", quantity);
-
-    //     } catch (error) {
-    //         console.error("Subscribe Error:", error.message);
-    //     } finally {
-    //         setCreatingCart(false);
-    //     }
-    // };
-
-
-    // NEW CODE - REPLACE OLD handleSubscribe FUNCTION
-
-
-
-
-    // const handleSubscribe = async (product, variantId, quantity = 1) => {
-    //     try {
-    //         setCreatingCart(true);
-
-    //         // STEP 1: Create Cart API
-    //         const response = await fetch("/api/create-cart", {
-    //             method: "POST",
-    //         });
-
-    //         const data = await response.json();
-
-    //         console.log("Create Cart Response:", data);
-
-    //         if (!response.ok) {
-    //             throw new Error(data.message || "Unable to create cart");
-    //         }
-
-    //         // STEP 2: Get Cart ID
-    //         const newCartId = data.id;
-
-    //         if (!newCartId) {
-    //             throw new Error("Cart ID not found");
-    //         }
-
-    //         // STEP 3: Store Cart ID
-    //         sessionStorage.setItem("subscriptionId", String(newCartId));
-
-    //         // STEP 4: Get Product ID
-    //         const productId = sessionStorage.getItem("productId");
-
-    //         if (!productId) {
-    //             throw new Error("Product ID not found in session");
-    //         }
-
-    //         // STEP 5: Add Product API
-    //         const addResponse = await fetch("/api/add-cart", {
-    //             method: "POST",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify({
-    //                 cartId: newCartId,
-    //                 productId: productId,
-    //                 variantId: variantId,
-    //                 quantity: quantity,
-    //             }),
-    //         });
-
-    //         // STEP 6: Read API response
-    //         const addData = await addResponse.json();
-
-    //         console.log("Add Cart Response:", addData);
-
-    //         if (!addResponse.ok) {
-    //             throw new Error(addData.message || "Unable to add product");
-    //         }
-
-    //         // STEP 7: Get LineItemId and Version
-    //         const newLineItemId = addData.lineItemId;
-    //         const newVersion = addData.version;
-
-    //         // STEP 8: Update CartContext
-    //         updateCartDetails(
-    //             newCartId,
-    //             newLineItemId,
-    //             newVersion
-    //         );
-
-    //         // STEP 9: Store in sessionStorage
-    //         sessionStorage.setItem("LineItemId", newLineItemId);
-    //         sessionStorage.setItem("version", String(newVersion));
-
-    //         // STEP 10: Add product to frontend cart
-    //         addToCart({
-    //             ...product,
-    //             quantity: quantity,
-    //         });
-
-    //         // Console verification
-    //         console.log("Cart ID:", newCartId);
-    //         console.log("Line Item ID:", newLineItemId);
-    //         console.log("Version:", newVersion);
-
-    //     } catch (error) {
-    //         console.error("Subscribe Error:", error.message);
-    //     } finally {
-    //         setCreatingCart(false);
-    //     }
-    // };
-
+    
 
 
     const handleSubscribe = async (product, variantId, quantity = 1) => {
@@ -290,6 +63,14 @@ export default function Subscription() {
 
             // Response text read panrom
             const responseText = await response.text();
+            const datas = JSON.parse(responseText);
+
+            const responseVersion = datas.version;
+             sessionStorage.setItem(
+                "version",
+                String(responseVersion)
+            );
+            console.log("response version :",responseVersion);
 
             console.log("Create Cart Status:", response.status);
             console.log("Create Cart Response:", responseText);
@@ -311,11 +92,13 @@ export default function Subscription() {
             }
 
             // STEP 2: Get Cart ID
-            const newCartId = data.id;
+            // const newCartId = data.id;
+            const newCartId = data["Cart Id"];
 
             if (!newCartId) {
                 throw new Error("Cart ID not found");
             }
+            console.log("New Cart ID:", newCartId);
 
             // STEP 3: Store Cart ID
             sessionStorage.setItem(
@@ -330,80 +113,12 @@ export default function Subscription() {
                 throw new Error("Product ID not found in session");
             }
 
-            // // STEP 5: Add Product API
-            // const addResponse = await fetch("/api/add-cart", {
-            //     method: "POST",
-            //     headers: {
-            //         "Content-Type": "application/json",
-            //     },
-            //     body: JSON.stringify({
-            //         cartId: newCartId,
-            //         productId: productId,
-            //         variantId: variantId,
-            //         quantity: quantity,
-            //     }),
-            // });
-
-            // // STEP 6: Read Add Cart response
-            // const addResponseText = await addResponse.json();
-
-            // console.log("Add Cart Status:", addResponse.status);
-            // console.log("Add Cart Response:", addResponseText);
-
-            // let addData = {};
-
-            // try {
-            //     addData = addResponseText
-            //         ? JSON.parse(addResponseText)
-            //         : {};
-            // } catch {
-            //     addData = { message: addResponseText };
-            // }
-
-            // // STEP 7: Check Add Cart API success
-            // if (!addResponse.ok) {
-            //     throw new Error(
-            //         addData.message ||
-            //         `Add Cart failed: ${addResponse.status}`
-            //     );
-            // }
-
-            // // STEP 8: Get LineItemId and Version
-            // const newLineItemId = addData.lineItemId;
-            // const newVersion = addData.version;
-
-            // // STEP 9: Update CartContext only if values exist
-            // if (
-            //     newLineItemId &&
-            //     newVersion !== undefined &&
-            //     newVersion !== null
-            // ) {
-            //     updateCartDetails(
-            //         newCartId,
-            //         newLineItemId,
-            //         newVersion
-            //     );
-
-            //     // Store values in sessionStorage
-            //     sessionStorage.setItem(
-            //         "LineItemId",
-            //         newLineItemId
-            //     );
-
-            //     sessionStorage.setItem(
-            //         "version",
-            //         String(newVersion)
-            //     );
-
-            //     console.log("Line Item ID:", newLineItemId);
-            //     console.log("Version:", newVersion);
-            // } else {
-            //     console.warn(
-            //         "Add Cart response does not contain lineItemId and version"
-            //     );
-            // }
-
-
+          const getVersion =sessionStorage.getItem("version");
+          if(!getVersion){
+            throw new Error("version not found in session")
+          }else{
+            console.log("version stored ",getVersion);
+          }
 
             // STEP 5: Add Product API
             const addResponse = await fetch(
@@ -418,6 +133,7 @@ export default function Subscription() {
                         productId: productId,
                         variantId: variantId,
                         quantity: quantity,
+                        version : getVersion
                     }),
                 }
             );
@@ -427,6 +143,13 @@ export default function Subscription() {
 
             console.log("Add Cart Status:", addResponse.status);
             console.log("Add Cart Response:", addData);
+            const addCartVersion = addData.version;
+
+            console.log("version stored",addCartVersion)
+
+            sessionStorage.removeItem("version");
+            sessionStorage.setItem("addtocartVersion",addCartVersion);
+            console.log("new version from add to cart",addCartVersion);
 
             // STEP 7: Check API success
             if (!addResponse.ok) {

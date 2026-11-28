@@ -58,6 +58,15 @@ export default function CartSidebar() {
             console.log("Remove Product Status:", response.status);
             console.log("Remove Product Response:", responseText);
 
+            const productDetails = JSON.parse(responseText) ;
+            const versionfinal = productDetails.version;
+            console.log("after prouduct reomove version :",versionfinal);
+            sessionStorage.setItem("versionFinal",versionfinal);
+            const lastVersion = sessionStorage.getItem("versionFinal");
+            console.log("lastVersion stored successfully :",lastVersion)
+            
+            
+
             let data = {};
 
             try {
